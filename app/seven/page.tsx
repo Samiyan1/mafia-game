@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { Person } from '../data';
 import React, { useState } from 'react';
 import { data7 } from '../data';
-import { ToastContainer, toast } from '../../node_modules/react-toastify';
 
 export default function Home() {
   const [sevenPerson, setSevenPerson] = useState<Person[]>(data7);
