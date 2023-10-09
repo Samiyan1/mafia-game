@@ -55,7 +55,7 @@ export default function Home() {
               )
             })}
           </div>
-          <button className=' border-b border-gray-300 px-6 py-2 rounded-xl backdrop-blur-2xl dark:border-neutral-800 dark:from-inherit  lg:rounded-xl lg:border lg:bg-gray-200 ' onClick={notify}>submit </button>
+          <button className=' border-b border-gray-300 px-6 py-2 rounded-xl backdrop-blur-2xl dark:border-neutral-800 dark:from-inherit  lg:rounded-xl lg:border lg:bg-gray-200 ' onClick={showGame}>submit </button>
         </div>
       </div>
     </main>
