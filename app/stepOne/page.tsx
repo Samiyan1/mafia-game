@@ -1,12 +1,27 @@
 'use client';
 import Image from 'next/image';
 import { Person } from '../data';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { data7 } from '../data';
+import { useRouter } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation'
+import { addPlayer } from '../redux/reducers/counterSlice';
+import {useDispatch,useSelector} from 'react-redux';
+import store from '../redux/store/store';
 
 export default function Home() {
-  const [sevenPerson, setSevenPerson] = useState<Person[]>(data7);
+  
  
+  const [name, setName] = useState('');
+
+  const selector = useSelector(addPlayer);
+  const playerState = selector.payload.playersSlice.players
+  const SetAddPlayers= useDispatch();
+
+  useEffect(() => {
+    console.log(playerState)
+  } , [playerState.length])
+
   return (
 
     <main className=" overflow-auto min-h-screen max-h-48 flex-col items-center justify-between ">
@@ -35,40 +50,42 @@ export default function Home() {
       </div>
 
       <div>
-        <div className='mb-5 m-auto'>
-          <button className=' border-b border-gray-300 px-6 py-2 rounded-xl backdrop-blur-2xl dark:border-neutral-800 dark:from-inherit  lg:rounded-xl lg:border lg:bg-gray-200 ' onClick={showGame}>Shuffle</button>
-          <span className="inline-block ml-3 transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+        <div className='mb-5 m-auto mt-20 flex flex-col justify-center items-center'>
+          <div className='mb-2 w-[50vw] text-center mb-6'>اسم بازیکن را وارد نموده سپس روی گزینه  افزودن کلیک کنید  </div>
+          <input required value={name} onChange={(e) => setName(e.target.value)} className='w-50 h-10 mb-3'></input>
+          <button onClick={addPlayers} className='w-50 h-10 mb-3'>add</button>
 
-          </span>
-          <div className='mt-6'>
-            {sevenPerson && (sevenPerson.length > 1) && sevenPerson.map((item, index) => {
-              return (
-                <div key={item.id} className='flex flex-col justify-around items-center'>
-                  <div className='mb-2'>{item.tag}</div>
-                  <div key={item.id} className='flex justify-around items-center'>
-                    <input required onChange={(e) => {
-                      item.name = e.target.value;
-                    }} className='w-50 h-10 mb-3'></input>
-                    <div className='mb-3 ml-2'>{index + 1}</div>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-          <button className=' border-b border-gray-300 px-6 py-2 rounded-xl backdrop-blur-2xl dark:border-neutral-800 dark:from-inherit  lg:rounded-xl lg:border lg:bg-gray-200 ' onClick={showGame}>submit </button>
+        </div>
+        <div className='mt-6'>
+          {playerState && playerState.map((item : any, index : number) => {
+            return (
+              <div key={index} className='flex flex-col justify-around items-center'>
+                {item}
+              </div>
+            )
+          })}
+          <button onClick={() => {
+
+
+
+          }} className='w-50 h-10 mb-3'>add</button>
         </div>
       </div>
-    </main>
+    </main >
   )
 
-  function goToNext() {
-   
-  }
-
-  function showGame() {
-    const newOrder = shuffle(data7)
-    setSevenPerson([...newOrder]);
-  }
+  function addPlayers() {
+    console.log(name);
+    const duplicate :boolean = playerState.some((x:string) :boolean=> x === name);
+    console.log(duplicate);
+    
+    if(name && !duplicate){
+      SetAddPlayers(addPlayer(name))
+      setName('')
+    }else{
+      notify("error", "Error!")
+    }
+}
 
   function shuffle(array: Person[]) {
     let currentIndex = array.length, randomIndex;
