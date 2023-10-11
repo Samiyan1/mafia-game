@@ -2,25 +2,25 @@
 import Image from 'next/image';
 import { Person } from '../data';
 import React, { useEffect, useState } from 'react';
-import { data7 } from '../data';
-import { useRouter } from 'next/navigation';
-import { usePathname, useSearchParams } from 'next/navigation'
 import { addPlayer } from '../redux/reducers/counterSlice';
-import {useDispatch,useSelector} from 'react-redux';
-import store from '../redux/store/store';
-
+import { removePlayer } from '../redux/reducers/counterSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import Link from 'next/link';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function Home() {
-  
- 
+
+
   const [name, setName] = useState('');
 
   const selector = useSelector(addPlayer);
+
   const playerState = selector.payload.playersSlice.players
-  const SetAddPlayers= useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     console.log(playerState)
-  } , [playerState.length])
+  }, [playerState.length])
 
   return (
 
@@ -54,38 +54,41 @@ export default function Home() {
           <div className='mb-2 w-[50vw] text-center mb-6'>اسم بازیکن را وارد نموده سپس روی گزینه  افزودن کلیک کنید  </div>
           <input required value={name} onChange={(e) => setName(e.target.value)} className='w-50 h-10 mb-3'></input>
           <button onClick={addPlayers} className='w-50 h-10 mb-3'>add</button>
-
         </div>
         <div className='mt-6'>
-          {playerState && playerState.map((item : any, index : number) => {
+          {playerState && playerState.map((item: any, index: number) => {
             return (
-              <div key={index} className='flex flex-col justify-around items-center'>
+              <div key={index} className='flex   justify-around items-center'>
                 {item}
+                <button onClick={() => removePlayers(item)}>remove</button>
               </div>
             )
           })}
-          <button onClick={() => {
-
-
-
-          }} className='w-50 h-10 mb-3'>add</button>
         </div>
       </div>
+      <Link href={'stepTwo'}>
+        <button type="button" className="button">
+          <div className="button-top">3D Button</div>
+          <div className="button-bottom"></div>
+          <div className="button-base"></div>
+        </button></Link>
+
+
     </main >
   )
 
   function addPlayers() {
-    console.log(name);
-    const duplicate :boolean = playerState.some((x:string) :boolean=> x === name);
-    console.log(duplicate);
-    
-    if(name && !duplicate){
-      SetAddPlayers(addPlayer(name))
+    const duplicate: boolean = playerState.some((x: string): boolean => x === name);
+
+    if (name && !duplicate) {
+      dispatch(addPlayer(name))
       setName('')
-    }else{
-      notify("error", "Error!")
-    }
-}
+    } else { toast.error("رکورد تکراری") }
+
+  }
+  function removePlayers(item: any) {
+    dispatch(removePlayer(item))
+  }
 
   function shuffle(array: Person[]) {
     let currentIndex = array.length, randomIndex;

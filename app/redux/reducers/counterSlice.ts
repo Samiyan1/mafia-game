@@ -18,9 +18,15 @@ interface RolesState {
        addPlayer: (state,action) => {
           state.players.push(action.payload)
        },
+       removePlayer: (state,action) => {
+         const array = state.players.filter(name => name !== action.payload);
+         state.players = array;
+      },
        
     }
  });
+
+ export const {removePlayer } = playersSlice.actions; 
 
  export const {addPlayer } = playersSlice.actions; 
  export default playersSlice.reducer;

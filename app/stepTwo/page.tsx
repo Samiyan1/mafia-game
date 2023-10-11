@@ -1,15 +1,35 @@
 'use client';
 import React from 'react'
-import { withRouter } from 'next/router'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { useDispatch, useSelector } from 'react-redux';
+import { addPlayer } from '../redux/reducers/counterSlice';
+import {MafiaScenarios} from './dataMafiaScenarios'
+import Link from 'next/link';
 
-function page(props :any) {
-    const searchParams = useSearchParams();
- 
-    console.log(searchParams.get('data'));
+function page() {
+  const selector = useSelector(addPlayer);
+  const playerState = selector.payload.playersSlice.players
+  console.log(MafiaScenarios);
+  console.log(MafiaScenarios[0].title);
+
+
 
   return (
-    <div>{searchParams}</div>
+    <div className='flex'>
+      {MafiaScenarios && MafiaScenarios.map((item: any, index: number) => {
+        return (
+          <div className="card" key={index}>
+            <div className="card-border-top">
+            </div>
+            <div className="img">
+            </div>
+            <span> {item.title}</span>
+            <p className="job"> {item.rules.map((item :any)=> (" " + item.ruleName + '') )}</p>
+            <Link href={`./stepTwo/${item.title}`}><button> Click
+            </button></Link>
+          </div>
+        )
+      })}
+    </div>
   )
 }
 
