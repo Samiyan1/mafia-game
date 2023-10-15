@@ -67,6 +67,7 @@ export const MafiaScenarios = [
                 image: '/image/City.jpg',
                 team: 'شهروند',
             },
+       
         ],
         lastActionCard: [
             {
