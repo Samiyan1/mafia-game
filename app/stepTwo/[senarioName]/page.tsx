@@ -6,7 +6,7 @@ import Image from 'next/image'
 import './checkbox.css';
 import Link from 'next/link';
 
-const page = () => {
+const Page = () => {
     const useparams = useParams();
     const st: string = useparams.senarioName as string;
     const s = decodeURIComponent(st);
@@ -16,7 +16,7 @@ const page = () => {
     return (
         <div className='flex flex-wrap justify-center my-5 h-screen '>
             {scenarioObject && scenarioObject.rules.map((item: any, index: number) =>
-            (<div className="checkbox-wrapper-16">
+            (<div className="checkbox-wrapper-16" key={index}>
                 <label className="checkbox-wrapper">
                     <input className="checkbox-input" type="checkbox" />
                     <span className="checkbox-tile">
@@ -50,4 +50,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

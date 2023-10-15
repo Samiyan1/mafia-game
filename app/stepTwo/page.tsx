@@ -5,7 +5,7 @@ import { addPlayer } from '../redux/reducers/counterSlice';
 import {MafiaScenarios} from './dataMafiaScenarios'
 import Link from 'next/link';
 
-function page() {
+function Page() {
   const selector = useSelector(addPlayer);
   const playerState = selector.payload.playersSlice.players
   console.log(MafiaScenarios);
@@ -33,4 +33,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
