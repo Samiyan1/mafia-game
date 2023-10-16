@@ -24,7 +24,7 @@
 .checkbox-wrapper-16 .checkbox-input:checked + .checkbox-tile:before {
   transform: scale(1);
   opacity: 1;
-  background-color: #2260ff;
+  background-color: #00ff6a;
   border-color: #2260ff;
 }
 

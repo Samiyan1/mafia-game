@@ -3,36 +3,88 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 17, 109, 110;
+  --background-end-rgb: 17, 109, 110;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-rgb: 17, 109, 110;
+    --background-start-rgb: 255, 255, 255;
+    --background-end-rgb: 17, 109, 110;
   }
-  input{
-    background-color:rgb(27, 17, 70);
+
+  input {
+    background-color: rgb(27, 17, 70);
     border: 2px white;
   }
 }
-input{
+
+input {
   border-radius: 10px;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
-.button {
+
+.btn-class-name {
+  --primary: 255, 90, 120;
+  --secondary: 150, 50, 60;
+  width: 60px;
+  height: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  outline: 10px solid rgb(var(--primary), .5);
+  border-radius: 100%;
+  position: relative;
+  transition: .3s;
+}
+
+.btn-class-name .back {
+  background: rgb(var(--secondary));
+  border-radius: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.btn-class-name .front {
+  background: linear-gradient(0deg, rgba(var(--primary), .6) 20%, rgba(var(--primary)) 50%);
+  box-shadow: 0 .5em 1em -0.2em rgba(var(--secondary), .5);
+  border-radius: 100%;
+  position: absolute;
+  border: 1px solid rgb(var(--secondary));
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: inherit;
+  transform: translateY(-15%);
+  transition: .15s;
+  color: rgb(var(--secondary));
+}
+
+.btn-class-name:active .front {
+  transform: translateY(0%);
+  box-shadow: 0 0;
+}
+
+/* .button {
   -webkit-appearance: none;
   appearance: none;
   position: relative;
@@ -119,32 +171,133 @@ body {
   height: calc(100% - 4px);
   background-color: rgba(0, 0, 0, .15);
   box-shadow: 0 1px 1px 0 rgba(255, 255, 255, .75), inset 0 2px 2px rgba(0, 0, 0, .25);
+} */
+
+.logo{
+  filter: hue-rotate(90deg);
+
 }
+.glich-btn,
+button::after {
+ padding: 16px 20px;
+ font-size: 18px;
+ background: linear-gradient(45deg, transparent 5%, #ff013c 5%);
+ border: 0;
+ color: #fff;
+ letter-spacing: 3px;
+ line-height: 1;
+ box-shadow: 6px 0px 0px #00e6f6;
+ outline: transparent;
+ position: relative;
+}
+
+.glich-btn::after {
+ --slice-0: inset(50% 50% 50% 50%);
+ --slice-1: inset(80% -6px 0 0);
+ --slice-2: inset(50% -6px 30% 0);
+ --slice-3: inset(10% -6px 85% 0);
+ --slice-4: inset(40% -6px 43% 0);
+ --slice-5: inset(80% -6px 5% 0);
+ content: "HOVER ME";
+ display: block;
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background: linear-gradient(45deg, transparent 3%, #00e6f6 3%, #00e6f6 5%, #ff013c 5%);
+ text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px #00e6f6;
+ clip-path: var(--slice-0);
+}
+
+.glich-btn::after {
+ animation: 1s glitch infinite;
+ animation-timing-function: steps(2, end);
+}
+
+@keyframes glitch {
+ 0% {
+  clip-path: var(--slice-1);
+  transform: translate(-20px, -10px);
+ }
+
+ 10% {
+  clip-path: var(--slice-3);
+  transform: translate(10px, 10px);
+ }
+
+ 20% {
+  clip-path: var(--slice-1);
+  transform: translate(-10px, 10px);
+ }
+
+ 30% {
+  clip-path: var(--slice-3);
+  transform: translate(0px, 5px);
+ }
+
+ 40% {
+  clip-path: var(--slice-2);
+  transform: translate(-5px, 0px);
+ }
+
+ 50% {
+  clip-path: var(--slice-3);
+  transform: translate(5px, 0px);
+ }
+
+ 60% {
+  clip-path: var(--slice-4);
+  transform: translate(5px, 10px);
+ }
+
+ 70% {
+  clip-path: var(--slice-2);
+  transform: translate(-10px, 10px);
+ }
+
+ 80% {
+  clip-path: var(--slice-5);
+  transform: translate(20px, -10px);
+ }
+
+ 90% {
+  clip-path: var(--slice-1);
+  transform: translate(-10px, 0px);
+ }
+
+ 100% {
+  clip-path: var(--slice-1);
+  transform: translate(0);
+ }
+}
+
+
 .card {
   width: 30vw;
   height: 30vh;
   background: #3405a3;
   box-shadow: 1px 5px 60px 0px #100a886b;
- }
- 
- .card .card-border-top {
+}
+
+.card .card-border-top {
   width: 60%;
   height: 3%;
   background: #6b64f3;
   margin: auto;
   border-radius: 0px 0px 15px 15px;
- }
- 
- .card span {
+}
+
+.card span {
   font-weight: 600;
   color: white;
   text-align: center;
   display: block;
   padding-top: 10px;
   font-size: 16px;
- }
- 
- .card .job {
+}
+
+.card .job {
   font-weight: 400;
   color: white;
   display: block;
@@ -154,18 +307,18 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
- }
- 
- .card .img {
+}
+
+.card .img {
   width: 70px;
   height: 80px;
   background: #6b64f3;
   border-radius: 15px;
   margin: auto;
   margin-top: 25px;
- }
- 
- .card button {
+}
+
+.card button {
   padding: 4px 10px;
   display: block;
   margin: auto;
@@ -175,18 +328,19 @@ body {
   background: #6b64f3;
   color: white;
   font-weight: 600;
- }
- 
- .card button:hover {
+}
+
+.card button:hover {
   background: #534bf3;
- }
- 
- .coolinput {
+}
+
+.coolinput {
   display: flex;
   flex-direction: column;
   width: fit-content;
   position: static;
-  max-width: 80vw;
+  max-width: 90vw;
+  min-width: 70vw;
 }
 
 .coolinput label.text {

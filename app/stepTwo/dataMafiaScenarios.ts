@@ -67,6 +67,13 @@ export const MafiaScenarios = [
                 image: '/image/City.jpg',
                 team: 'شهروند',
             },
+            {
+                ruleName: 'مافیا ساده',
+                playerName: '',
+                description: 'کمک کن تمی مافیا ببره',
+                image: '/image/simpleMafia.jpg',
+                team: 'مافیا',
+            },
        
         ],
         lastActionCard: [

@@ -8,14 +8,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/navigation'
+
 export default function Page() {
+
+  const router = useRouter()
 
 
   const [name, setName] = useState('');
 
   const selector = useSelector(addPlayer);
-
-  const playerState = selector.payload.playersSlice.players
+  const playerState = selector.payload.playersSlice.players;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -51,7 +54,7 @@ export default function Page() {
 
       <div>
         <div className='mb-5 m-auto mt-20 flex flex-col justify-center items-center'>
-          <div className='mb-2 w-[50vw] text-center mb-6'>اسم بازیکن را وارد نموده سپس روی گزینه  افزودن کلیک کنید  </div>
+          <div className='mb-2 w-[50vw] text-center'>اسم بازیکن را وارد نموده سپس روی گزینه  افزودن کلیک کنید  </div>
           <input required value={name} onChange={(e) => setName(e.target.value)} className='w-50 h-10 mb-3'></input>
           <button onClick={addPlayers} className='w-50 h-10 mb-3'>add</button>
         </div>
@@ -66,12 +69,11 @@ export default function Page() {
           })}
         </div>
       </div>
-      <Link href={'stepTwo'}>
-        <button type="button" className="button">
-          <div className="button-top">3D Button</div>
-          <div className="button-bottom"></div>
-          <div className="button-base"></div>
-        </button></Link>
+      <button onClick={()=>{ playerState.length >= 4 ? router.push('stepTwo', { scroll: false }) : toast.error('تعداد کمتر از حد مجاز') }} type="button" className="button">
+        <div className="button-top">ثبت</div>
+        <div className="button-bottom"></div>
+        <div className="button-base"></div>
+      </button>
 
 
     </main >

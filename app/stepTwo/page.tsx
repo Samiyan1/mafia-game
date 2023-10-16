@@ -6,11 +6,6 @@ import {MafiaScenarios} from './dataMafiaScenarios'
 import Link from 'next/link';
 
 function Page() {
-  const selector = useSelector(addPlayer);
-  const playerState = selector.payload.playersSlice.players
-  console.log(MafiaScenarios);
-  console.log(MafiaScenarios[0].title);
-
 
 
   return (
