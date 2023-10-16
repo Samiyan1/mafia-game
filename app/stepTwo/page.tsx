@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addPlayer } from '../redux/reducers/counterSlice';
 import {MafiaScenarios} from './dataMafiaScenarios'
 import Link from 'next/link';
-
+import './stepTwo.css'
 function Page() {
 
 

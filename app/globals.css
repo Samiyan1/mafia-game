@@ -11,12 +11,12 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 17, 109, 110;
-    --background-start-rgb: 255, 255, 255;
-    --background-end-rgb: 17, 109, 110;
+    --background-start-rgb: 50, 30, 30;
+    --background-end-rgb: 50, 30, 30;
   }
 
   input {
-    background-color: rgb(27, 17, 70);
+    background-color: 50, 30, 30;
     border: 2px white;
   }
 }
@@ -33,7 +33,7 @@ body {
 }
 
 .btn-class-name {
-  --primary: 255, 90, 120;
+  --primary: 255, 255, 255;
   --secondary: 150, 50, 60;
   width: 60px;
   height: 50px;
@@ -84,255 +84,107 @@ body {
   box-shadow: 0 0;
 }
 
-/* .button {
-  -webkit-appearance: none;
-  appearance: none;
-  position: relative;
-  border-width: 0;
-  padding: 0 8px 12px;
-  min-width: 10em;
-  box-sizing: border-box;
-  background: transparent;
-  font: inherit;
-  cursor: pointer;
-}
 
-.button-top {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 0;
-  padding: 8px 16px;
-  transform: translateY(0);
-  text-align: center;
-  color: #fff;
-  text-shadow: 0 -1px rgba(0, 0, 0, .25);
-  transition-property: transform;
-  transition-duration: .2s;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-.button:active .button-top {
-  transform: translateY(6px);
-}
-
-.button-top::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  border-radius: 4px;
-  width: 100%;
-  height: 100%;
-  box-sizing: content-box;
-  background-image: radial-gradient(#cd3f64, #9d3656);
-  text-align: center;
-  color: #fff;
-  box-shadow: inset 0 0 0px 1px rgba(255, 255, 255, .2), 0 1px 2px 1px rgba(255, 255, 255, .2);
-  transition-property: border-radius, padding, width, transform;
-  transition-duration: .2s;
-}
-
-.button:active .button-top::after {
-  border-radius: 6px;
-  padding: 0 2px;
-}
-
-.button-bottom {
-  position: absolute;
-  z-index: -1;
-  bottom: 4px;
-  left: 4px;
-  border-radius: 8px / 16px 16px 8px 8px;
-  padding-top: 6px;
-  width: calc(100% - 8px);
-  height: calc(100% - 10px);
-  box-sizing: content-box;
-  background-color: #803;
-  background-image: radial-gradient(4px 8px at 4px calc(100% - 8px), rgba(255, 255, 255, .25), transparent), radial-gradient(4px 8px at calc(100% - 4px) calc(100% - 8px), rgba(255, 255, 255, .25), transparent), radial-gradient(16px at -4px 0, white, transparent), radial-gradient(16px at calc(100% + 4px) 0, white, transparent);
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5), inset 0 -1px 3px 3px rgba(0, 0, 0, .4);
-  transition-property: border-radius, padding-top;
-  transition-duration: .2s;
-}
-
-.button:active .button-bottom {
-  border-radius: 10px 10px 8px 8px / 8px;
-  padding-top: 0;
-}
-
-.button-base {
-  position: absolute;
-  z-index: -2;
-  top: 4px;
-  left: 0;
-  border-radius: 12px;
-  width: 100%;
-  height: calc(100% - 4px);
-  background-color: rgba(0, 0, 0, .15);
-  box-shadow: 0 1px 1px 0 rgba(255, 255, 255, .75), inset 0 2px 2px rgba(0, 0, 0, .25);
-} */
-
-.logo{
+.logo {
   filter: hue-rotate(90deg);
 
 }
+
 .glich-btn,
 button::after {
- padding: 16px 20px;
- font-size: 18px;
- background: linear-gradient(45deg, transparent 5%, #ff013c 5%);
- border: 0;
- color: #fff;
- letter-spacing: 3px;
- line-height: 1;
- box-shadow: 6px 0px 0px #00e6f6;
- outline: transparent;
- position: relative;
+  padding: 25px 20px;
+  font-size: 18px;
+  background: linear-gradient(45deg, transparent 5%, #ff013c 5%);
+  border: 0;
+  color: #fff;
+  letter-spacing: 3px;
+  line-height: 1;
+  box-shadow: 6px 0px 0px #00e6f6;
+  outline: transparent;
+  position: relative;
 }
 
 .glich-btn::after {
- --slice-0: inset(50% 50% 50% 50%);
- --slice-1: inset(80% -6px 0 0);
- --slice-2: inset(50% -6px 30% 0);
- --slice-3: inset(10% -6px 85% 0);
- --slice-4: inset(40% -6px 43% 0);
- --slice-5: inset(80% -6px 5% 0);
- content: "HOVER ME";
- display: block;
- position: absolute;
- top: 0;
- left: 0;
- right: 0;
- bottom: 0;
- background: linear-gradient(45deg, transparent 3%, #00e6f6 3%, #00e6f6 5%, #ff013c 5%);
- text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px #00e6f6;
- clip-path: var(--slice-0);
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(80% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(10% -6px 85% 0);
+  --slice-4: inset(40% -6px 43% 0);
+  --slice-5: inset(80% -6px 5% 0);
+  content: "HOVER ME";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 3%, #00e6f6 3%, #00e6f6 5%, #ff013c 5%);
+  text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px #00e6f6;
+  clip-path: var(--slice-0);
 }
 
 .glich-btn::after {
- animation: 1s glitch infinite;
- animation-timing-function: steps(2, end);
+  animation: 1s glitch infinite;
+  animation-timing-function: steps(2, end);
 }
 
 @keyframes glitch {
- 0% {
-  clip-path: var(--slice-1);
-  transform: translate(-20px, -10px);
- }
+  0% {
+    clip-path: var(--slice-1);
+    transform: translate(-20px, -10px);
+  }
 
- 10% {
-  clip-path: var(--slice-3);
-  transform: translate(10px, 10px);
- }
+  10% {
+    clip-path: var(--slice-3);
+    transform: translate(10px, 10px);
+  }
 
- 20% {
-  clip-path: var(--slice-1);
-  transform: translate(-10px, 10px);
- }
+  20% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 10px);
+  }
 
- 30% {
-  clip-path: var(--slice-3);
-  transform: translate(0px, 5px);
- }
+  30% {
+    clip-path: var(--slice-3);
+    transform: translate(0px, 5px);
+  }
 
- 40% {
-  clip-path: var(--slice-2);
-  transform: translate(-5px, 0px);
- }
+  40% {
+    clip-path: var(--slice-2);
+    transform: translate(-5px, 0px);
+  }
 
- 50% {
-  clip-path: var(--slice-3);
-  transform: translate(5px, 0px);
- }
+  50% {
+    clip-path: var(--slice-3);
+    transform: translate(5px, 0px);
+  }
 
- 60% {
-  clip-path: var(--slice-4);
-  transform: translate(5px, 10px);
- }
+  60% {
+    clip-path: var(--slice-4);
+    transform: translate(5px, 10px);
+  }
 
- 70% {
-  clip-path: var(--slice-2);
-  transform: translate(-10px, 10px);
- }
+  70% {
+    clip-path: var(--slice-2);
+    transform: translate(-10px, 10px);
+  }
 
- 80% {
-  clip-path: var(--slice-5);
-  transform: translate(20px, -10px);
- }
+  80% {
+    clip-path: var(--slice-5);
+    transform: translate(20px, -10px);
+  }
 
- 90% {
-  clip-path: var(--slice-1);
-  transform: translate(-10px, 0px);
- }
+  90% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 0px);
+  }
 
- 100% {
-  clip-path: var(--slice-1);
-  transform: translate(0);
- }
+  100% {
+    clip-path: var(--slice-1);
+    transform: translate(0);
+  }
 }
 
-
-.card {
-  width: 30vw;
-  height: 30vh;
-  background: #3405a3;
-  box-shadow: 1px 5px 60px 0px #100a886b;
-}
-
-.card .card-border-top {
-  width: 60%;
-  height: 3%;
-  background: #6b64f3;
-  margin: auto;
-  border-radius: 0px 0px 15px 15px;
-}
-
-.card span {
-  font-weight: 600;
-  color: white;
-  text-align: center;
-  display: block;
-  padding-top: 10px;
-  font-size: 16px;
-}
-
-.card .job {
-  font-weight: 400;
-  color: white;
-  display: block;
-  text-align: center;
-  padding-top: 3px;
-  font-size: 12px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.card .img {
-  width: 70px;
-  height: 80px;
-  background: #6b64f3;
-  border-radius: 15px;
-  margin: auto;
-  margin-top: 25px;
-}
-
-.card button {
-  padding: 4px 10px;
-  display: block;
-  margin: auto;
-  border-radius: 8px;
-  border: none;
-  margin-top: 30px;
-  background: #6b64f3;
-  color: white;
-  font-weight: 600;
-}
-
-.card button:hover {
-  background: #534bf3;
-}
 
 .coolinput {
   display: flex;
