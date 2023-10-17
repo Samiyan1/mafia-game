@@ -12,7 +12,7 @@ export default function Home() {
       <Image
         src="/image/homePage.jpg"
         alt="Vercel "
-        className="dark:invert mb-[2px]"
+        className=" mb-[2px]"
         layout='fill'
         objectFit='cover'
         priority
@@ -25,7 +25,7 @@ export default function Home() {
       <Image
         src="/logoWhite.png"
         alt="Vercel Logo"
-        className="dark:invert mb-[2px] logo z-20 pb-9"
+        className="mb-[2px] logo z-20 pb-9"
         width={100}
         height={100}
         priority

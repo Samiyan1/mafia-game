@@ -1,9 +1,9 @@
 .card-senario {
   background: #171717;
-  transition: 1s ease-in-out;
+transition: 1s ease-in-out;
   border-radius: 20px;
   display: flex;
-  flex-direction: column;
+flex-direction: column;
 }
 
 .card-senario span {
@@ -27,8 +27,11 @@
   width: 4.8em;
   height: 4.8em;
   background: white;
-  border-radius: 15px;
+  border-radius: 10px;
   margin: auto;
+  margin: 10px,10px;
+  max-width: 100px;
+  max-height: 130px;
 }
 
 .card-senario .share {

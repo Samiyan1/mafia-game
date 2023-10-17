@@ -57,9 +57,9 @@ const Page = () => {
             image: '/image/unknowPlayer/.jpg',
             team: exteraPlayerTeam,
         },);
-        
+
         let newScenarioObject :any = scenarioObject ;
-        newScenarioObject.rules.push(addExteraPlayer); 
+        newScenarioObject.rules.push(addExteraPlayer);
         setScenarioObject(newScenarioObject);
         setIsOpen(!isOpen);
         console.log(scenarioObject)
@@ -97,6 +97,34 @@ const Page = () => {
                         </span>
                     </label>
                 </div>)
+                
+                
+                
+                // <div className="card-player h-[50vh] mx-2" key={index}>
+                //         <label className="checkbox-wrapper">
+                //         <input className="checkbox-input" type="checkbox" onChange={() => selectRoule.push(item.ruleName)} />
+                //             <div className="img ">
+                //                 <Image
+                //                     src={item.image}
+                //                     alt="mafia game card"
+                //                     className=""
+                //                     width='100'
+                //                     height='100'
+                //                     objectFit='contain'
+                //                     priority
+                //                 />
+                //             </div>
+                //             <span>{item.ruleName}</span>
+                //             <p className="info"> {item.description} </p>
+                //             <div className="share">
+                //             </div>
+                //             <Link href={`./stepTwo/${item.title}`}>
+                //                 <button className="button-scenario mb-4 font-mono ">
+                //                     Select
+                //                 </button>
+                //             </Link>
+                //         </label>
+                //     </div>       )
                 )}
             </div>
             <div className='flex mt-10 justify-center'>
