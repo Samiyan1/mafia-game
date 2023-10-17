@@ -13,26 +13,18 @@ function Page() {
     <main className=' h-screen overflow-hidden scroll-auto flex justify-around mt-9 items-center'>
       {MafiaScenarios && MafiaScenarios.map((item: any, index: number) => {
         return (
-          <div className="card-senario h-[50vh]">
+          <div className="card-senario h-[50vh]" key={index}>
             <div className="img h-5 w-5"></div>
-            <span>About Me</span>
-            <p className="info">oyable and meaningful experiences. I specialize in responsive websites and functional user interfaces.</p>
+            <span>{item.title}</span>
+            <p className="info"> {item.rules.map((item: any) => (" , " + item.ruleName + ''))} </p>
             <div className="share">
             </div>
-            <button className="button-senario">
-              BUTTON
-            </button>
+            <Link href={`./stepTwo/${item.title}`}>
+              <button className="button-senario">
+                BUTTON
+              </button>
+            </Link>
           </div>
-          // <div className="card" key={index}>
-          //   <div className="card-border-top">
-          //   </div>
-          //   <div className="img">
-          //   </div>
-          //   <span> {item.title}</span>
-          //   <p className="job"> {item.rules.map((item :any)=> (" " + item.ruleName + '') )}</p>
-          //   <Link href={`./stepTwo/${item.title}`}><button> Click
-          //   </button></Link>
-          // </div>
         )
       })}
     </main>
