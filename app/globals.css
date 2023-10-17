@@ -4,15 +4,15 @@
 
 :root {
   --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 17, 109, 110;
-  --background-end-rgb: 17, 109, 110;
+  --background-start-rgb:53, 47, 68;
+  --background-end-rgb: 92, 84, 112;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 17, 109, 110;
-    --background-start-rgb: 50, 30, 30;
-    --background-end-rgb: 50, 30, 30;
+    --background-start-rgb: 53, 47, 68;
+    --background-end-rgb: 92, 84, 112;
   }
 
   input {
@@ -27,7 +27,7 @@ input {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
+  background: linear-gradient(to top,
       transparent,
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
@@ -90,7 +90,7 @@ body {
 
 }
 
-.glich-btn,
+.glich-btn,.glich-btn
 button::after {
   padding: 25px 20px;
   font-size: 18px;

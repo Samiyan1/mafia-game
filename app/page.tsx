@@ -6,7 +6,7 @@ export default function Home() {
 
   return (
 
-    <main className="flex flex-col justify-around items-center h-screen ">
+    <main className="flex overflow-hidden flex-col justify-around items-center h-screen ">
       <button className='glich-btn w-[80vw] z-20'>For Mafia Family</button>
 
       <Image
@@ -17,7 +17,7 @@ export default function Home() {
         objectFit='cover'
         priority
       />
-      <button onClick={()=>{router.push('stepOne', { scroll: false })}} className="btn-class-name mt-[14rem]">
+      <button onClick={() => { router.push('stepOne', { scroll: false }) }} className="btn-class-name mt-[14rem]">
         <span className="back"></span>
         <span className="front">Start</span>
       </button>

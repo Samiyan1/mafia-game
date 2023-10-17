@@ -1,60 +1,78 @@
-.card {
-  width: 30vw;
-  height: 30vh;
-  background: #3405a3;
-  box-shadow: 1px 5px 60px 0px #100a886b;
+.card-senario {
+  background: #171717;
+  transition: 1s ease-in-out;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
-.card .card-border-top {
-  width: 60%;
-  height: 3%;
-  background: #6b64f3;
-  margin: auto;
-  border-radius: 0px 0px 15px 15px;
-}
-
-.card span {
-  font-weight: 600;
+.card-senario span {
+  font-weight: bold;
   color: white;
   text-align: center;
   display: block;
-  padding-top: 10px;
-  font-size: 16px;
+  font-size: 1em;
 }
 
-.card .job {
+.card-senario .info {
   font-weight: 400;
   color: white;
   display: block;
   text-align: center;
-  padding-top: 3px;
-  font-size: 12px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 0.72em;
+  margin: 1em;
 }
 
-.card .img {
-  width: 70px;
-  height: 80px;
-  background: #6b64f3;
+.card-senario .img {
+  width: 4.8em;
+  height: 4.8em;
+  background: white;
   border-radius: 15px;
   margin: auto;
-  margin-top: 25px;
 }
 
-.card button {
-  padding: 4px 10px;
-  display: block;
-  margin: auto;
-  border-radius: 8px;
-  border: none;
-  margin-top: 30px;
-  background: #6b64f3;
+.card-senario .share {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.card-senario a {
   color: white;
-  font-weight: 600;
+  transition: .4s ease-in-out;
 }
 
-.card button:hover {
-  background: #534bf3;
+.card-senario a:hover {
+  color: red;
+}
+
+
+.button-senario {
+  --😀: #644dff;
+  --😀😀: #4836bb;
+  --😀😀😀: #654dff63;
+  cursor: pointer;
+  width: 84px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: .525em;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #fff;
+  background: var(--😀);
+  border: 2px solid var(--😀😀);
+  border-radius: .75rem;
+  box-shadow: 0 8px 0 var(--😀😀);
+  transition: all .1s ease;
+  filter: drop-shadow(0 15px 20px var(--😀😀😀));
+}
+
+.button-senario:active {
+  letter-spacing: 0px;
+  transform: skew(-10deg) translateY(8px);
+  box-shadow: 0 0 0 var(--😀😀😀);
 }
