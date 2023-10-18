@@ -1,5 +1,6 @@
 export const MafiaScenarios = [
-    {   
+    {  
+        scenarioImage:'/image/godfather.jpg', 
         scenarioDecription : ['مافیا در شب٬ باید از میان قابلیت های ساول و پدرخوانده یکی را انتخاب کند؛ یعنی؛ ۱ -یا تیر شلیک میشود ؛ ۲ -یا پدرخوانده از حس ششم خود استفاده میکند ؛ ۳ -یا ساول یکی از شهروندان ساده را میخرد ؛ و نمیتوان همه قابلیت ها را در یک شب استفاده کرد. دیگر بازیکنان نمیدانند که تیم مافیایی در شب از چه قابلیتی استفاده کردند. تنها درصورتی که پدرخوانده از حس ششم به درستی استفاده کرده باشد٬ بازیکنان صبح با اعالم فرد افشا شده توسط گرداننده متوجه میشوند که پدرخوانده از حس ششم استفاده کرده است.',' اگر نوستراداموس از بین 3 انتخاب استعلام 2 مافیا را بگیرد باید در ساید مافیا بازی کند.','اگر نوستراداموس کارت ذهن زیبا بکشد خودش را حدس می زند و به بازی بر می گردد ولی دیگر زره شب ندارد.','اگر نوستراداموس کارت ذهن زیبا بکشد خودش را حدس می زند و به بازی بر می گردد ولی دیگر زره شب ندارد.','در شبی که قرار است ساول گود من خریداری کند،گرداننده اعالم میکند که قرار است خریداری توسط تیم مافیا انجام گیرد.'],
         orderNight : ['نوستراداموس (فقط شب معارفه)','اعضا تیم مافیا','دکتر واتسون','لئون','همشهری کین','کنستانتین'],
         title: "پدرخوانده",
@@ -100,6 +101,449 @@ export const MafiaScenarios = [
         ]
     },
 
+    {
+        scenarioImage:'/image/imageSenarioFilimo.jpg', 
+        scenarioDecription : ['مافیا در شب٬ باید از میان قابلیت های ساول و پدرخوانده یکی را انتخاب کند؛ یعنی؛ ۱ -یا تیر شلیک میشود ؛ ۲ -یا پدرخوانده از حس ششم خود استفاده میکند ؛ ۳ -یا ساول یکی از شهروندان ساده را میخرد ؛ و نمیتوان همه قابلیت ها را در یک شب استفاده کرد. دیگر بازیکنان نمیدانند که تیم مافیایی در شب از چه قابلیتی استفاده کردند. تنها درصورتی که پدرخوانده از حس ششم به درستی استفاده کرده باشد٬ بازیکنان صبح با اعالم فرد افشا شده توسط گرداننده متوجه میشوند که پدرخوانده از حس ششم استفاده کرده است.',' اگر نوستراداموس از بین 3 انتخاب استعلام 2 مافیا را بگیرد باید در ساید مافیا بازی کند.','اگر نوستراداموس کارت ذهن زیبا بکشد خودش را حدس می زند و به بازی بر می گردد ولی دیگر زره شب ندارد.','اگر نوستراداموس کارت ذهن زیبا بکشد خودش را حدس می زند و به بازی بر می گردد ولی دیگر زره شب ندارد.','در شبی که قرار است ساول گود من خریداری کند،گرداننده اعالم میکند که قرار است خریداری توسط تیم مافیا انجام گیرد.'],
+        orderNight : ['نوستراداموس (فقط شب معارفه)','اعضا تیم مافیا','دکتر واتسون','لئون','همشهری کین','کنستانتین'],
+        title: 'مافیا فیلیمو',
+        rules: [
+            {
+                ruleName: 'رییس مافیا',
+                playerName: '',
+            },
+            {
+                ruleName: 'دکتر لکتر',
+                playerName: '',
+            },
+            {
+                ruleName: 'بادیگارد',
+                playerName: '',
+            },
+            {
+                ruleName: 'جوکر',
+                playerName: '',
+            },
+            {
+                ruleName: 'مافیا ساده',
+                playerName: '',
+            },
+            {
+                ruleName: 'شهروند',
+                playerName: '',
+            },
+            {
+                ruleName: 'فروشنده',
+                playerName: '',
+            },
+            {
+                ruleName: 'خوابگرد',
+                playerName: '',
+            },
+            {
+                ruleName: 'حرفه ای',
+                playerName: '',
+            },
+            {
+                ruleName: 'کاراگاه',
+                playerName: '',
+            },
+            {
+                ruleName: 'جان سخت',
+                playerName: '',
+            },
+            {
+                ruleName: 'پزشک',
+                playerName: '',
+            },
+            {
+                ruleName: 'روانشناس',
+                playerName: '',
+            },
+            {
+                ruleName: 'شهردار',
+                playerName: '',
+            },
+        ],
+        lastActionCard: [
+            {
+                lastActionCardName: 'مسیر سبز',
+                descrition: 'بازیکن می تواند این کارت را به کسی بدهد و آن بازیکن در روز بعد به هیچ عنوان وارد دفاعیه نمی شود.',
+            },
+            {
+                lastActionCardName: 'فرش قرمز',
+                descrition: 'بازیکن می تواند این کارت را به کسی بدهد و آن بازیکن در روز بعد حتما به دفاعیه خواهد رفت.',
+            },
+            {
+                lastActionCardName: 'شلیک نهایی',
+                descrition: 'به جای مافیا در آن شب حق شلیک با بازیکن خواهد بود',
+            },
+            {
+                lastActionCardName: 'ذهن زیبا',
+                descrition: 'اگر نقش کسی را دقیق حدس بزند بازیکن در بازی می ماند',
+            },
+            {
+                lastActionCardName: 'بی خوابی',
+                descrition: 'شب نخواهیم داشت و مجدد همه صحبت خواهند کرد.',
+            },
+            {
+                lastActionCardName: 'دروغ سیزده',
+                descrition: 'بازیکن یک دروغی در خصوص نقش خود می گوید و از بازی خارج می شود.',
+            },
+        ]
+
+    },
+    {
+        title: 'مافیا فیلیمو',
+        rules: [
+            {
+                ruleName: 'رییس مافیا',
+                playerName: '',
+            },
+            {
+                ruleName: 'دکتر لکتر',
+                playerName: '',
+            },
+            {
+                ruleName: 'بادیگارد',
+                playerName: '',
+            },
+            {
+                ruleName: 'جوکر',
+                playerName: '',
+            },
+            {
+                ruleName: 'مافیا ساده',
+                playerName: '',
+            },
+            {
+                ruleName: 'شهروند',
+                playerName: '',
+            },
+            {
+                ruleName: 'فروشنده',
+                playerName: '',
+            },
+            {
+                ruleName: 'خوابگرد',
+                playerName: '',
+            },
+            {
+                ruleName: 'حرفه ای',
+                playerName: '',
+            },
+            {
+                ruleName: 'کاراگاه',
+                playerName: '',
+            },
+            {
+                ruleName: 'جان سخت',
+                playerName: '',
+            },
+            {
+                ruleName: 'پزشک',
+                playerName: '',
+            },
+            {
+                ruleName: 'روانشناس',
+                playerName: '',
+            },
+            {
+                ruleName: 'شهردار',
+                playerName: '',
+            },
+        ],
+        lastActionCard: [
+            {
+                lastActionCardName: 'مسیر سبز',
+                descrition: 'بازیکن می تواند این کارت را به کسی بدهد و آن بازیکن در روز بعد به هیچ عنوان وارد دفاعیه نمی شود.',
+            },
+            {
+                lastActionCardName: 'فرش قرمز',
+                descrition: 'بازیکن می تواند این کارت را به کسی بدهد و آن بازیکن در روز بعد حتما به دفاعیه خواهد رفت.',
+            },
+            {
+                lastActionCardName: 'شلیک نهایی',
+                descrition: 'به جای مافیا در آن شب حق شلیک با بازیکن خواهد بود',
+            },
+            {
+                lastActionCardName: 'ذهن زیبا',
+                descrition: 'اگر نقش کسی را دقیق حدس بزند بازیکن در بازی می ماند',
+            },
+            {
+                lastActionCardName: 'بی خوابی',
+                descrition: 'شب نخواهیم داشت و مجدد همه صحبت خواهند کرد.',
+            },
+            {
+                lastActionCardName: 'دروغ سیزده',
+                descrition: 'بازیکن یک دروغی در خصوص نقش خود می گوید و از بازی خارج می شود.',
+            },
+        ]
+
+    },
+    {
+        title: 'مافیا فیلیمو',
+        rules: [
+            {
+                ruleName: 'رییس مافیا',
+                playerName: '',
+            },
+            {
+                ruleName: 'دکتر لکتر',
+                playerName: '',
+            },
+            {
+                ruleName: 'بادیگارد',
+                playerName: '',
+            },
+            {
+                ruleName: 'جوکر',
+                playerName: '',
+            },
+            {
+                ruleName: 'مافیا ساده',
+                playerName: '',
+            },
+            {
+                ruleName: 'شهروند',
+                playerName: '',
+            },
+            {
+                ruleName: 'فروشنده',
+                playerName: '',
+            },
+            {
+                ruleName: 'خوابگرد',
+                playerName: '',
+            },
+            {
+                ruleName: 'حرفه ای',
+                playerName: '',
+            },
+            {
+                ruleName: 'کاراگاه',
+                playerName: '',
+            },
+            {
+                ruleName: 'جان سخت',
+                playerName: '',
+            },
+            {
+                ruleName: 'پزشک',
+                playerName: '',
+            },
+            {
+                ruleName: 'روانشناس',
+                playerName: '',
+            },
+            {
+                ruleName: 'شهردار',
+                playerName: '',
+            },
+        ],
+        lastActionCard: [
+            {
+                lastActionCardName: 'مسیر سبز',
+                descrition: 'بازیکن می تواند این کارت را به کسی بدهد و آن بازیکن در روز بعد به هیچ عنوان وارد دفاعیه نمی شود.',
+            },
+            {
+                lastActionCardName: 'فرش قرمز',
+                descrition: 'بازیکن می تواند این کارت را به کسی بدهد و آن بازیکن در روز بعد حتما به دفاعیه خواهد رفت.',
+            },
+            {
+                lastActionCardName: 'شلیک نهایی',
+                descrition: 'به جای مافیا در آن شب حق شلیک با بازیکن خواهد بود',
+            },
+            {
+                lastActionCardName: 'ذهن زیبا',
+                descrition: 'اگر نقش کسی را دقیق حدس بزند بازیکن در بازی می ماند',
+            },
+            {
+                lastActionCardName: 'بی خوابی',
+                descrition: 'شب نخواهیم داشت و مجدد همه صحبت خواهند کرد.',
+            },
+            {
+                lastActionCardName: 'دروغ سیزده',
+                descrition: 'بازیکن یک دروغی در خصوص نقش خود می گوید و از بازی خارج می شود.',
+            },
+        ]
+
+    },
+    {
+        title: 'مافیا فیلیمو',
+        rules: [
+            {
+                ruleName: 'رییس مافیا',
+                playerName: '',
+            },
+            {
+                ruleName: 'دکتر لکتر',
+                playerName: '',
+            },
+            {
+                ruleName: 'بادیگارد',
+                playerName: '',
+            },
+            {
+                ruleName: 'جوکر',
+                playerName: '',
+            },
+            {
+                ruleName: 'مافیا ساده',
+                playerName: '',
+            },
+            {
+                ruleName: 'شهروند',
+                playerName: '',
+            },
+            {
+                ruleName: 'فروشنده',
+                playerName: '',
+            },
+            {
+                ruleName: 'خوابگرد',
+                playerName: '',
+            },
+            {
+                ruleName: 'حرفه ای',
+                playerName: '',
+            },
+            {
+                ruleName: 'کاراگاه',
+                playerName: '',
+            },
+            {
+                ruleName: 'جان سخت',
+                playerName: '',
+            },
+            {
+                ruleName: 'پزشک',
+                playerName: '',
+            },
+            {
+                ruleName: 'روانشناس',
+                playerName: '',
+            },
+            {
+                ruleName: 'شهردار',
+                playerName: '',
+            },
+        ],
+        lastActionCard: [
+            {
+                lastActionCardName: 'مسیر سبز',
+                descrition: 'بازیکن می تواند این کارت را به کسی بدهد و آن بازیکن در روز بعد به هیچ عنوان وارد دفاعیه نمی شود.',
+            },
+            {
+                lastActionCardName: 'فرش قرمز',
+                descrition: 'بازیکن می تواند این کارت را به کسی بدهد و آن بازیکن در روز بعد حتما به دفاعیه خواهد رفت.',
+            },
+            {
+                lastActionCardName: 'شلیک نهایی',
+                descrition: 'به جای مافیا در آن شب حق شلیک با بازیکن خواهد بود',
+            },
+            {
+                lastActionCardName: 'ذهن زیبا',
+                descrition: 'اگر نقش کسی را دقیق حدس بزند بازیکن در بازی می ماند',
+            },
+            {
+                lastActionCardName: 'بی خوابی',
+                descrition: 'شب نخواهیم داشت و مجدد همه صحبت خواهند کرد.',
+            },
+            {
+                lastActionCardName: 'دروغ سیزده',
+                descrition: 'بازیکن یک دروغی در خصوص نقش خود می گوید و از بازی خارج می شود.',
+            },
+        ]
+
+    },
+    {
+        title: 'مافیا فیلیمو',
+        rules: [
+            {
+                ruleName: 'رییس مافیا',
+                playerName: '',
+            },
+            {
+                ruleName: 'دکتر لکتر',
+                playerName: '',
+            },
+            {
+                ruleName: 'بادیگارد',
+                playerName: '',
+            },
+            {
+                ruleName: 'جوکر',
+                playerName: '',
+            },
+            {
+                ruleName: 'مافیا ساده',
+                playerName: '',
+            },
+            {
+                ruleName: 'شهروند',
+                playerName: '',
+            },
+            {
+                ruleName: 'فروشنده',
+                playerName: '',
+            },
+            {
+                ruleName: 'خوابگرد',
+                playerName: '',
+            },
+            {
+                ruleName: 'حرفه ای',
+                playerName: '',
+            },
+            {
+                ruleName: 'کاراگاه',
+                playerName: '',
+            },
+            {
+                ruleName: 'جان سخت',
+                playerName: '',
+            },
+            {
+                ruleName: 'پزشک',
+                playerName: '',
+            },
+            {
+                ruleName: 'روانشناس',
+                playerName: '',
+            },
+            {
+                ruleName: 'شهردار',
+                playerName: '',
+            },
+        ],
+        lastActionCard: [
+            {
+                lastActionCardName: 'مسیر سبز',
+                descrition: 'بازیکن می تواند این کارت را به کسی بدهد و آن بازیکن در روز بعد به هیچ عنوان وارد دفاعیه نمی شود.',
+            },
+            {
+                lastActionCardName: 'فرش قرمز',
+                descrition: 'بازیکن می تواند این کارت را به کسی بدهد و آن بازیکن در روز بعد حتما به دفاعیه خواهد رفت.',
+            },
+            {
+                lastActionCardName: 'شلیک نهایی',
+                descrition: 'به جای مافیا در آن شب حق شلیک با بازیکن خواهد بود',
+            },
+            {
+                lastActionCardName: 'ذهن زیبا',
+                descrition: 'اگر نقش کسی را دقیق حدس بزند بازیکن در بازی می ماند',
+            },
+            {
+                lastActionCardName: 'بی خوابی',
+                descrition: 'شب نخواهیم داشت و مجدد همه صحبت خواهند کرد.',
+            },
+            {
+                lastActionCardName: 'دروغ سیزده',
+                descrition: 'بازیکن یک دروغی در خصوص نقش خود می گوید و از بازی خارج می شود.',
+            },
+        ]
+
+    },
     {
         title: 'مافیا فیلیمو',
         rules: [

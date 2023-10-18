@@ -3,7 +3,7 @@ import React from 'react';
 import { useParams } from 'next/navigation';
 import { MafiaScenarios } from '../dataMafiaScenarios';
 import Image from 'next/image'
-import './checkbox.css';
+import './stepThree.css';
 import Link from 'next/link';
 import { useState, Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react'

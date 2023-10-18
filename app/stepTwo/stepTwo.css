@@ -1,55 +1,41 @@
-.card-senario {
-  background: #171717;
-transition: 1s ease-in-out;
-  border-radius: 20px;
-  display: flex;
-flex-direction: column;
-}
-
-.card-senario span {
-  font-weight: bold;
-  color: white;
+.card-scenario {
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.58);
+  border: 1px solid white;
+  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6px);
+  border-radius: 17px;
   text-align: center;
-  display: block;
-  font-size: 1em;
-}
-
-.card-senario .info {
-  font-weight: 400;
-  color: white;
-  display: block;
-  text-align: center;
-  font-size: 0.72em;
-  margin: 1em;
-}
-
-.card-senario .img {
-  width: 4.8em;
-  height: 4.8em;
-  background: white;
-  border-radius: 10px;
-  margin: auto;
-  margin: 10px,10px;
-  max-width: 100px;
-  max-height: 130px;
-}
-
-.card-senario .share {
-  margin-top: 1em;
+  cursor: pointer;
+  transition: all 0.5s;
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 1em;
+  user-select: none;
+  font-weight: bolder;
 }
 
-.card-senario a {
-  color: white;
-  transition: .4s ease-in-out;
+.card-scenario:hover {
+  border: 1px solid black;
+  transform: scale(1.05);
+}
+.scenario-image{
+border-radius: 50px;
+
 }
 
-.card-senario a:hover {
-  color: red;
+.card:active {
+  transform: scale(0.95) rotateZ(1.7deg);
 }
 
+.descriptaion{
+width:20vw ;
+  margin: 0 auto;
+  text-align: center;
+  font-size: .3em;
+  overflow: hidden;
+  text-overflow: ellipsis 
+}
 
 .button-senario {
   --😀: #644dff;
