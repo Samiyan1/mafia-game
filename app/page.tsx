@@ -17,7 +17,7 @@ export default function Home() {
         objectFit='cover'
         priority
       />
-      <button onClick={() => { router.push('stepOne', { scroll: false }) }} className="btn-class-name mt-[14rem]">
+      <button onClick={() => { router.push('stepOne', { scroll: false }) }} className="btn-class-name mt-[16rem]">
         <span className="back"></span>
         <span className="front">Start</span>
       </button>

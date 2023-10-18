@@ -8,9 +8,7 @@
   text-align: center;
   cursor: pointer;
   transition: all 0.5s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
   user-select: none;
   font-weight: bolder;
 }
@@ -19,9 +17,14 @@
   border: 1px solid black;
   transform: scale(1.05);
 }
-.scenario-image{
-border-radius: 50px;
+header{
+  box-shadow: 10px 10px 20px #0e1013, -10px -10px 40px #383e4b;
 
+}
+
+footer{
+
+  box-shadow: 10px 10px 20px #0e1013, -10px -10px 40px #383e4b;
 }
 
 .card:active {

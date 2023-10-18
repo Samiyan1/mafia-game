@@ -11,17 +11,17 @@ function Page() {
 
   return (
     <main className="h-screen overflow-scroll justify-start relative  flex flex-col items-center">
-      <header className='bg-black sticky top-0 z-30 w-full flex flex-col items-center'>
+      <header className='bg-black sticky top-0 z-30 w-full flex flex-col items-center p-2 '>
         <p className="py-2 ">
           choose scenario
         </p>
       </header>
-      <div className='flex  flex-col mt-1'>
+      <div className='flex  flex-col mt-1 overflow-scroll'>
         {MafiaScenarios && MafiaScenarios.map((item: any, index: number) => {
           return (
             <Link href={`./stepTwo/${item.title}`} key={index}>
-              <div className='card-scenario flex bg-black mt-3 w-[89vw] h-[16vh] rounded items-center justify-around'>
-                <div className='image img w-9 rounded-[50px] h-9 m-4'>
+              <div className='card-scenario bg-black mt-3 w-[90vw] h-[40vh]  flex mb-2 justify-evenly '>
+                <div className='image img w-[60vw] h-[26vh] '>
                   <Image
                     src={item.scenarioImage}
                     alt="image of scenario card"
@@ -32,9 +32,9 @@ function Page() {
                     priority
                   />
                 </div>
-                <div className='flex justify-center flex-col items-center mb-2 mr-3'>
+                <div className=' mb-2 mr-3 flex justify-center flex-col'>
                   <div className='title '>{item.title}</div>
-                  <div className='descriptaion w-12 h-10'>{item.scenarioDecription}</div>
+                  <div className='descriptaion w-14 h-[30vh]'>{item.scenarioDecription}</div>
                 </div>
               </div></Link>
           )

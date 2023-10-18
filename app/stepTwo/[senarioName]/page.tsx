@@ -26,7 +26,7 @@ const Page = () => {
     //states
     let exteraPlayerTeam: string = '';
     const [isOpen, setIsOpen] = useState(false);
-    const [selectRoule, setSelectRoule] = useState<string[]>([])
+    const [selectRule, setSelectRule] = useState<string[]>([])
     const [exteraPlayerName, setExteraPlayerName] = useState<string>('')
     const [scenarioObject, setScenarioObject] = useState(MafiaScenarios.find((item) => item.title === s))
     const [addExteraPlayer, setAddExteraPlayer] = useState(
@@ -39,17 +39,59 @@ const Page = () => {
         },
     );
 
+
+
+
+    function shuffle(array: any) {
+        let currentIndex = array.length, randomIndex;
+
+        // While there remain elements to shuffle.
+        while (currentIndex > 0) {
+
+            // Pick a remaining element.
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            // And swap it with the current element.
+            [array[currentIndex], array[randomIndex]] = [
+                array[randomIndex], array[currentIndex]];
+        }
+
+        return array;
+    }
     const startGame = () => {
+        
+        const shuffledSelectRule = shuffle(selectRule)
 
-        if (scenarioObject?.rules.length === playerState.length) {
+        if (selectRule.length === playerState.length) {
+
+            const listIsReady = playerState.map((item: string, index: number) => {
+                return (
+                    {
+                        playerName: item,
+                        rule: selectRule[index],
+                    }
+                )
+            })
+                return listIsReady
 
 
-        } else if (scenarioObject?.rules && scenarioObject?.rules.length === 0) {
-            toast.error(`لطفا نقش ها را انتخاب`)
-        } else if (scenarioObject?.rules && scenarioObject?.rules.length > playerState.length) {
-            toast.error(`تعداد نقش ها کمتر از تعداد بازیکنان`)
-        } else if (scenarioObject?.rules && scenarioObject?.rules.length < playerState.length) {
-            toast.error(`تعداد نقش ها بیشتر از تعداد بازیکنان`)
+
+
+            return toast.success(`لطفا نقش ها را انتخاب`)
+
+        } else if (selectRule.length === 0) {
+
+            return toast.error(`لطفا نقش ها را انتخاب`)
+
+        } else if (selectRule.length > playerState.length) {
+
+            return toast.error(`تعداد نقش ها بیشتر از تعداد بازیکنان`)
+
+        } else if (selectRule.length < playerState.length) {
+
+            return toast.error(`تعداد نقش ها کمتر از تعداد بازیکنان`)
+
         }
 
 
@@ -91,7 +133,7 @@ const Page = () => {
                 (
                     <div className="checkbox-wrapper-16 " key={index}>
                         <label className="checkbox-wrapper">
-                            <input className="checkbox-input" type="checkbox" onChange={() => selectRoule.push(item.ruleName)} />
+                            <input className="checkbox-input" type="checkbox" onChange={(e) => e.target.checked ? selectRule.push(item.ruleName) : selectRule.splice(item.ruleName, 1)} />
                             <span className="checkbox-tile">
                                 <div className="">
                                     <div className="">
