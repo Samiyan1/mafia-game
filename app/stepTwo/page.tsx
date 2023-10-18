@@ -19,7 +19,7 @@ function Page() {
       <div className='flex flex-row flex-wrap justify-around mt-4'>
         {MafiaScenarios && MafiaScenarios.map((item: any, index: number) => {
           return (
-            <Link href={`./stepTwo/${item.title}`}>
+            <Link href={`./stepTwo/${item.title}`} key={index}>
               <div className='card-scenario flex bg-black mt-3 w-[45vw] h-[13vh] rounded items-center justify-around'>
                 <div className='image bg-white img w-9 rounded-[50px] h-9 m-4'>
                   <Image
