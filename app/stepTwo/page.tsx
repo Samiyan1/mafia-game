@@ -16,18 +16,18 @@ function Page() {
           choose scenario
         </p>
       </header>
-      <div className='flex flex-row flex-wrap justify-around mt-4'>
+      <div className='flex  flex-col mt-1'>
         {MafiaScenarios && MafiaScenarios.map((item: any, index: number) => {
           return (
             <Link href={`./stepTwo/${item.title}`} key={index}>
-              <div className='card-scenario flex bg-black mt-3 w-[45vw] h-[13vh] rounded items-center justify-around'>
-                <div className='image bg-white img w-9 rounded-[50px] h-9 m-4'>
+              <div className='card-scenario flex bg-black mt-3 w-[89vw] h-[16vh] rounded items-center justify-around'>
+                <div className='image img w-9 rounded-[50px] h-9 m-4'>
                   <Image
                     src={item.scenarioImage}
-                    alt="Vercel Logo"
+                    alt="image of scenario card"
                     className="scenario-image"
-                    width='170'
-                    height='140'
+                    width={500}
+                    height={500}
                     objectFit='contain'
                     priority
                   />

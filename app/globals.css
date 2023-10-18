@@ -16,13 +16,14 @@
   }
 
   input {
-    background-color: 50, 30, 30;
+    background-color: black;
     border: 2px white;
   }
 }
 
 input {
   border-radius: 10px;
+  color: black;
 }
 
 body {

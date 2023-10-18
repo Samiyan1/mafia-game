@@ -33,7 +33,7 @@ export default function Page() {
           Enter Player Name
         </p>
         <div className="input-container w-[90vw] top-20">
-          <input required value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Mehdi" className='px-2 ' />
+          <input required value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="" className='px-2 ' />
           <button onClick={addPlayers} className="button py-2">Add</button>
         </div>
       </header>

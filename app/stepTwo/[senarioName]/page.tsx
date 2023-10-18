@@ -10,7 +10,8 @@ import { Dialog, Transition } from '@headlessui/react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addPlayer } from '@/app/redux/reducers/counterSlice';
 import PlusSvg from '../../../public/plus-svgrepo-com.svg';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Page = () => {
 
     //get state
@@ -26,115 +27,111 @@ const Page = () => {
     let exteraPlayerTeam: string = '';
     const [isOpen, setIsOpen] = useState(false);
     const [selectRoule, setSelectRoule] = useState<string[]>([])
-    const [ExteraPlayerName, setExteraPlayerName] = useState<string>('')
+    const [exteraPlayerName, setExteraPlayerName] = useState<string>('')
     const [scenarioObject, setScenarioObject] = useState(MafiaScenarios.find((item) => item.title === s))
     const [addExteraPlayer, setAddExteraPlayer] = useState(
         {
             ruleName: '',
             playerName: '',
             description: '',
-            image: '/image/unknowPlayer/.jpg',
+            image: '/image/unknowPlayer.jpg',
             team: '',
         },
     );
 
     const startGame = () => {
-        console.log(selectRoule);
+
+        if (scenarioObject?.rules.length === playerState.length) {
+
+
+        } else if (scenarioObject?.rules && scenarioObject?.rules.length === 0) {
+            toast.error(`لطفا نقش ها را انتخاب`)
+        } else if (scenarioObject?.rules && scenarioObject?.rules.length > playerState.length) {
+            toast.error(`تعداد نقش ها کمتر از تعداد بازیکنان`)
+        } else if (scenarioObject?.rules && scenarioObject?.rules.length < playerState.length) {
+            toast.error(`تعداد نقش ها بیشتر از تعداد بازیکنان`)
+        }
+
 
     }
     const openDialog = () => {
         setIsOpen(!isOpen)
-        console.log(selectRoule);
 
     }
 
     const eventAddPlayer = () => {
 
-        setAddExteraPlayer({
-            ruleName: exteraPlayerTeam,
-            playerName: ExteraPlayerName,
-            description: exteraPlayerTeam === 'Mafia' ? 'به مافیا کمک کن' : "به شهر کمک کن",
-            image: '/image/unknowPlayer/.jpg',
+        const newRuleObject: any = {
+            ruleName: exteraPlayerName,
+            playerName: '',
+            description: exteraPlayerTeam === 'City' ? "به شهر کمک کن" : 'به مافیا کمک کن',
+            image: '/image/unknowPlayer.jpg',
             team: exteraPlayerTeam,
-        },);
+        };
 
-        let newScenarioObject :any = scenarioObject ;
+        setAddExteraPlayer(newRuleObject);
+        let newScenarioObject: any = scenarioObject;
         newScenarioObject.rules.push(addExteraPlayer);
         setScenarioObject(newScenarioObject);
         setIsOpen(!isOpen);
-        console.log(scenarioObject)
-
-
     }
 
 
 
     return (
-        <>
-            <p className="z-9 fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 py-3 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">نقشه های مورد نظر خود را انتخاب نمایید <span>{playerState.length}</span></p>
-
-            <div className='flex flex-wrap justify-center my-5 h-screen '>
+        <main className="h-screen overflow-scroll justify-start relative  flex flex-col items-center">
+            <header className='bg-black sticky top-0 z-30 w-full flex justify-center items-center'>
+                <p className="py-2 ">
+                    choose scenario
+                </p>
+                <button onClick={openDialog} className="button-add ml-9 my-3 px-5 py-2">add</button>
+            </header>
+            <div className='flex flex-wrap justify-evenly items-center mt-3'>
                 {scenarioObject && scenarioObject.rules.map((item: any, index: number) =>
-                (<div className="checkbox-wrapper-16" key={index}>
-                    <label className="checkbox-wrapper">
-                        <input className="checkbox-input" type="checkbox" onChange={() => selectRoule.push(item.ruleName)} />
-                        <span className="checkbox-tile">
-                            <div className="card">
-                                <div className="card-border-top">
+                (
+                    <div className="checkbox-wrapper-16 " key={index}>
+                        <label className="checkbox-wrapper">
+                            <input className="checkbox-input" type="checkbox" onChange={() => selectRoule.push(item.ruleName)} />
+                            <span className="checkbox-tile">
+                                <div className="">
+                                    <div className="">
+                                    </div>
+                                    <div className="">
+                                        <Image
+                                            src={item.image}
+                                            width={500}
+                                            height={500}
+                                            alt="Picture of the author"></Image>
+                                    </div>
                                 </div>
-                                <div className="img">
-                                    <Image
-                                        src={item.image}
-                                        width={500}
-                                        height={500}
-                                        alt="Picture of the author"></Image>
-                                </div>
-                                <span> {item.ruleName}</span>
-                                <p className="job"> {item.description}</p>
-                                <div><button> جزییات
-                                </button></div>
-                            </div>
-                        </span>
-                    </label>
-                </div>)
-                
-                
-                
-                // <div className="card-player h-[50vh] mx-2" key={index}>
-                //         <label className="checkbox-wrapper">
-                //         <input className="checkbox-input" type="checkbox" onChange={() => selectRoule.push(item.ruleName)} />
-                //             <div className="img ">
-                //                 <Image
-                //                     src={item.image}
-                //                     alt="mafia game card"
-                //                     className=""
-                //                     width='100'
-                //                     height='100'
-                //                     objectFit='contain'
-                //                     priority
-                //                 />
-                //             </div>
-                //             <span>{item.ruleName}</span>
-                //             <p className="info"> {item.description} </p>
-                //             <div className="share">
-                //             </div>
-                //             <Link href={`./stepTwo/${item.title}`}>
-                //                 <button className="button-scenario mb-4 font-mono ">
-                //                     Select
-                //                 </button>
-                //             </Link>
-                //         </label>
-                //     </div>       )
+                            </span>
+                        </label>
+                    </div>
+                )
                 )}
             </div>
-            <div className='flex mt-10 justify-center'>
-                <button onClick={startGame} type="button" className="button">
-                    <div className="button-top">start</div>
-                    <div className="button-bottom"></div>
-                    <div className="button-base"></div>
-                </button>
+
+            <footer className='bg-black w-full fixed bottom-0 flex flex-col items-center'>
+                <div className='flex'>
+                    <button onClick={startGame} type="button" className="btn-submit my-3">
+                        <div className="button-top">Start Game</div>
+                        <div className="button-bottom"></div>
+                        <div className="button-base"></div>
+                    </button>
+                </div>
+                <Image
+                    src="/logoWhite.png"
+                    alt="Vercel Logo"
+                    className="dark:invert mb-4 sticky bottom-0 logo z-20 "
+                    width={70}
+                    height={70}
+                    priority
+                />
+            </footer>
+            {/* <div className='flex mt-10 justify-center'>
+               
                 <div className="group relative">
-                    <button onClick={startGame} type="button" className="button">
+                    <button  type="button" className="button">
                         <div className="button-top"> <button onClick={openDialog}>
                             <Image
                                 src={PlusSvg}
@@ -157,7 +154,7 @@ const Page = () => {
                         </span>
                     </span>
                 </div>
-            </div>
+            </div> */}
             <Transition appear show={isOpen} as={Fragment}>
                 <Dialog as="div" className="relative z-10" onClose={openDialog}>
                     <Transition.Child
@@ -192,20 +189,20 @@ const Page = () => {
                                     </Dialog.Title>
                                     <div className="mt-2 flex flex-col justify-center items-center">
                                         <div className="coolinput mb-2">
-                                            <label htmlFor="input" className="text">Player Name:</label>
-                                            <input type="text" value={ExteraPlayerName} onChange={(e) => setExteraPlayerName(e.target.value)} placeholder="Write here..." name="input" className="input" />
+                                            <label htmlFor="input" className="text">Rule Name:</label>
+                                            <input type="text" value={exteraPlayerName} onChange={(e) => setExteraPlayerName(e.target.value)} placeholder="Write here..." name="input" className="input" />
                                         </div>
                                         <div>
                                             <div className="radio-input">
                                                 <div className="info">
-                                                    <span className="question">What does CSS stand for?</span>
+                                                    <span className="question">Which team do you play?</span>
                                                 </div>
                                                 <input type="radio" onChange={(e) => exteraPlayerTeam = (e.target.value)} id="value-1" name="value-radio" value="Mafia" />
                                                 <label htmlFor="value-1">Mafia</label>
                                                 <input type="radio" onChange={(e) => exteraPlayerTeam = (e.target.value)} id="value-2" name="value-radio" value="City" />
                                                 <label htmlFor="value-2">City</label>
 
-                                                <span className="result success">City!</span>
+                                                <span className="result success">City</span>
                                                 <span className="result error">Mafia</span>
                                             </div>
                                         </div>
@@ -227,7 +224,7 @@ const Page = () => {
                     </div>
                 </Dialog>
             </Transition>
-        </>
+        </main>
     )
 
 }
