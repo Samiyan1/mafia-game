@@ -1,8 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface RolesState {
-    value:[];
- }
  interface PlayersState {
     players :string[];
  }

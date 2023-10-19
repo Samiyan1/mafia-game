@@ -44,7 +44,7 @@ function Page() {
         <Image
           src="/logoWhite.png"
           alt="Vercel Logo"
-          className="dark:invert mb-4 sticky bottom-0 logo z-20 pt-2"
+          className="mb-4 sticky bottom-0 logo z-20 pt-2"
           width={100}
           height={100}
           priority
