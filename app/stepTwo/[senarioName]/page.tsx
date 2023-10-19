@@ -4,7 +4,6 @@ import { useParams } from 'next/navigation';
 import { MafiaScenarios } from '../dataMafiaScenarios';
 import Image from 'next/image'
 import './stepThree.css';
-import Link from 'next/link';
 import { useState, Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react'
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,11 +11,14 @@ import { addPlayer } from '@/app/redux/reducers/counterSlice';
 import PlusSvg from '../../../public/plus-svgrepo-com.svg';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/navigation'
+
 const Page = () => {
 
     //get state
     const selector = useSelector(addPlayer);
     const playerState = selector.payload.playersSlice.players;
+    const router = useRouter()
 
     //get url
     const useparams = useParams();
@@ -24,12 +26,12 @@ const Page = () => {
     const s = decodeURIComponent(st);
 
     //states
-    let exteraPlayerTeam: string = '';
+    let extraPlayerTeam: string = '';
     const [isOpen, setIsOpen] = useState(false);
     const [selectRule, setSelectRule] = useState<string[]>([])
-    const [exteraPlayerName, setExteraPlayerName] = useState<string>('')
+    const [extraPlayerName, setExtraPlayerName] = useState<string>('')
     const [scenarioObject, setScenarioObject] = useState(MafiaScenarios.find((item) => item.title === s))
-    const [addExteraPlayer, setAddExteraPlayer] = useState(
+    const [addExtraPlayer, setAddExtraPlayer] = useState(
         {
             ruleName: '',
             playerName: '',
@@ -60,7 +62,7 @@ const Page = () => {
         return array;
     }
     const startGame = () => {
-        
+
         const shuffledSelectRule = shuffle(selectRule)
 
         if (selectRule.length === playerState.length) {
@@ -73,12 +75,9 @@ const Page = () => {
                     }
                 )
             })
-                return listIsReady
 
 
-
-
-            return toast.success(`لطفا نقش ها را انتخاب`)
+            router.push('/moarefe', { scroll: false })
 
         } else if (selectRule.length === 0) {
 
@@ -104,16 +103,16 @@ const Page = () => {
     const eventAddPlayer = () => {
 
         const newRuleObject: any = {
-            ruleName: exteraPlayerName,
+            ruleName: extraPlayerName,
             playerName: '',
-            description: exteraPlayerTeam === 'City' ? "به شهر کمک کن" : 'به مافیا کمک کن',
+            description: extraPlayerTeam === 'City' ? "به شهر کمک کن" : 'به مافیا کمک کن',
             image: '/image/unknowPlayer.jpg',
-            team: exteraPlayerTeam,
+            team: extraPlayerTeam,
         };
 
-        setAddExteraPlayer(newRuleObject);
+        setAddExtraPlayer(newRuleObject);
         let newScenarioObject: any = scenarioObject;
-        newScenarioObject.rules.push(addExteraPlayer);
+        newScenarioObject.rules.push(addExtraPlayer);
         setScenarioObject(newScenarioObject);
         setIsOpen(!isOpen);
     }
@@ -122,11 +121,14 @@ const Page = () => {
 
     return (
         <main className="h-screen overflow-scroll justify-start relative  flex flex-col items-center">
-            <header className='bg-black sticky top-0 z-30 w-full flex justify-center items-center'>
-                <p className="py-2 ">
+            <header className='bg-black sticky top-0 z-30 w-full flex justify-between items-center px-8 py-4'>
+                <p className=" ">
                     choose scenario
                 </p>
-                <button onClick={openDialog} className="button-add ml-9 my-3 px-5 py-2">add</button>
+                <button className="cssbuttons-io-button h-9 ">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg>
+                    <span>Add</span>
+                </button>
             </header>
             <div className='flex flex-wrap justify-evenly items-center mt-3'>
                 {scenarioObject && scenarioObject.rules.map((item: any, index: number) =>
@@ -164,39 +166,13 @@ const Page = () => {
                 <Image
                     src="/logoWhite.png"
                     alt="Vercel Logo"
-                    className="dark:invert mb-4 sticky bottom-0 logo z-20 "
+                    className=" mb-4 sticky bottom-0 logo z-20 "
                     width={70}
                     height={70}
                     priority
                 />
             </footer>
-            {/* <div className='flex mt-10 justify-center'>
-               
-                <div className="group relative">
-                    <button  type="button" className="button">
-                        <div className="button-top"> <button onClick={openDialog}>
-                            <Image
-                                src={PlusSvg}
-                                alt="My SVG"
-                                width={40}
-                                height={40}
-                                className='w-8 hover:scale-125 duration-200 hover:stroke-blue-500'
-                            />
-                        </button></div>
-                        <div className="button-bottom"></div>
-                        <div className="button-base"></div>
-                    </button>
-                    <span className="absolute -top-14 left-[50%] -translate-x-[50%] 
-                                        z-20 origin-left scale-0 px-3 rounded-lg border 
-                                         border-gray-300 bg-white py-2 text-sm font-bold
-                                        shadow-md transition-all duration-300 ease-in-out 
-                                        group-hover:scale-100">
-                        Add Player
-                        <span>
-                        </span>
-                    </span>
-                </div>
-            </div> */}
+
             <Transition appear show={isOpen} as={Fragment}>
                 <Dialog as="div" className="relative z-10" onClose={openDialog}>
                     <Transition.Child
@@ -232,16 +208,16 @@ const Page = () => {
                                     <div className="mt-2 flex flex-col justify-center items-center">
                                         <div className="coolinput mb-2">
                                             <label htmlFor="input" className="text">Rule Name:</label>
-                                            <input type="text" value={exteraPlayerName} onChange={(e) => setExteraPlayerName(e.target.value)} placeholder="Write here..." name="input" className="input" />
+                                            <input type="text" value={extraPlayerName} onChange={(e) => setExtraPlayerName(e.target.value)} placeholder="Write here..." name="input" className="input" />
                                         </div>
                                         <div>
                                             <div className="radio-input">
                                                 <div className="info">
                                                     <span className="question">Which team do you play?</span>
                                                 </div>
-                                                <input type="radio" onChange={(e) => exteraPlayerTeam = (e.target.value)} id="value-1" name="value-radio" value="Mafia" />
+                                                <input type="radio" onChange={(e) => extraPlayerTeam = (e.target.value)} id="value-1" name="value-radio" value="Mafia" />
                                                 <label htmlFor="value-1">Mafia</label>
-                                                <input type="radio" onChange={(e) => exteraPlayerTeam = (e.target.value)} id="value-2" name="value-radio" value="City" />
+                                                <input type="radio" onChange={(e) => extraPlayerTeam = (e.target.value)} id="value-2" name="value-radio" value="City" />
                                                 <label htmlFor="value-2">City</label>
 
                                                 <span className="result success">City</span>
