@@ -10,7 +10,7 @@ function Page() {
 
 
   return (
-    <main className="h-screen overflow-scroll justify-start relative  flex flex-col items-center">
+    <main className="h-screen justify-start relative  flex flex-col items-center">
       <header className='bg-black sticky top-0 z-30 w-full flex flex-col items-center p-2 '>
         <p className="py-2 ">
           choose scenario
@@ -19,7 +19,7 @@ function Page() {
       <div className='flex  flex-col mt-1 overflow-scroll'>
         {MafiaScenarios && MafiaScenarios.map((item: any, index: number) => {
           return (
-            <Link href={`./stepTwo/${item.title}`} key={index}>
+            <Link href={`./stepTwo/${item.title}`} key={index} className=''>
               <div className='card-scenario bg-black mt-3 w-[90vw] h-[40vh]  flex mb-2 justify-evenly '>
                 <div className='image img w-[60vw] h-[26vh] '>
                   <Image

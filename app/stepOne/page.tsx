@@ -27,7 +27,7 @@ export default function Page() {
 
   return (
 
-    <main className="h-screen overflow-scroll justify-start relative  flex flex-col items-center">
+    <main className="h-screen justify-start relative  flex flex-col items-center">
       <header className='bg-black sticky top-0 z-30 w-full flex flex-col items-center'>
         <p className="font-mono py-7 ">
           Enter Player Name

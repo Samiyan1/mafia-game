@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { MafiaScenarios } from '../dataMafiaScenarios';
 import Image from 'next/image'
@@ -12,6 +12,7 @@ import PlusSvg from '../../../public/plus-svgrepo-com.svg';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation'
+import { log } from 'console';
 
 const Page = () => {
 
@@ -27,6 +28,8 @@ const Page = () => {
 
     //states
     let extraPlayerTeam: string = '';
+    const [showStepThree, setShowStepThree] = useState(true);
+    const [showMoarefe, setShowMoarefe] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [selectRule, setSelectRule] = useState<string[]>([])
     const [extraPlayerName, setExtraPlayerName] = useState<string>('')
@@ -42,9 +45,15 @@ const Page = () => {
     );
 
 
+    useEffect(()=>{
+        console.log(addExtraPlayer)
+
+    },[addExtraPlayer])
 
 
-    function shuffle(array: any) {
+
+
+    const shuffle = (array: any) => {
         let currentIndex = array.length, randomIndex;
 
         // While there remain elements to shuffle.
@@ -63,21 +72,27 @@ const Page = () => {
     }
     const startGame = () => {
 
-        const shuffledSelectRule = shuffle(selectRule)
+        console.log(selectRule);
+        console.log(playerState);
+        console.log(scenarioObject);
+
+
+        // const shuffledSelectRule = shuffle(selectRule);
+
 
         if (selectRule.length === playerState.length) {
 
-            const listIsReady = playerState.map((item: string, index: number) => {
-                return (
-                    {
-                        playerName: item,
-                        rule: selectRule[index],
-                    }
-                )
+            const out = scenarioObject?.rules.filter((itemObject, index) => {
+                return selectRule.find(itemSelect => itemSelect === itemObject.ruleName)
             })
 
+            const completeObj = out.map((item , index) => {
+                item.playerName = playerState[index]
+                return item;
+            })
 
-            router.push('/moarefe', { scroll: false })
+            console.log(completeObj)
+            router.push(`${s}/moarefe`)
 
         } else if (selectRule.length === 0) {
 
@@ -101,7 +116,10 @@ const Page = () => {
     }
 
     const eventAddPlayer = () => {
+        if (!extraPlayerTeam) {
+            return toast.error(`تیم را انتخاب نمایید`)
 
+        }
         const newRuleObject: any = {
             ruleName: extraPlayerName,
             playerName: '',
@@ -109,6 +127,7 @@ const Page = () => {
             image: '/image/unknowPlayer.jpg',
             team: extraPlayerTeam,
         };
+        console.log(newRuleObject)
 
         setAddExtraPlayer(newRuleObject);
         let newScenarioObject: any = scenarioObject;
@@ -120,17 +139,17 @@ const Page = () => {
 
 
     return (
-        <main className="h-screen overflow-scroll justify-start relative  flex flex-col items-center">
+        <main className="h-screen justify-start relative  flex flex-col items-center">
+
             <header className='bg-black sticky top-0 z-30 w-full flex justify-between items-center px-8 py-4'>
                 <p className=" ">
                     choose scenario
                 </p>
-                <button className="cssbuttons-io-button h-9 ">
+                <button className="cssbuttons-io-button h-9 w-11 flex justify-center" onClick={openDialog}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg>
-                    <span>Add</span>
                 </button>
             </header>
-            <div className='flex flex-wrap justify-evenly items-center mt-3'>
+            <div className='flex flex-wrap justify-evenly items-center mt-3  overflow-scroll'>
                 {scenarioObject && scenarioObject.rules.map((item: any, index: number) =>
                 (
                     <div className="checkbox-wrapper-16 " key={index}>
