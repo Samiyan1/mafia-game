@@ -7,51 +7,25 @@ function Page() {
 
 
   return (
-    <main>
+    <main className='h-screen'>
       <header className='bg-black sticky top-0 z-30 w-full flex flex-col items-center'>
         <button className="btn w-full ">
           <span className="text">شب معارفه</span>
         </button>
       </header>
-      <div className='flex justify-between mx-9 items-center mt-3 '>
+      <div className='flex justify-between mx-10 items-center mt-3 '>
         <p >name</p>
         <p >rule</p>
       </div>
-      <div className='flex flex-col items-center justify-center flex-wrap'>
-        <div className='w-[99vw] h-[6vh] bg-slate-700  mt-4 flex justify-around items-center '>
-          <p className='text-slate-950'>حسن</p>
+      <div className='flex flex-col items-center justify-center flex-wrap mx-3'>
+        <div className='w-[87vw] h-[6vh] bg-slate-700  mt-4 flex justify-around items-center card-glass'>
+          <p className='text-white'>حسن</p>
           {/* <Link href={href={`./stepTwo/${item.title}`} > */}
-          <button className='btn-show h-10 '>
+          <button className='btn-show h-19'>
             <span ></span>
           </button>
           {/* </Link> */}
-          <p className='text-slate-950'>پدرخوانده</p>
-        </div>
-        <div className='w-[99vw] h-[6vh] bg-slate-700  mt-4 flex justify-around items-center '>
-          <p className='text-slate-950'>حسن</p>
-          {/* <Link href={href={`./stepTwo/${item.title}`} > */}
-          <button className='btn-show h-10 '>
-            <span ></span>
-          </button>
-          {/* </Link> */}
-          <p className='text-slate-950'>پدرخوانده</p>
-        </div>
-        <div className='w-[99vw] h-[6vh] bg-slate-700  mt-4 flex justify-around items-center '>
-          <p className='text-slate-950'>حسن</p>
-          {/* <Link href={href={`./stepTwo/${item.title}`} > */}
-          <button className='btn-show h-10 '>
-            <span ></span>
-          </button>
-          {/* </Link> */}
-          <p className='text-slate-950'>پدرخوانده</p>
-        </div><div className='w-[99vw] h-[6vh] bg-slate-700  mt-4 flex justify-around items-center '>
-          <p className='text-slate-950'>حسن</p>
-          {/* <Link href={href={`./stepTwo/${item.title}`} > */}
-          <button className='btn-show h-10 '>
-            <span ></span>
-          </button>
-          {/* </Link> */}
-          <p className='text-slate-950'>پدرخوانده</p>
+          <p className='text-white '>پدرخوانده</p>
         </div>
       </div>
       <footer className='bg-black w-full fixed bottom-0 flex flex-col items-center'>

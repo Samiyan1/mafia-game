@@ -1,29 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
  interface RuleAndPlayers {
-    list :any [];
+   finalList :any [];
  }
  
  const initialState:RuleAndPlayers = {
-   list : [],
+   finalList : [],
  }
 
  export const ruleAndPlayersSlice = createSlice({
-    name: "list",
+    name: "finalList",
     initialState,
     reducers:{
-       addPlayer: (state,action) => {
-          state.list.push(action.payload)
-       },
-       removePlayer: (state,action) => {
-         const array = state.list.filter(name => name !== action.payload);
-         state.list = array;
-      },
-       
+       setFinalList: (state,action) => {
+          state.finalList = action.payload.map( (item :any) => item)
+
+       },       
     }
  });
 
- export const {removePlayer } = ruleAndPlayersSlice.actions; 
 
- export const {addPlayer } = ruleAndPlayersSlice.actions; 
+ export const {setFinalList } = ruleAndPlayersSlice.actions; 
  export default ruleAndPlayersSlice.reducer;

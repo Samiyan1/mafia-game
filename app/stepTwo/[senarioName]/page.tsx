@@ -6,22 +6,28 @@ import Image from 'next/image'
 import './stepThree.css';
 import { useState, Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react'
-import { useDispatch, useSelector } from 'react-redux';
 import { addPlayer } from '@/app/redux/reducers/counterSlice';
 import PlusSvg from '../../../public/plus-svgrepo-com.svg';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation'
-import { log } from 'console';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFinalList } from '@/app/redux/reducers/ruleAndplayers';
 
 const Page = () => {
 
-    //get state
+    //get slice final list
+    const selectorFinalList = useSelector(setFinalList);
+    const finalListState = selectorFinalList.payload.ruleAndPlayersSlice.finalList;
+    const dispatch = useDispatch();
+
+    //get state palyer slice
     const selector = useSelector(addPlayer);
     const playerState = selector.payload.playersSlice.players;
-    const router = useRouter()
 
     //get url
+    const router = useRouter()
+
     const useparams = useParams();
     const st: string = useparams.senarioName as string;
     const s = decodeURIComponent(st);
@@ -45,10 +51,11 @@ const Page = () => {
     );
 
 
-    useEffect(()=>{
-        console.log(addExtraPlayer)
+    useEffect(() => {
+        console.log(addExtraPlayer);
+        console.log(finalListState)
 
-    },[addExtraPlayer])
+    }, [addExtraPlayer])
 
 
 
@@ -72,11 +79,9 @@ const Page = () => {
     }
     const startGame = () => {
 
-        console.log(selectRule);
-        console.log(playerState);
+     
         console.log(scenarioObject);
-
-
+        
         // const shuffledSelectRule = shuffle(selectRule);
 
 
@@ -86,12 +91,14 @@ const Page = () => {
                 return selectRule.find(itemSelect => itemSelect === itemObject.ruleName)
             })
 
-            const completeObj = out.map((item , index) => {
+            const completeObj = out && out.map((item , index) => {
                 item.playerName = playerState[index]
                 return item;
             })
 
             console.log(completeObj)
+
+            dispatch(setFinalList(completeObj));
             router.push(`${s}/moarefe`)
 
         } else if (selectRule.length === 0) {

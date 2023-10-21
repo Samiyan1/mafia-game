@@ -15,22 +15,19 @@
     --background-end-rgb: 0,0,0;
   }
 
-  input {
-    background-color: black;
-    border: 2px white;
-  }
+
 }
 
-input {
-  border-radius: 10px;
-  color: rgb(233, 155, 9);
-}
+
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to top,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  background-color: #000000;
+  background-image: 
+      radial-gradient(at 47% 33%, hsl(60.00, 3%, 22%) 0, transparent 59%), 
+      radial-gradient(at 82% 65%, hsl(60.00, 0%, 22%) 0, transparent 55%);
+
+
 }
 
 .btn-class-name {

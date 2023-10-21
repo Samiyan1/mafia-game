@@ -38,7 +38,7 @@ export default function Page() {
         </div>
       </header>
 
-      <div className="wrapper flex flex-col items-center">
+      <div className="wrapper flex flex-col items-center ">
         {playerState && playerState.map((item: any, index: number) => {
           return (
 
