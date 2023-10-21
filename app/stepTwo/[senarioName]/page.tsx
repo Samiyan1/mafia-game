@@ -13,7 +13,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux';
 import { setFinalList } from '@/app/redux/reducers/ruleAndplayers';
-
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 const Page = () => {
 
     //get slice final list
@@ -62,28 +63,27 @@ const Page = () => {
 
     const shuffle = (array: any) => {
         let currentIndex = array.length, randomIndex;
-
+      
         // While there remain elements to shuffle.
         while (currentIndex > 0) {
-
-            // Pick a remaining element.
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex--;
-
-            // And swap it with the current element.
-            [array[currentIndex], array[randomIndex]] = [
-                array[randomIndex], array[currentIndex]];
+      
+          // Pick a remaining element.
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex--;
+      
+          // And swap it with the current element.
+          [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
         }
-
+      
         return array;
-    }
+      }
+
     const startGame = () => {
+        const shuffledPlayerList = [...playerState];
+        shuffle(shuffledPlayerList);
 
-     
-        console.log(scenarioObject);
-        
-        // const shuffledSelectRule = shuffle(selectRule);
-
+        console.log(selectRule)
 
         if (selectRule.length === playerState.length) {
 
@@ -95,8 +95,6 @@ const Page = () => {
                 item.playerName = playerState[index]
                 return item;
             })
-
-            console.log(completeObj)
 
             dispatch(setFinalList(completeObj));
             router.push(`${s}/moarefe`)
@@ -146,7 +144,7 @@ const Page = () => {
 
 
     return (
-        <main className="h-screen justify-start relative  flex flex-col items-center">
+        <main className="">
 
             <header className='bg-black sticky top-0 z-30 w-full flex justify-between items-center px-8 py-4'>
                 <p className=" ">
@@ -157,6 +155,11 @@ const Page = () => {
                 </button>
             </header>
             <div className='flex flex-wrap justify-evenly items-center mt-3  overflow-scroll'>
+            <Carousel
+            emulateTouch={true}
+            width={900}
+            
+            >
                 {scenarioObject && scenarioObject.rules.map((item: any, index: number) =>
                 (
                     <div className="checkbox-wrapper-16 " key={index}>
@@ -173,13 +176,16 @@ const Page = () => {
                                             height={500}
                                             alt="Picture of the author"></Image>
                                     </div>
+                                    <div>asdpokasd;kasdasdasdasd</div>
                                 </div>
                             </span>
                         </label>
                     </div>
                 )
                 )}
+            </Carousel>
             </div>
+            <div>{selectRule.map(item => item)}</div>
 
             <footer className='bg-black w-full fixed bottom-0 flex flex-col items-center'>
                 <div className='flex'>

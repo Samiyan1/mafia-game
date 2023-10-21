@@ -2,10 +2,14 @@
 import Image from 'next/image';
 import './moarefe.css';
 import Link from 'next/link';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFinalList } from '@/app/redux/reducers/ruleAndplayers';
 
 function Page() {
+  const selectorFinalList = useSelector(setFinalList);
+  const finalListState = selectorFinalList.payload.ruleAndPlayersSlice.finalList;
 
-
+  console.log(finalListState)
   return (
     <main className='h-screen'>
       <header className='bg-black sticky top-0 z-30 w-full flex flex-col items-center'>
@@ -18,15 +22,18 @@ function Page() {
         <p >rule</p>
       </div>
       <div className='flex flex-col items-center justify-center flex-wrap mx-3'>
-        <div className='w-[87vw] h-[6vh] bg-slate-700  mt-4 flex justify-around items-center card-glass'>
-          <p className='text-white'>حسن</p>
-          {/* <Link href={href={`./stepTwo/${item.title}`} > */}
-          <button className='btn-show h-19'>
-            <span ></span>
-          </button>
-          {/* </Link> */}
-          <p className='text-white '>پدرخوانده</p>
-        </div>
+        {finalListState && finalListState.map((item: any, index: number) => {
+          return (
+            <div  key={index} className='w-[87vw] h-[6vh] bg-slate-700  mt-4 flex justify-around items-center card-glass'>
+              <p className='text-white'>{item.playerName}</p>
+              {/* <Link href={href={`./stepTwo/${item.title}`} > */}
+              <button className='btn-show h-19'>
+                <span ></span>
+              </button>
+              {/* </Link> */}
+              <p className='text-white '>{item.ruleName}</p>
+            </div>)
+        })}
       </div>
       <footer className='bg-black w-full fixed bottom-0 flex flex-col items-center'>
         <button className=' btn-play my-3'>
