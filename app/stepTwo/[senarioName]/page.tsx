@@ -204,9 +204,9 @@ const Page = () => {
             </div>
             <div>{playerState.map((item :any) => item)}</div>
 
-            <div>{selectRule.map(item => {
+            <div>{selectRule.map((item,index) => {
                 return(
-                    <div className='flex justify-center items-center mb-3'> 
+                    <div className='flex justify-center items-center mb-3' key={index}> 
                         <div className='ml-8'>{item}</div>
                     </div>
                 )
