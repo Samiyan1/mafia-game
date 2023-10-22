@@ -13,7 +13,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux';
 import { setFinalList } from '@/app/redux/reducers/ruleAndplayers';
-import ReactSimplyCarousel from 'react-simply-carousel';
 
 const Page = () => {
 
@@ -156,57 +155,41 @@ const Page = () => {
                 </button>
             </header>
 
-            <div className='mt-90'>
-                <ReactSimplyCarousel
-                    activeSlideIndex={activeSlideIndex}
-                    onRequestChange={setActiveSlideIndex}
-                    itemsToShow={3}
-                    itemsToScroll={1}
-                    responsiveProps={[
-                        {
-                            itemsToShow: 3,
-                            itemsToScroll: 2,
-                            minWidth: 768,
-                        },
-                    ]}
-                    speed={400}
-                    easing="linear"
-                >
-                    {/* here you can also pass any other element attributes. Also, you can use your custom components as slides */}
-                    {scenarioObject && scenarioObject.rules.map((item: any, index: number) =>
-                    (
+            <div className='mt-90 flex overflow-scroll'>
+                {/* here you can also pass any other element attributes. Also, you can use your custom components as slides */}
+                {scenarioObject && scenarioObject.rules.map((item: any, index: number) =>
+                (
 
-                        <div className="checkbox-wrapper-16 " key={index}>
-                            <label className="checkbox-wrapper">
-                                <input className="checkbox-input" type="checkbox" onChange={(e) => e.target.checked ? selectRule.push(item.ruleName) : selectRule.splice(item.ruleName, 1)} />
-                                <span className="checkbox-tile">
-                                    <div className="card">
-                                        <div className="card-border-top">
-                                        </div>
-                                        <Image
-                                        draggable='false'
-                                            src={item.image}
-                                            width={200}
-                                            height={200}
-                                            alt="Picture of the author" />
-                                        <span> Person</span>
-                                        <p className="job"> {item.ruleName}</p>
-                                        <button> Click
-                                        </button>
-                                    </div>
-                                </span>
-                            </label>
-                        </div>
+                    <div className="" key={index}>
+                        <label className='container'>
+                            <input type="checkbox" onChange={(e) => e.target.checked ? selectRule.push(item.ruleName) : selectRule.splice(item.ruleName, 1)} />
+                            <div className="checkmark flex"></div>
+                            <div className="card">
+                                <div className="card-border-top">
+                                </div>
+                                <Image
+                                    draggable='false'
+                                    src={item.image}
+                                    width={200}
+                                    height={200}
+                                    alt="Picture of the author" />
+                                <span> Person</span>
+                                <p className="job"> {item.ruleName}</p>
+                                <button> Click
+                                </button>
 
-                    )
-                    )}
-                </ReactSimplyCarousel>
+                            </div>
+                        </label>
+                    </div>
+
+                )
+                )}
             </div>
-            <div>{playerState.map((item :any) => item)}</div>
+            <div>{playerState.map((item: any) => item)}</div>
 
-            <div>{selectRule.map((item,index) => {
-                return(
-                    <div className='flex justify-center items-center mb-3' key={index}> 
+            <div>{selectRule.map((item, index) => {
+                return (
+                    <div className='flex justify-center items-center mb-3' key={index}>
                         <div className='ml-8'>{item}</div>
                     </div>
                 )
