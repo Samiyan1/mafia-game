@@ -3,7 +3,6 @@ import React from 'react'
 import { MafiaScenarios } from './dataMafiaScenarios'
 import Link from 'next/link';
 import './stepTwo.css'
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import Image from 'next/image';
 
 function Page() {

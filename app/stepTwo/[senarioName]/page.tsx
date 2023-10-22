@@ -13,8 +13,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux';
 import { setFinalList } from '@/app/redux/reducers/ruleAndplayers';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
+import ReactSimplyCarousel from 'react-simply-carousel';
+
 const Page = () => {
 
     //get slice final list
@@ -35,6 +35,7 @@ const Page = () => {
 
     //states
     let extraPlayerTeam: string = '';
+    const [activeSlideIndex, setActiveSlideIndex] = useState(0);
     const [showStepThree, setShowStepThree] = useState(true);
     const [showMoarefe, setShowMoarefe] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
@@ -63,21 +64,21 @@ const Page = () => {
 
     const shuffle = (array: any) => {
         let currentIndex = array.length, randomIndex;
-      
+
         // While there remain elements to shuffle.
         while (currentIndex > 0) {
-      
-          // Pick a remaining element.
-          randomIndex = Math.floor(Math.random() * currentIndex);
-          currentIndex--;
-      
-          // And swap it with the current element.
-          [array[currentIndex], array[randomIndex]] = [
-            array[randomIndex], array[currentIndex]];
+
+            // Pick a remaining element.
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            // And swap it with the current element.
+            [array[currentIndex], array[randomIndex]] = [
+                array[randomIndex], array[currentIndex]];
         }
-      
+
         return array;
-      }
+    }
 
     const startGame = () => {
         const shuffledPlayerList = [...playerState];
@@ -91,7 +92,7 @@ const Page = () => {
                 return selectRule.find(itemSelect => itemSelect === itemObject.ruleName)
             })
 
-            const completeObj = out && out.map((item , index) => {
+            const completeObj = out && out.map((item, index) => {
                 item.playerName = playerState[index]
                 return item;
             })
@@ -154,38 +155,62 @@ const Page = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg>
                 </button>
             </header>
-            <div className='flex flex-wrap justify-evenly items-center mt-3  overflow-scroll'>
-            <Carousel
-            emulateTouch={true}
-            width={900}
-            
-            >
-                {scenarioObject && scenarioObject.rules.map((item: any, index: number) =>
-                (
-                    <div className="checkbox-wrapper-16 " key={index}>
-                        <label className="checkbox-wrapper">
-                            <input className="checkbox-input" type="checkbox" onChange={(e) => e.target.checked ? selectRule.push(item.ruleName) : selectRule.splice(item.ruleName, 1)} />
-                            <span className="checkbox-tile">
-                                <div className="">
-                                    <div className="">
-                                    </div>
-                                    <div className="">
+
+            <div className='mt-90'>
+                <ReactSimplyCarousel
+                    activeSlideIndex={activeSlideIndex}
+                    onRequestChange={setActiveSlideIndex}
+                    itemsToShow={3}
+                    itemsToScroll={1}
+                    responsiveProps={[
+                        {
+                            itemsToShow: 3,
+                            itemsToScroll: 2,
+                            minWidth: 768,
+                        },
+                    ]}
+                    speed={400}
+                    easing="linear"
+                >
+                    {/* here you can also pass any other element attributes. Also, you can use your custom components as slides */}
+                    {scenarioObject && scenarioObject.rules.map((item: any, index: number) =>
+                    (
+
+                        <div className="checkbox-wrapper-16 " key={index}>
+                            <label className="checkbox-wrapper">
+                                <input className="checkbox-input" type="checkbox" onChange={(e) => e.target.checked ? selectRule.push(item.ruleName) : selectRule.splice(item.ruleName, 1)} />
+                                <span className="checkbox-tile">
+                                    <div className="card">
+                                        <div className="card-border-top">
+                                        </div>
                                         <Image
+                                        draggable='false'
                                             src={item.image}
-                                            width={500}
-                                            height={500}
-                                            alt="Picture of the author"></Image>
+                                            width={200}
+                                            height={200}
+                                            alt="Picture of the author" />
+                                        <span> Person</span>
+                                        <p className="job"> {item.ruleName}</p>
+                                        <button> Click
+                                        </button>
                                     </div>
-                                    <div>asdpokasd;kasdasdasdasd</div>
-                                </div>
-                            </span>
-                        </label>
+                                </span>
+                            </label>
+                        </div>
+
+                    )
+                    )}
+                </ReactSimplyCarousel>
+            </div>
+            <div>{playerState.map((item :any) => item)}</div>
+
+            <div>{selectRule.map(item => {
+                return(
+                    <div className='flex justify-center items-center mb-3'> 
+                        <div className='ml-8'>{item}</div>
                     </div>
                 )
-                )}
-            </Carousel>
-            </div>
-            <div>{selectRule.map(item => item)}</div>
+            })}</div>
 
             <footer className='bg-black w-full fixed bottom-0 flex flex-col items-center'>
                 <div className='flex'>
