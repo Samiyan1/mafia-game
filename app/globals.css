@@ -22,10 +22,10 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: #000000;
+  background-color: #111927;
   background-image: 
-      radial-gradient(at 47% 33%, hsl(60.00, 3%, 22%) 0, transparent 59%), 
-      radial-gradient(at 82% 65%, hsl(60.00, 0%, 22%) 0, transparent 55%);
+      radial-gradient(at 47% 33%, hsl(258.57, 87%, 19%) 0, transparent 59%), 
+      radial-gradient(at 82% 65%, hsl(289.23, 80%, 20%) 0, transparent 55%);
 
 
 }
@@ -83,10 +83,6 @@ body {
 }
 
 
-.logo {
-  filter: hue-rotate(90deg);
-
-}
 
 .glich-btn,.glich-btn
 button::after {

@@ -28,7 +28,7 @@
 }
 
 .container input:checked ~ .checkmark {
-  background-color: #00de00;
+  background-color: #00ff00;
   box-shadow: 0 0 10px #00ff00;
 }
 .card {
@@ -39,6 +39,7 @@
  background-color: rgba(17, 25, 40, 0.75);
  border: 1px solid rgba(255, 255, 255, 0.125);
  box-shadow: 1px 5px 60px 0px #100a886b;
+ 
 }
 
 
@@ -349,4 +350,52 @@ width: 100%;
 
 .cssbuttons-io-button:active {
   box-shadow: inset 0px 0px 5px rgba(255, 102, 0, 0.5), inset 0px 0px 5px rgba(255, 212, 59, 0.5), 0px 0px 50px rgba(255, 212, 59, 0.5), 0px 0px 50px rgba(255, 102, 0, 0.5);
+}
+
+.card-lib {
+  width: 210px;
+  max-width: 50vw;
+
+  height: 30vh;
+  margin-top: 5vw;
+  border-radius: 4px;
+  display: flex;
+  gap: 5px;
+  padding: .4em;
+}
+
+.card-lib p {
+  height: 100%;
+  flex: 1;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all .5s;
+  backdrop-filter: blur(13px) saturate(72%);
+  -webkit-backdrop-filter: blur(13px) saturate(72%);
+  background-color: rgba(17, 25, 40, 0.93);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-lib p:hover {
+  flex: 4;
+}
+
+.card-lib p span {
+  min-width: 14em;
+  padding: .5em;
+  text-align: center;
+  transform: rotate(-90deg);
+  transition: all .5s;
+  text-transform: uppercase;
+  color: #b6b6b6;
+  letter-spacing: .1em;
+  font-size: .3rem;
+}
+
+.card-lib p:hover span {
+  transform: rotate(0);
 }

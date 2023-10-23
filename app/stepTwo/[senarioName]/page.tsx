@@ -155,14 +155,23 @@ const Page = () => {
                 </button>
             </header>
 
-            <div className='mt-90 flex overflow-scroll'>
+            <div className='flex overflow-x-scroll mt-3 h-[40vh]'>
                 {/* here you can also pass any other element attributes. Also, you can use your custom components as slides */}
                 {scenarioObject && scenarioObject.rules.map((item: any, index: number) =>
                 (
 
                     <div className="" key={index}>
                         <label className='container'>
-                            <input type="checkbox" onChange={(e) => e.target.checked ? selectRule.push(item.ruleName) : selectRule.splice(item.ruleName, 1)} />
+                            <input type="checkbox" onChange={(e) => {
+                                let newSelectRoule = [...selectRule];
+                                if (e.target.checked) {
+                                    newSelectRoule.push(item.ruleName);
+                                    return setSelectRule(newSelectRoule)
+                                } else {
+                                    newSelectRoule.splice(item.ruleName, 1);
+                                    return setSelectRule(newSelectRoule)
+                                }
+                            }} />
                             <div className="checkmark flex"></div>
                             <div className="card">
                                 <div className="card-border-top">
@@ -173,10 +182,9 @@ const Page = () => {
                                     width={200}
                                     height={200}
                                     alt="Picture of the author" />
-                                <span> Person</span>
-                                <p className="job"> {item.ruleName}</p>
-                                <button> Click
-                                </button>
+                                <span>  {item.ruleName}</span>
+                                <p className="job"> {item.description}</p>
+
 
                             </div>
                         </label>
@@ -185,21 +193,22 @@ const Page = () => {
                 )
                 )}
             </div>
-            <div>{playerState.map((item: any,index:number) => {
-                return (
-                    <div className='flex justify-center items-center mb-3' key={index}>
-                        <div className='ml-8'>{item}</div>
-                    </div>
-                )
-            })}</div>
-
-            <div>{selectRule.map((item, index) => {
-                return (
-                    <div className='flex justify-center items-center mb-3' key={index}>
-                        <div className='ml-8'>{item}</div>
-                    </div>
-                )
-            })}</div>
+            <div className='flex '>
+                <div className="card-lib">
+                    {playerState.map((item: any, index: number) => {
+                        return (
+                            <p key={index}><span> {item}</span></p>
+                        )
+                    })}
+                </div>
+                <div className="card-lib">
+                    {selectRule.map((item, index) => {
+                        return (
+                            <p key={index}><span> {item}</span></p>
+                        )
+                    })}
+                </div>
+            </div>
 
             <footer className='bg-black w-full fixed bottom-0 flex flex-col items-center'>
                 <div className='flex'>
@@ -230,7 +239,9 @@ const Page = () => {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <div className="fixed inset-0 bg-black bg-opacity-25" />
+                        <div className="fixed inset-0 bg-
+                        
+                         bg-opacity-25" />
                     </Transition.Child>
 
                     <div className="fixed inset-0 overflow-y-auto">
