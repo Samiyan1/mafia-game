@@ -27,62 +27,49 @@
   transition: 0.1s;
 }
 
-.container input:checked ~ .checkmark {
+.container input:checked~.checkmark {
   background-color: #00ff00;
   box-shadow: 0 0 10px #00ff00;
 }
+
 .card {
- width: 50vw;
- height: 50vh;
- backdrop-filter: blur(16px) saturate(180%);
- -webkit-backdrop-filter: blur(16px) saturate(180%);
- background-color: rgba(17, 25, 40, 0.75);
- border: 1px solid rgba(255, 255, 255, 0.125);
- box-shadow: 1px 5px 60px 0px #100a886b;
- 
+  width: 50vw;
+  height: 50vh;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  box-shadow: 1px 5px 60px 0px #100a886b;
+
 }
 
 
 .card span {
- font-weight: 600;
- color: white;
- text-align: center;
- display: block;
- padding-top: 10px;
- font-size: 16px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  display: block;
+  padding-top: 10px;
+  font-size: 16px;
 }
 
 .card .job {
- font-weight: 400;
- color: white;
- display: block;
- text-align: center;
- padding-top: 3px;
- font-size: 12px;
+  
+  font-weight: 400;
+  color: white;
+  display: block;
+  text-align: center;
+  padding-top: 3px;
+  font-size: 12px;
+  width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* This is where the magic happens. */
 }
 
-.card .img {
-width: 100%;
- background: #6b64f3;
- border-radius: 15px;
- margin: auto;
-}
 
-.card button {
- padding: 4px 15px;
- display: block;
- margin: auto;
- border-radius: 8px;
- border: none;
- margin-top: 30px;
- background: #6b64f3;
- color: white;
- 
-}
 
-.card button:hover {
- background: #534bf3;
-}
 
 .button-add {
   color: #ecf0f1;
@@ -92,13 +79,13 @@ width: 100%;
   border-radius: 5px;
   box-shadow: 0px 6px 0px #d35400;
   transition: all .1s;
- }
- 
- .button-add:active {
+}
+
+.button-add:active {
   box-shadow: 0px 2px 0px #d35400;
   position: relative;
   top: 2px;
- }
+}
 
 .btn-submit {
   -webkit-appearance: none;
@@ -202,7 +189,7 @@ width: 100%;
   background: #fff;
   color: #000;
   border-radius: 10px;
-  box-shadow: 0px 87px 78px -39px rgba(0,0,0,0.4);
+  box-shadow: 0px 87px 78px -39px rgba(0, 0, 0, 0.4);
   width: 320px;
 }
 
@@ -241,7 +228,7 @@ width: 100%;
   background: #fff;
   color: #000;
   border-radius: 10px;
-  box-shadow: 0px 87px 78px -39px rgba(0,0,0,0.4);
+  box-shadow: 0px 87px 78px -39px rgba(0, 0, 0, 0.4);
   width: 320px;
 }
 
@@ -269,7 +256,7 @@ width: 100%;
   font-weight: 600;
 }
 
-.radio-input  label {
+.radio-input label {
   display: flex;
   background-color: #fff;
   padding: 14px;
@@ -283,7 +270,7 @@ width: 100%;
   transition: .3s ease;
 }
 
-.radio-input  label:hover {
+.radio-input label:hover {
   background-color: rgba(24, 24, 24, 0.13);
   border: 1px solid #bbb;
 }
@@ -304,12 +291,12 @@ width: 100%;
   color: red;
 }
 
-.radio-input input:checked + label {
+.radio-input input:checked+label {
   border-color: red;
   color: red;
 }
 
-.radio-input input[value="City"]:checked + label {
+.radio-input input[value="City"]:checked+label {
   border-color: rgb(22, 245, 22);
   color: rgb(16, 184, 16);
 }
@@ -318,7 +305,7 @@ width: 100%;
   display: flex;
 }
 
-.radio-input:has(input:not([value="City"]):checked ) .result.error {
+.radio-input:has(input:not([value="City"]):checked) .result.error {
   display: flex;
 }
 
@@ -330,7 +317,7 @@ width: 100%;
   font-size: 16px;
   color: white;
   background: #ad5389;
-  background: linear-gradient(0deg, rgba(20,167,62,1) 0%, rgba(102,247,113,1) 100%);
+  background: linear-gradient(0deg, rgba(20, 167, 62, 1) 0%, rgba(102, 247, 113, 1) 100%);
   border: none;
   box-shadow: 0 0.7em 1.5em -0.5em #14a73e98;
   letter-spacing: 0.05em;
@@ -344,7 +331,7 @@ width: 100%;
 
 
 .cssbuttons-io-button:hover {
-  box-shadow: inset 0px 0px 5px rgba(20,167,62,1), inset 0px 0px 5px rgba(20,167,62,1), 0px 0px 50px rgba(20,167,62,1), 0px 0px 50px rgba(20,167,62,1);
+  box-shadow: inset 0px 0px 5px rgba(20, 167, 62, 1), inset 0px 0px 5px rgba(20, 167, 62, 1), 0px 0px 50px rgba(20, 167, 62, 1), 0px 0px 50px rgba(20, 167, 62, 1);
 
 }
 
@@ -355,8 +342,7 @@ width: 100%;
 .card-lib {
   width: 210px;
   max-width: 50vw;
-
-  height: 30vh;
+  height: 20vh;
   margin-top: 5vw;
   border-radius: 4px;
   display: flex;
@@ -398,4 +384,36 @@ width: 100%;
 
 .card-lib p:hover span {
   transform: rotate(0);
+}
+
+.shadow__btn {
+  background-color: #ffffff00;
+  color: #fff;
+  width: 80px;
+  height: 40px;
+  border: #3654ff 0.2em solid;
+  border-radius: 11px;
+  text-align: right;
+  transition: all 0.6s ease;
+}
+
+.shadow__btn:hover {
+  background-color: #3654ff;
+  cursor: pointer;
+}
+
+.shadow__btn svg {
+  width: 1.6em;
+  
+  position: absolute;
+  display: flex;
+  transition: all 0.6s ease;
+}
+
+.shadow__btn:hover svg {
+  transform: translateX(5px);
+}
+
+.text {
+ 
 }

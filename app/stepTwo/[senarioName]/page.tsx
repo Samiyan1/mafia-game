@@ -161,7 +161,7 @@ const Page = () => {
                 (
 
                     <div className="" key={index}>
-                        <label className='container'>
+                        <label className='container '>
                             <input type="checkbox" onChange={(e) => {
                                 let newSelectRoule = [...selectRule];
                                 if (e.target.checked) {
@@ -173,17 +173,26 @@ const Page = () => {
                                 }
                             }} />
                             <div className="checkmark flex"></div>
-                            <div className="card">
+                            <div className="card flex justify-start items-center flex-col">
                                 <div className="card-border-top">
                                 </div>
-                                <Image
-                                    draggable='false'
-                                    src={item.image}
-                                    width={200}
-                                    height={200}
-                                    alt="Picture of the author" />
+                                <div>
+                                    <Image
+                                        draggable='false'
+                                        src={item.image}
+                                        width={200}
+                                        height={200}
+                                        alt="Picture of the author" />
+                                </div>
                                 <span>  {item.ruleName}</span>
-                                <p className="job"> {item.description}</p>
+                                <button className="shadow__btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path>
+                                    </svg>
+                                    <div className="text text-[10px]">
+                                        Button
+                                    </div>
+                                </button>
 
 
                             </div>
@@ -194,19 +203,25 @@ const Page = () => {
                 )}
             </div>
             <div className='flex '>
-                <div className="card-lib">
-                    {playerState.map((item: any, index: number) => {
-                        return (
-                            <p key={index}><span> {item}</span></p>
-                        )
-                    })}
+                <div>
+                    <p>بازیکنان</p>
+                    <div className="card-lib">
+                        {playerState.map((item: any, index: number) => {
+                            return (
+                                <p key={index}><span> {item}</span></p>
+                            )
+                        })}
+                    </div>
                 </div>
-                <div className="card-lib">
-                    {selectRule.map((item, index) => {
-                        return (
-                            <p key={index}><span> {item}</span></p>
-                        )
-                    })}
+                <div>
+                    <p>نقش ها</p>
+                    <div className="card-lib">
+                        {selectRule.map((item, index) => {
+                            return (
+                                <p key={index}><span> {item}</span></p>
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
 
