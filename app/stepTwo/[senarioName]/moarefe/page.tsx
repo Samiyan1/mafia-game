@@ -4,8 +4,13 @@ import './moarefe.css';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFinalList } from '@/app/redux/reducers/ruleAndplayers';
+import { useParams } from 'next/navigation';
 
 function Page() {
+
+  const useparams = useParams();
+  const senarioName: string = useparams.senarioName as string;
+  const urlSenarioName = decodeURIComponent(senarioName);
   
   const selectorFinalList = useSelector(setFinalList);
   const finalListState = selectorFinalList.payload.ruleAndPlayersSlice.finalList;
@@ -30,18 +35,18 @@ function Page() {
               <div>
                 <p className='text-white w-[25vh] text-center'>{item.playerName}</p>
               </div>
-              {/* <Link href={`/stepTwo/${}/moarefe/${item.playerName}`} > */}
+              <Link href={`/stepTwo/${urlSenarioName}/moarefe/${item.playerName}`} >
                 <button className='btn-show h-19'>
-                  <span ></span>
+                  <span >show</span>
                 </button>
-              {/* </Link> */}
+              </Link>
               <div>
                 <p className='text-white w-[25vh] text-center'>{item.ruleName}</p>
               </div>
             </div>)
         })}
       </div>
-      
+
       <footer className='bg-black w-full fixed bottom-0 flex flex-col items-center'>
         <button className=' btn-play my-3'>
           <svg height="36px" width="36px" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
