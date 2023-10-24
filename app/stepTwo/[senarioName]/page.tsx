@@ -154,7 +154,7 @@ const Page = () => {
                 </button>
             </header>
 
-            <div className='flex overflow-x-scroll mt-3 h-[40vh] overflow-y-hidden  '>
+            <div className='flex overflow-x-scroll mt-3 h-[42vh] overflow-y-hidden  '>
                 {/* here you can also pass any other element attributes. Also, you can use your custom components as slides */}
                 {scenarioObject && scenarioObject.rules.map((item: any, index: number) =>
                 (
@@ -179,8 +179,13 @@ const Page = () => {
                                     <Image
                                         draggable='false'
                                         src={item.image}
-                                        width={200}
-                                        height={200}
+                                        height={0}
+                                        width={0}
+                                        sizes="100vw"
+                                        style={{
+                                          width: '100%',
+                                          height: 'auto',
+                                        }}
                                         alt="Picture of the author" />
                                 </div>
                                 <span>  {item.ruleName}</span>
