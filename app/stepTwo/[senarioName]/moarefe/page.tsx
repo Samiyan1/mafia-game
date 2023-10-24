@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setFinalList } from '@/app/redux/reducers/ruleAndplayers';
 
 function Page() {
+  
   const selectorFinalList = useSelector(setFinalList);
   const finalListState = selectorFinalList.payload.ruleAndPlayersSlice.finalList;
 
@@ -14,31 +15,33 @@ function Page() {
     <main className='h-screen'>
       <header className='bg-black sticky top-0 z-30 w-full flex flex-col items-center'>
         <button className="btn w-full ">
-          <span className="text">شب معارفه</span>
+          <span className="text text-[3.4rem]">شب معارفه</span>
         </button>
       </header>
 
-      <div className='flex  flex-col items-center justify-center flex-wrap card-glass mx-4 mt-3'>
+      <div className='flex  flex-col items-center justify-center flex-wrap card-glass mx-4 my-3 py-5'>
         <div className='w-full flex justify-evenly  items-center '>
-          <p >name</p>
-          <p >rule</p>
+          <p className=' w-[40vw] text-center text-[2rem]'>بازیکن</p>
+          <p className=' w-[40vw] text-center text-[2rem]'>نقش</p>
         </div>
         {finalListState && finalListState.map((item: any, index: number) => {
           return (
             <div key={index} className='w-[87vw] h-[6vh] bg-slate-700  mt-4 flex justify-evenly items-center card-glass'>
               <div>
-                <p className='text-white m'>{item.playerName}</p>
-              </div>              {/* <Link href={href={`./stepTwo/${item.title}`} > */}
-              <button className='btn-show h-19'>
-                <span ></span>
-              </button>
+                <p className='text-white w-[25vh] text-center'>{item.playerName}</p>
+              </div>
+              {/* <Link href={`/stepTwo/${}/moarefe/${item.playerName}`} > */}
+                <button className='btn-show h-19'>
+                  <span ></span>
+                </button>
               {/* </Link> */}
               <div>
-                <p className='text-white '>{item.ruleName}</p>
+                <p className='text-white w-[25vh] text-center'>{item.ruleName}</p>
               </div>
             </div>)
         })}
       </div>
+      
       <footer className='bg-black w-full fixed bottom-0 flex flex-col items-center'>
         <button className=' btn-play my-3'>
           <svg height="36px" width="36px" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">

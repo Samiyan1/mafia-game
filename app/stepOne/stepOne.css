@@ -70,8 +70,6 @@ footer{
 }
 
 .wrapper {
-    margin: 2rem auto;
-    padding: 8px;
     font-size: small;
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
@@ -250,36 +248,16 @@ footer{
 
 /* name holder  */
 
-.InputContainer {
-    height: 60;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    padding-left: 15px;
-    color: white;
 
-
-}
 .InputContainer:not(:last-child){
     border-bottom: 1px solid rgba(209, 213, 219, 0.3);
-    margin-bottom: 10px;
 
 }
-.input {
-    border-bottom: none;
-    outline: none;
-    font-size: 1.2rem;
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(255, 255, 255, 0);
-    color:rgb(233, 155, 9);
-      
-}
+
 
 
 .micButton {
-    padding: 0px 15px 0px 12px;
+    padding: 0px 15px 0px 15px;
     border: none;
     background-color: transparent;
     height: 40px;
@@ -296,3 +274,4 @@ footer{
     transform: scale(1.4);
     transition-duration: .3s;
 }
+
