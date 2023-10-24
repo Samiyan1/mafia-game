@@ -7,12 +7,12 @@ import './stepThree.css';
 import { useState, Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react'
 import { addPlayer } from '@/app/redux/reducers/counterSlice';
-import PlusSvg from '../../../public/plus-svgrepo-com.svg';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux';
 import { setFinalList } from '@/app/redux/reducers/ruleAndplayers';
+import Link from 'next/link';
 
 const Page = () => {
 
@@ -27,7 +27,6 @@ const Page = () => {
 
     //get url
     const router = useRouter()
-
     const useparams = useParams();
     const st: string = useparams.senarioName as string;
     const s = decodeURIComponent(st);
@@ -155,12 +154,12 @@ const Page = () => {
                 </button>
             </header>
 
-            <div className='flex overflow-x-scroll mt-3 h-[40vh]'>
+            <div className='flex overflow-x-scroll mt-3 h-[40vh] overflow-y-hidden  '>
                 {/* here you can also pass any other element attributes. Also, you can use your custom components as slides */}
                 {scenarioObject && scenarioObject.rules.map((item: any, index: number) =>
                 (
 
-                    <div className="" key={index}>
+                    <div className=" border-fuchsia-800 border-b-2 border-r-2" key={index}>
                         <label className='container '>
                             <input type="checkbox" onChange={(e) => {
                                 let newSelectRoule = [...selectRule];
@@ -185,14 +184,14 @@ const Page = () => {
                                         alt="Picture of the author" />
                                 </div>
                                 <span>  {item.ruleName}</span>
-                                <button className="shadow__btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path>
-                                    </svg>
-                                    <div className="text text-[10px]">
-                                        Button
-                                    </div>
-                                </button>
+                                <Link href={`/stepTwo/${s}/${item.ruleName}`}>
+                                    <button className="shadow__btn">
+                                        <p>More</p>
+                                        <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" className="h-6 w-6" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
+                                        </svg>
+                                    </button>
+                                </Link>
 
 
                             </div>
@@ -202,10 +201,10 @@ const Page = () => {
                 )
                 )}
             </div>
-            <div className='flex '>
-                <div>
-                    <p>بازیکنان</p>
-                    <div className="card-lib">
+            <div className='flex mt-4'>
+                <div className=''>
+                    <p className='text-center border-fuchsia-800 border-r-2 '>بازیکنان</p>
+                    <div className="card-lib mt-4 ">
                         {playerState.map((item: any, index: number) => {
                             return (
                                 <p key={index}><span> {item}</span></p>
@@ -214,8 +213,8 @@ const Page = () => {
                     </div>
                 </div>
                 <div>
-                    <p>نقش ها</p>
-                    <div className="card-lib">
+                    <p className='text-center border-fuchsia-800 border-l-2 '>نقش ها</p>
+                    <div className="card-lib mt-4">
                         {selectRule.map((item, index) => {
                             return (
                                 <p key={index}><span> {item}</span></p>
