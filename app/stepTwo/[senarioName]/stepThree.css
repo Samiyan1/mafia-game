@@ -341,7 +341,7 @@
 }
 
 .card-lib {
-  width: 210px;
+  width: 50vw;
   max-width: 50vw;
   height: 25vh;
   display: flex;
