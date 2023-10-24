@@ -81,8 +81,9 @@ const Page = () => {
     const startGame = () => {
         const shuffledPlayerList = [...playerState];
         shuffle(shuffledPlayerList);
+        console.log(shuffledPlayerList)
 
-        console.log(selectRule)
+        
 
         if (selectRule.length === playerState.length) {
 
@@ -208,7 +209,7 @@ const Page = () => {
             </div>
             <div className='flex mt-4'>
                 <div className=''>
-                    <p className='text-center border-fuchsia-800 border-r-2 '>بازیکنان</p>
+                    <p className='text-center border-fuchsia-800 border-r-2 '>بازیکنان = {playerState.length} نفر</p>
                     <div className="card-lib mt-4 ">
                         {playerState.map((item: any, index: number) => {
                             return (
@@ -218,7 +219,7 @@ const Page = () => {
                     </div>
                 </div>
                 <div>
-                    <p className='text-center border-fuchsia-800 border-l-2 '>نقش ها</p>
+                    <p className='text-center border-fuchsia-800 border-l-2 '>نقش ها = {selectRule.length} عدد</p>
                     <div className="card-lib mt-4">
                         {selectRule.map((item, index) => {
                             return (

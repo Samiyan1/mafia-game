@@ -5,33 +5,88 @@ import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFinalList } from '@/app/redux/reducers/ruleAndplayers';
 import { useParams } from 'next/navigation';
+import React, { useEffect } from 'react';
+import { useState, Fragment } from 'react';
 
 function Page() {
 
   const useparams = useParams();
   const senarioName: string = useparams.senarioName as string;
   const urlSenarioName = decodeURIComponent(senarioName);
-  
+
   const selectorFinalList = useSelector(setFinalList);
   const finalListState = selectorFinalList.payload.ruleAndPlayersSlice.finalList;
 
-  console.log(finalListState)
+
+
+
+
+  const [time, setTime] = useState({
+    sec: 0,
+    min: 0,
+  });
+
+  const [intervalId, setIntervalId] = useState();
+
+  const updateTimer = () => {
+    setTime((prev) => {
+      let newTime = { ...prev };
+      // update sec and see if we need to increase min
+      if (newTime.sec < 59) newTime.sec += 1;
+      else {
+        newTime.min += 1;
+        newTime.sec = 0;
+      }
+      // min has increased in *newTime* by now if it was updated, see if it has crossed 59
+      if (newTime.min === 60) {
+        newTime.min = 0;
+        newTime.hr += 1;
+      }
+
+      return newTime;
+    });
+  };
+
+  const pauseOrResume = () => {
+    if (!intervalId) {
+      let id = setInterval(updateTimer, 1000);
+      setIntervalId(id);
+    } else {
+      clearInterval(intervalId);
+      setIntervalId("");
+    }
+  };
+
+  const reset = () => {
+    clearInterval(intervalId);
+    setTime({
+      sec: 0,
+      min: 0,
+    });
+  };
+  
+  
+  
   return (
-    <main className='h-screen'>
+    <main className='h-screen w-screen'>
       <header className='bg-black sticky top-0 z-30 w-full flex flex-col items-center'>
         <button className="btn w-full ">
           <span className="text text-[3.4rem]">شب معارفه</span>
         </button>
       </header>
-
-      <div className='flex  flex-col items-center justify-center flex-wrap card-glass mx-4 my-3 py-5'>
+      <div className='flex  flex-col items-center justify-center flex-wrap card-glass mx-4 my-3 py-5 overflow-y-scroll'>
         <div className='w-full flex justify-evenly  items-center '>
           <p className=' w-[40vw] text-center text-[2rem]'>بازیکن</p>
           <p className=' w-[40vw] text-center text-[2rem]'>نقش</p>
         </div>
-        {finalListState && finalListState.map((item: any, index: number) => {
+        {finalList && finalList.map((item: any, index: number) => {
           return (
             <div key={index} className='w-[87vw] h-[6vh] bg-slate-700  mt-4 flex justify-evenly items-center card-glass'>
+              <div className="App">
+                <h2>{`${time.min < 10 ? 0 : ""}${time.min} : ${time.sec < 10 ? 0 : ""}${time.sec}`}</h2>
+                <button onClick={pauseOrResume}>pause/un-pause</button>
+                <button onClick={reset}>reset</button>
+              </div>
               <div>
                 <p className='text-white w-[25vh] text-center'>{item.playerName}</p>
               </div>
