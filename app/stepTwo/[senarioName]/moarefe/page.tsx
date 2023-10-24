@@ -39,9 +39,7 @@ function Page() {
       }
       // min has increased in *newTime* by now if it was updated, see if it has crossed 59
       if (newTime.min === 60) {
-        newTime.min = 0;
-        newTime.hr += 1;
-      }
+        newTime.min = 0;      }
 
       return newTime;
     });
@@ -79,7 +77,7 @@ function Page() {
           <p className=' w-[40vw] text-center text-[2rem]'>بازیکن</p>
           <p className=' w-[40vw] text-center text-[2rem]'>نقش</p>
         </div>
-        {finalList && finalList.map((item: any, index: number) => {
+        {finalListState && finalListState.map((item: any, index: number) => {
           return (
             <div key={index} className='w-[87vw] h-[6vh] bg-slate-700  mt-4 flex justify-evenly items-center card-glass'>
               <div className="App">
