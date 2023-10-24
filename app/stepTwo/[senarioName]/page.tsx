@@ -143,7 +143,7 @@ const Page = () => {
 
 
     return (
-        <main className="">
+        <main className="h-screen">
 
             <header className='bg-black sticky top-0 z-30 w-full flex justify-between items-center px-8 py-4'>
                 <p className=" ">

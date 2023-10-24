@@ -17,21 +17,25 @@ function Page() {
           <span className="text">شب معارفه</span>
         </button>
       </header>
-      <div className='flex justify-between mx-10 items-center mt-3 '>
-        <p >name</p>
-        <p >rule</p>
-      </div>
-      <div className='flex flex-col items-center justify-center flex-wrap mx-3'>
+
+      <div className='flex  flex-col items-center justify-center flex-wrap card-glass mx-4 mt-3'>
+        <div className='w-full flex justify-evenly  items-center '>
+          <p >name</p>
+          <p >rule</p>
+        </div>
         {finalListState && finalListState.map((item: any, index: number) => {
           return (
-            <div  key={index} className='w-[87vw] h-[6vh] bg-slate-700  mt-4 flex justify-around items-center card-glass'>
-              <p className='text-white'>{item.playerName}</p>
-              {/* <Link href={href={`./stepTwo/${item.title}`} > */}
+            <div key={index} className='w-[87vw] h-[6vh] bg-slate-700  mt-4 flex justify-evenly items-center card-glass'>
+              <div>
+                <p className='text-white m'>{item.playerName}</p>
+              </div>              {/* <Link href={href={`./stepTwo/${item.title}`} > */}
               <button className='btn-show h-19'>
                 <span ></span>
               </button>
               {/* </Link> */}
-              <p className='text-white '>{item.ruleName}</p>
+              <div>
+                <p className='text-white '>{item.ruleName}</p>
+              </div>
             </div>)
         })}
       </div>
