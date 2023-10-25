@@ -9,7 +9,7 @@ function Timer() {
         min: 0,
     });
 
-    const [intervalId, setIntervalId] = useState();
+    const [intervalId, setIntervalId] = useState<any>();
 
     const updateTimer = () => {
         setTime((prev) => {
