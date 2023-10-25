@@ -31,7 +31,7 @@ function Timer() {
 
     const pauseOrResume = () => {
         if (!intervalId) {
-            let id = setInterval(updateTimer, 1000);
+            let id :any= setInterval(updateTimer, 1000);
             setIntervalId(id);
         } else {
             clearInterval(intervalId);
