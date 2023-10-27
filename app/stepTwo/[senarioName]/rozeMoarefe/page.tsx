@@ -7,14 +7,37 @@ import { setFinalList } from '@/app/redux/reducers/ruleAndplayers';
 import { useParams } from 'next/navigation';
 import React, { useEffect } from 'react';
 import Timer from './timer';
+import { useRouter } from 'next/navigation'
+import { useState, Fragment } from 'react';
+
 function Page() {
+  const router = useRouter()
 
   const useparams = useParams();
   const senarioName: string = useparams.senarioName as string;
   const urlSenarioName = decodeURIComponent(senarioName);
 
   const selectorFinalList = useSelector(setFinalList);
-  const finalListState = selectorFinalList.payload.ruleAndPlayersSlice.finalList;
+  const [finalListState, setFinalListState] = useState([...selectorFinalList.payload.ruleAndPlayersSlice.finalList]);
+
+
+  useEffect(() => {
+    const storedItems: any = JSON.parse(localStorage.getItem('localPlayerList') || '');
+
+
+    if (storedItems && storedItems.length >= 4) {
+
+      setFinalListState([...storedItems])
+
+    } else {
+      localStorage.setItem('localPlayerList', JSON.stringify(finalListState))
+    }
+  }, [])
+
+  function removeLocalData() {
+    localStorage.setItem('localPlayerList', JSON.stringify(''))
+    router.push('/stepOne')
+  }
 
   return (
     <main className='h-screen w-screen'>
@@ -34,7 +57,7 @@ function Page() {
               <div>
                 <p className='text-white w-[15vh] text-center'>{item.playerName}</p>
               </div>
-              <Timer/>
+              <div><Timer /></div>
               <div>
                 <p className='text-white w-[15vh] text-center'>{item.ruleName}</p>
               </div>

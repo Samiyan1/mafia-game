@@ -80,11 +80,13 @@ footer{
   
   
   .btn-show {
+    width: 40%;
+    height: 100%;
     --fs: 1.25em;
     --col1: honeydew;
     --col2: rgba(93, 93, 93, 0.603);
-    --col3: rgb(63, 78, 36);
-    --col4: rgb(232, 255, 164);
+    --col3: rgb(104, 23, 115);
+    --col4: rgb(46, 6, 48);
     --pd: .5em .65em;
     display: grid;
     align-content: baseline;
@@ -95,7 +97,7 @@ footer{
     font-size: var(--fs);
     color: var(--col1);
     background-color: var(--col3);
-    border-radius: 6px;
+    border-radius: 16px;
     text-shadow: 1px 1px var(--col4);
     box-shadow: inset -2px 1px 1px var(--col2),
       inset 2px 1px 1px var(--col2);
@@ -241,60 +243,3 @@ footer{
 
 
 
-
-  .btn-play {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 0 10px;
-    color: white;
-    text-shadow: 2px 2px rgb(116, 116, 116);
-    text-transform: uppercase;
-    border: solid 2px black;
-    letter-spacing: 1px;
-    font-weight: 600;
-    font-size: 17px;
-    background-color: hsl(49deg 98% 60%);
-    border-radius: 50px;
-    position: relative;
-    overflow: hidden;
-    transition: all .5s ease;
-  }
-  
-  .btn-play:active {
-    transform: scale(.9);
-    transition: all 100ms ease;
-  }
-  
-  .btn-play svg {
-    transition: all .5s ease;
-    z-index: 2;
-  }
-  
-  .play {
-    transition: all .5s ease;
-    transition-delay: 300ms;
-  }
-  
-  .btn-play:hover svg {
-    transform: scale(3) translate(50%);
-  }
-  
-  .now {
-    position: absolute;
-    left: 0;
-    transform: translateX(-100%);
-    transition: all .5s ease;
-    z-index: 2;
-  }
-  
-  .btn-play:hover .now {
-    transform: translateX(10px);
-    transition-delay: 300ms;
-  }
-  
-  .btn-play:hover .play {
-    transform: translateX(200%);
-    transition-delay: 300ms;
-  }
