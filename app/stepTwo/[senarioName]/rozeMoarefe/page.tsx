@@ -21,18 +21,23 @@ function Page() {
   const [finalListState, setFinalListState] = useState([...selectorFinalList.payload.ruleAndPlayersSlice.finalList]);
 
 
+  console.log(finalListState)
+
   useEffect(() => {
-    const storedItems: any = JSON.parse(localStorage.getItem('localPlayerList') || '');
+    if (typeof window !== "undefined") {
+      const storedItems: any = JSON.parse(window.localStorage.getItem('localPlayerList') || '');
 
+      if (storedItems && storedItems.length >= 4) {
 
-    if (storedItems && storedItems.length >= 4) {
+        setFinalListState([...storedItems])
 
-      setFinalListState([...storedItems])
-
-    } else {
-      localStorage.setItem('localPlayerList', JSON.stringify(finalListState))
+      } else {
+        window.localStorage.setItem('localPlayerList', JSON.stringify(finalListState))
+      }
     }
+
   }, [])
+  console.log(finalListState)
 
   function removeLocalData() {
     localStorage.setItem('localPlayerList', JSON.stringify(''))
@@ -43,24 +48,21 @@ function Page() {
     <main className='h-screen w-screen'>
       <header className='bg-black sticky top-0 z-30 w-full flex flex-col items-center'>
         <button className="btn w-full ">
-          <span className="text text-[3.4rem]">شب معارفه</span>
+          <span className="text text-[2rem]">روز معارفه</span>
         </button>
       </header>
-      <div className='flex  flex-col h-[70vh] overflow-x-hidden items-center justify-center flex-wrap card-glass mx-4 my-3 py-5 overflow-y-scroll'>
+      <div className='flex  flex-col h-[100vh] overflow-x-hidden items-center justify-start flex-wrap  mx-4 my-3 overflow-y-scroll'>
         <div className='w-full flex justify-evenly  items-center '>
-          <p className=' w-[40vw] text-center text-[2rem]'>بازیکن</p>
-          <p className=' w-[40vw] text-center text-[2rem]'>نقش</p>
+          <p className=' w-[40vw] text-center text-[1.5rem]'>بازیکن</p>
+          <p className=' w-[40vw] text-center text-[1.5rem]'>نقش</p>
         </div>
         {finalListState && finalListState.map((item: any, index: number) => {
           return (
-            <div key={index} className='w-[87vw] h-[6vh] bg-slate-700  mt-4 flex justify-evenly items-center card-glass'>
-              <div>
-                <p className='text-white w-[15vh] text-center'>{item.playerName}</p>
-              </div>
-              <div><Timer /></div>
-              <div>
-                <p className='text-white w-[15vh] text-center'>{item.ruleName}</p>
-              </div>
+            <div key={index} className='w-[90vw] h-[6vh] bg-slate-700  mt-4 flex justify-evenly
+             items-center card-glass'>
+              <p className='text-white  text-center text-[13px]  w-[20vw]'>{item.playerName}</p>
+              <Timer />
+              <p className='text-white  text-center text-[13px] w-[20vw]'>{item.ruleName}</p>
             </div>)
         })}
       </div>

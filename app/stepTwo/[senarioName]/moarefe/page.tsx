@@ -10,10 +10,13 @@ import { useState, Fragment } from 'react';
 import { useRouter } from 'next/navigation'
 import { Dialog, Transition } from '@headlessui/react'
 import BtnAmongUs from '@/app/components/btnAmungUs/btnAmongUs';
+import useLocalData from '@/app/hooks/useLocalData';
+import BtnRedKey from '@/app/components/btnRedKey/btnRedKey';
 
 function Page() {
   const router = useRouter()
 
+  const dispatch = useDispatch();
 
   const useparams = useParams();
   const senarioName: string = useparams.senarioName as string;
@@ -28,19 +31,20 @@ function Page() {
 
 
 
-  // const [local, setLocal] = useState([...selectorFinalList.payload.ruleAndPlayersSlice.finalList]);
 
   useEffect(() => {
-    const storedItems: any = JSON.parse(localStorage.getItem('localPlayerList') || '');
+    if (typeof window !== "undefined") {
+      const storedItems: any = JSON.parse(window.localStorage.getItem('localPlayerList') || '');
 
+      if (storedItems && storedItems.length >= 4) {
 
-    if (storedItems && storedItems.length >= 4) {
+        setFinalListState([...storedItems])
 
-      setFinalListState([...storedItems])
-
-    } else {
-      localStorage.setItem('localPlayerList', JSON.stringify(finalListState))
+      } else {
+        window.localStorage.setItem('localPlayerList', JSON.stringify(finalListState))
+      }
     }
+
   }, [])
 
   function removeLocalData() {
@@ -48,7 +52,11 @@ function Page() {
     router.push('/stepOne')
   }
 
-  console.log(finalListState)
+
+  function nextStep() {
+    dispatch(setFinalList([...finalListState]));
+    router.push(`/stepTwo/${urlSenarioName}/rozeMoarefe`)
+  }
 
   function closeModal() {
     setIsOpen(false)
@@ -71,9 +79,8 @@ function Page() {
   return (
     <main className='h-screen w-screen'>
       <header className='bg-black sticky top-0 z-30 w-full flex flex-row items-center'>
-        <button className="btn w-full flex justify-">
+        <button className="btn w-full flex justify-center">
           <p className="text text-[3rem]">شب معارفه</p>
-          <button onClick={removeLocalData}>reset</button>
         </button>
 
       </header>
@@ -102,19 +109,21 @@ function Page() {
           </div>
         )
           : (
-            <Link href={`/stepTwo/${urlSenarioName}/rozeMoarefe`} className='w-[30vw] mx-auto block'>
-              <BtnAmongUs />
-            </Link>
+            <div className='flex justify-center items-center h-[70vh]'>
+              <BtnRedKey className=' w-[50vw] mr-2' action={nextStep} value={'play'} />
+            </div>
           )
       }
 
       <footer className='bg-black w-full fixed bottom-0 flex flex-col items-center'>
-
+        <div className='flex flex-row flex-nowrap'>
+          <BtnRedKey className='w-[50vw]' action={removeLocalData} value={'reset'} />
+        </div>
 
         <Image
           src="/logoWhite.png"
           alt="Vercel Logo"
-          className="mb-4 sticky bottom-0 logo z-20 "
+          className="sticky bottom-0 logo z-20 my-4"
           width={100}
           height={100}
           priority

@@ -31,12 +31,15 @@ function Timer() {
 
     const pauseOrResume = () => {
         if (!intervalId) {
-            let id :any= setInterval(updateTimer, 1000);
+            let id: any = setInterval(updateTimer, 1000);
             setIntervalId(id);
-        } else {
-            clearInterval(intervalId);
-            setIntervalId("");
         }
+
+
+    };
+    const pause = () => {
+        clearInterval(intervalId);
+        setIntervalId("");
     };
 
     const reset = () => {
@@ -48,17 +51,17 @@ function Timer() {
     };
 
     return (
-        <div className="App flex justify-evenly items-center">
-            <button className='bg-black w-20 mx-3' onClick={reset}>reset</button>
-            <h2 className='w-[10vw]'>{`${time.min < 10 ? 0 : ""}${time.min} : ${time.sec < 10 ? 0 : ""}${time.sec}`}</h2>
-            <label className="container">
-                <button className='w-20' onClick={pauseOrResume}>
-                    <input checked={true} type="checkbox" />
-                    <svg viewBox="0 0 384 512" height="1em" xmlns="http://www.w3.org/2000/svg" className="play"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"></path></svg>
-                    <svg viewBox="0 0 320 512" height="1em" xmlns="http://www.w3.org/2000/svg" className="pause"><path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"></path></svg>
-                </button>
-
-            </label>
+        <div className="App flex flex-col justify-center items-center w-[40vw]">
+            <h2 className='mr-1'>{`${time.min < 10 ? 0 : ""}${time.min} : ${time.sec < 10 ? 0 : ""}${time.sec}`}</h2>
+            <div className="audio-player w-30">
+                <div className="player-controls">
+                    <div className="buttons">
+                        <button onClick={reset} className="skip-btn mx-2"><svg viewBox="0 0 16 16" className="bi bi-skip-backward-fill" fill="#000" height="18" width="18" xmlns="http://www.w3.org/2000/svg"> <path d="M.5 3.5A.5.5 0 0 0 0 4v8a.5.5 0 0 0 1 0V8.753l6.267 3.636c.54.313 1.233-.066 1.233-.697v-2.94l6.267 3.636c.54.314 1.233-.065 1.233-.696V4.308c0-.63-.693-1.01-1.233-.696L8.5 7.248v-2.94c0-.63-.692-1.01-1.233-.696L1 7.248V4a.5.5 0 0 0-.5-.5z"></path> </svg></button>
+                        <button onClick={pauseOrResume} className="play-btn mx-2"><svg viewBox="0 0 16 16" className="bi bi-play-fill" fill="#000" height="20" width="20" xmlns="http://www.w3.org/2000/svg"> <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"></path> </svg></button>
+                        <button onClick={pause} className="pause-btn mx-2"><svg viewBox="0 0 16 16" className="bi bi-pause-fill" fill="#000" height="20" width="20" xmlns="http://www.w3.org/2000/svg" > <path fill="#000" d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"></path> </svg></button>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

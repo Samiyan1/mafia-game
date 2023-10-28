@@ -13,6 +13,7 @@ import { useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from 'react-redux';
 import { setFinalList } from '@/app/redux/reducers/ruleAndplayers';
 import Link from 'next/link';
+import BtnRedKey from '@/app/components/btnRedKey/btnRedKey';
 
 const Page = () => {
 
@@ -33,9 +34,6 @@ const Page = () => {
 
     //states
     let extraPlayerTeam: string = '';
-    const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-    const [showStepThree, setShowStepThree] = useState(true);
-    const [showMoarefe, setShowMoarefe] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [selectRule, setSelectRule] = useState<string[]>([])
     const [extraPlayerName, setExtraPlayerName] = useState<string>('')
@@ -133,9 +131,9 @@ const Page = () => {
         };
         console.log(newRuleObject)
 
-        setAddExtraPlayer(newRuleObject);
         let newScenarioObject: any = scenarioObject;
-        newScenarioObject.rules.push(addExtraPlayer);
+        newScenarioObject.rules.push(newRuleObject);
+        
         setScenarioObject(newScenarioObject);
         setIsOpen(!isOpen);
     }
@@ -230,13 +228,7 @@ const Page = () => {
             </div>
 
             <footer className='bg-black w-full fixed bottom-0 flex flex-col items-center'>
-                <div className='flex'>
-                    <button onClick={startGame} type="button" className="btn-submit my-3">
-                        <div className="button-top">Start Game</div>
-                        <div className="button-bottom"></div>
-                        <div className="button-base"></div>
-                    </button>
-                </div>
+               <BtnRedKey className='w-[50vw]' action={startGame} value={'submit'}/>
                 <Image
                     src="/logoWhite.png"
                     alt="Vercel Logo"
