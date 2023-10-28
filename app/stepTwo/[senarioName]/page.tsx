@@ -94,6 +94,8 @@ const Page = () => {
             })
 
             dispatch(setFinalList(completeObj));
+            window.localStorage.setItem('localPlayerList', JSON.stringify(completeObj));
+
             router.push(`${s}/moarefe`)
 
         } else if (selectRule.length === 0) {

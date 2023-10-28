@@ -36,7 +36,7 @@ function Page() {
     if (typeof window !== "undefined") {
       const storedItems: any = JSON.parse(window.localStorage.getItem('localPlayerList') || '');
 
-      if (storedItems && storedItems.length >= 4) {
+      if (storedItems && (storedItems.length >= 4)) {
 
         setFinalListState([...storedItems])
 
