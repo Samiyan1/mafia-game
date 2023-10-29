@@ -4,51 +4,49 @@ import { MafiaScenarios } from './dataMafiaScenarios'
 import Link from 'next/link';
 import './stepTwo.css'
 import Image from 'next/image';
+import Header from '@/app/components/header/header';
+import { useRouter } from 'next/navigation'
+import BtnMoreDetail from '../components/btnMoreDetail/btnMoreDetail';
+import Footer from '../components/footer/footer';
 
 function Page() {
+  const router = useRouter()
 
 
   return (
-    <main className="h-screen justify-start relative  flex flex-col items-center">
-      <header className='bg-black sticky top-0 z-30 w-full flex flex-col items-center p-2 '>
-        <p className="py-2 ">
-          choose scenario
-        </p>
-      </header>
-      <div className='flex  flex-col mt-1 overflow-scroll'>
+    <main className="h-auto justify-start relative  flex flex-col items-center">
+      <Header value1='و' value2=' سناری' value3='اب' value4='خ' value5='انت' />
+
+      <div className='flex flex-wrap justify-evenly  mt-2 overflow-y-scroll h-auto'>
         {MafiaScenarios && MafiaScenarios.map((item: any, index: number) => {
+          // {`./stepTwo/${item.title}`}
+          // key={index} 
           return (
-            <Link href={`./stepTwo/${item.title}`} key={index} className=''>
-              <div className='card-scenario bg-black mt-3 w-[90vw] h-[40vh]  flex mb-2 justify-evenly '>
-                <div className='image img w-[60vw] h-[26vh] '>
-                  <Image
-                    src={item.scenarioImage}
-                    alt="image of scenario card"
-                    className="scenario-image"
-                    width={500}
-                    height={500}
-                    objectFit='contain'
-                    priority
-                  />
-                </div>
-                <div className=' mb-2 mr-3 flex justify-center flex-col'>
-                  <div className='title '>{item.title}</div>
-                  <div className='descriptaion w-14 h-[30vh]'>{item.scenarioDecription}</div>
-                </div>
-              </div></Link>
+            <div className='card-scenario bg-black mt-2 w-[47vw] h-[40vh] flex-col flex justify-start items-center '>
+              <Image
+                src={item.scenarioImage}
+                alt="image of scenario card"
+                height={0}
+                draggable='false'
+                className='rounded-[15px]'
+                width={0}
+                sizes="80vw"
+                style={{
+                  width: '100%',
+                  height: '80%',
+                }}
+              />
+              <div className=' mb-2 flex justify-between flex-col'>
+                <div className='title text-white'>{item.title}</div>
+                <div className='descriptaion'>{item.scenarioDecription}</div>
+                <BtnMoreDetail action={() => { router.push(`/stepTwo/${item.ruleName}`) }} value={'more'} className='' />
+              </div>
+            </div>
           )
         })}
       </div>
-      <footer className='bg-black w-full fixed bottom-0 flex flex-col items-center'>
-        <Image
-          src="/logoWhite.png"
-          alt="Vercel Logo"
-          className="mb-4 sticky bottom-0 logo z-20 pt-2"
-          width={100}
-          height={100}
-          priority
-        />
-      </footer>
+      <Footer src='/logoWhite.png' className='' action={()=>{router.push('/')}} />
+
     </main>
   )
 }

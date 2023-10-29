@@ -32,13 +32,14 @@ footer{
 }
 
 .descriptaion{
-  width:20vw ;
-  margin: 0 auto;
-  text-align: center;
-  font-size: .3em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   overflow: hidden;
-  text-overflow: ellipsis 
-}
+  text-overflow: ellipsis;
+  width: 80%;
+  margin: 0 auto;
+  font-size: 10px;}
 
 .button-senario {
   --😀: #644dff;

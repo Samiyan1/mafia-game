@@ -12,6 +12,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import BtnAmongUs from '@/app/components/btnAmungUs/btnAmongUs';
 import useLocalData from '@/app/hooks/useLocalData';
 import BtnRedKey from '@/app/components/btnRedKey/btnRedKey';
+import Header from '@/app/components/header/header';
 
 function Page() {
   const router = useRouter()
@@ -78,12 +79,7 @@ function Page() {
 
   return (
     <main className='h-screen w-screen'>
-      <header className='bg-black sticky top-0 z-30 w-full flex flex-row items-center'>
-        <button className="btn w-full flex justify-center">
-          <p className="text text-[3rem]">شب معارفه</p>
-        </button>
-
-      </header>
+    <Header value1='و' value2='سناری' value3='اب' value4='خ' value5='انت'/>
 
       {
         (finalListState.length > 0) ? (
@@ -110,7 +106,6 @@ function Page() {
         )
           : (
             <div className='flex justify-center items-center h-[70vh]'>
-              <BtnRedKey className=' w-[50vw] mr-2' action={nextStep} value={'play'} />
             </div>
           )
       }
@@ -118,6 +113,7 @@ function Page() {
       <footer className='bg-black w-full fixed bottom-0 flex flex-col items-center'>
         <div className='flex flex-row flex-nowrap'>
           <BtnRedKey className='w-[50vw]' action={removeLocalData} value={'reset'} />
+          <BtnRedKey className=' w-[50vw] mr-2' action={nextStep} value={'play'} />
         </div>
 
         <Image
