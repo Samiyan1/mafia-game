@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setFinalList } from '@/app/redux/reducers/ruleAndplayers';
 import Link from 'next/link';
 import BtnRedKey from '@/app/components/btnRedKey/btnRedKey';
+import BtnMoreDetail from '@/app/components/btnMoreDetail/btnMoreDetail';
 
 const Page = () => {
 
@@ -189,15 +190,8 @@ const Page = () => {
                                         alt="Picture of the author" />
                                 </div>
                                 <span>  {item.ruleName}</span>
-                                <Link href={`/stepTwo/${s}/${item.ruleName}`}>
-                                    <button className="shadow__btn">
-                                        <p>More</p>
-                                        <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" className="h-6 w-6" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
-                                        </svg>
-                                    </button>
-                                </Link>
-
+                               <BtnMoreDetail value={'more'} className='' action={()=>{router.push(`/stepTwo/${s}/${item.ruleName}`)}}/>
+                                <p className='description w-[90%]'>{item.description}</p>
 
                             </div>
                         </label>

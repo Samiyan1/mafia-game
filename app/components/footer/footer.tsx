@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function Footer(props: { action: any, src: any, className: string }) {
     return (
-        <footer onClick={props.action} className={`${props.className} bg-black w-screen fixed bottom-0 cursor-pointer flex flex-col items-center footer`}>
+        <footer onClick={props.action} className={`${props.className} bg-black btn w-screen fixed bottom-0 cursor-pointer flex flex-col items-center footer`}>
             <Image
                 src={props.src}
                 alt="Vercel Logo"

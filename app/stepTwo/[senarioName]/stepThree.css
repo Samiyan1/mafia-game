@@ -313,3 +313,14 @@ backdrop-filter: blur(5px);
 -webkit-backdrop-filter: blur(5px);
 border: 1px solid rgba(255, 255, 255, 0.3);
 }
+
+.description{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
+  margin: 0 auto;
+  font-size: 10px;
+}
