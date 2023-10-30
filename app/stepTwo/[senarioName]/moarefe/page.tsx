@@ -111,14 +111,8 @@ function Page() {
           )
       }
 
-      <Footer div=
-        {<div className='flex flex-row flex-nowrap'>
-          <BtnRedKey className='w-[20vw] mr-2' action={removeLocalData} value={'reset'} />
-          <BtnRedKey className=' w-[50vw] ' action={nextStep} value={'play'} />
-        </div>
-        } >
+      <Footer  />
 
-      </Footer>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
