@@ -111,7 +111,7 @@ function Page() {
           )
       }
 
-      <Footer className='' div=
+      <Footer div=
         {<div className='flex flex-row flex-nowrap'>
           <BtnRedKey className='w-[20vw] mr-2' action={removeLocalData} value={'reset'} />
           <BtnRedKey className=' w-[50vw] ' action={nextStep} value={'play'} />
