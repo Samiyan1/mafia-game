@@ -15,6 +15,8 @@ import { setFinalList } from '@/app/redux/reducers/ruleAndplayers';
 import Link from 'next/link';
 import BtnRedKey from '@/app/components/btnRedKey/btnRedKey';
 import BtnMoreDetail from '@/app/components/btnMoreDetail/btnMoreDetail';
+import Header from '@/app/components/header/header';
+import Footer from '@/app/components/footer/footer';
 
 const Page = () => {
 
@@ -83,15 +85,15 @@ const Page = () => {
 
         if (selectRule.length === playerState.length) {
 
-            const out :any = scenarioObject?.rules.filter((itemObject, index) => {
+            const out: any = scenarioObject?.rules.filter((itemObject, index) => {
                 return selectRule.find(itemSelect => itemSelect === itemObject.ruleName)
             })
-            const completeObj:any = out && out.map((item :any, index :number) => {
-                if(!item.playerName){ 
+            const completeObj: any = out && out.map((item: any, index: number) => {
+                if (!item.playerName) {
                     console.log(item)
-                    item.playerName = shuffledPlayerList[index] 
+                    item.playerName = shuffledPlayerList[index]
                 }
-               return item;
+                return item;
             })
 
             dispatch(setFinalList(completeObj));
@@ -136,7 +138,7 @@ const Page = () => {
 
         let newScenarioObject: any = scenarioObject;
         newScenarioObject.rules.push(newRuleObject);
-        
+
         setScenarioObject(newScenarioObject);
         setIsOpen(!isOpen);
     }
@@ -146,16 +148,9 @@ const Page = () => {
     return (
         <main className="h-screen">
 
-            <header className='bg-black sticky top-0 z-30 w-full flex justify-between items-center px-8 py-4'>
-                <p className=" ">
-                    choose scenario
-                </p>
-                <button className="cssbuttons-io-button h-9 w-11 flex justify-center" onClick={openDialog}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg>
-                </button>
-            </header>
+            <Header value1='ا' value2='ه' value3=' نقش‌' value4='ب' value5='انتخا' />
 
-            <div className='flex overflow-x-scroll mt-3 h-[42vh] overflow-y-hidden  '>
+            <div className='flex overflow-x-scroll mt-1 h-[42vh] overflow-y-hidden  '>
                 {/* here you can also pass any other element attributes. Also, you can use your custom components as slides */}
                 {scenarioObject && scenarioObject.rules.map((item: any, index: number) =>
                 (
@@ -190,8 +185,8 @@ const Page = () => {
                                         alt="Picture of the author" />
                                 </div>
                                 <span>  {item.ruleName}</span>
-                               <BtnMoreDetail value={'more'} className='' action={()=>{router.push(`/stepTwo/${s}/${item.ruleName}`)}}/>
                                 <p className='description w-[90%]'>{item.description}</p>
+                                <BtnMoreDetail value={'جزییات بیشتر'} className='' action={() => { router.push(`/stepTwo/${s}/${item.ruleName}`) }} />
 
                             </div>
                         </label>
@@ -223,17 +218,8 @@ const Page = () => {
                 </div>
             </div>
 
-            <footer className='bg-black w-full fixed bottom-0 flex flex-col items-center'>
-               <BtnRedKey className='w-[50vw]' action={startGame} value={'submit'}/>
-                <Image
-                    src="/logoWhite.png"
-                    alt="Vercel Logo"
-                    className=" mb-4 sticky bottom-0 logo z-20 "
-                    width={70}
-                    height={70}
-                    priority
-                />
-            </footer>
+            <Footer
+                div={<BtnRedKey className='w-[50vw]' action={startGame} value={'submit'} />} />
 
             <Transition appear show={isOpen} as={Fragment}>
                 <Dialog as="div" className="relative z-10" onClose={openDialog}>

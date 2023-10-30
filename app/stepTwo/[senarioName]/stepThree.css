@@ -27,8 +27,10 @@
 }
 
 .container input:checked~.checkmark {
+  z-index: 30;
   background-color: #00ff00;
-  box-shadow: 0 0 10px #00ff00;
+  box-shadow: 10px 10px 20px #00ff4c, -10px -10px 40px #383e4b;
+
 }
 
 .card {

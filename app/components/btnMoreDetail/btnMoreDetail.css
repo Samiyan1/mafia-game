@@ -38,17 +38,16 @@
   .shadow__btn p::before {
     position: absolute;
   /*   box-sizing: border-box; */
-    content: "more";
+    content: "جزییات بیشتر";
     width: 0%;
     inset: 0;
     color: var(--hovered-color);
     overflow: hidden;
-    transition: 0.3s ease-out;
+    transition: 0.1s ease-out;
   }
   
   .shadow__btn:hover::after {
-    width: 86%;
-    margin-left: 11px;
+    width: 100%;
   }
   
   .shadow__btn:hover p::before {

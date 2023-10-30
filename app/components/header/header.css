@@ -1,9 +1,7 @@
 .btn {
 
   border-radius: 5px;
-  border-bottom: 2px solid rgb(255, 255, 255);
   cursor: pointer;
-  filter: drop-shadow(0px 0px 10px rgb(255, 255, 255));
   animation: flickering 2s linear infinite both;
   text-transform: uppercase;
   font-weight: 100;

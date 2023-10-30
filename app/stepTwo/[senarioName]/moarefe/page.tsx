@@ -13,6 +13,7 @@ import BtnAmongUs from '@/app/components/btnAmungUs/btnAmongUs';
 import useLocalData from '@/app/hooks/useLocalData';
 import BtnRedKey from '@/app/components/btnRedKey/btnRedKey';
 import Header from '@/app/components/header/header';
+import Footer from '@/app/components/footer/footer';
 
 function Page() {
   const router = useRouter()
@@ -79,27 +80,27 @@ function Page() {
 
   return (
     <main className='h-screen w-screen'>
-    <Header value1='و' value2='سناری' value3='اب' value4='خ' value5='انت'/>
-
+      <Header value1='فه' value2='ر' value3=' معا' value4='ب' value5='ش' />
       {
         (finalListState.length > 0) ? (
           <div className='flex  flex-col items-center justify-center flex-wrap  mx-4 mt-4 '>
-            <div className='w-full flex justify-center  items-center '>
-              <p className=' w-[40vw] text-center text-[2rem]'>بازیکن</p>
-              <p className=' w-[40vw] text-center text-[2rem]'>مشاهده</p>
+            <div className='w-full flex justify-between  items-center '>
+              <p className=' w-[30vw] text-center text-[2rem]'>بازیکن</p>
+              <p className=' w-[30vw] text-center text-[2rem]'>مشاهده</p>
             </div>
 
-            <div className='overflow-y-scroll'>
+            <div className='overflow-y-scroll h-auto'>
               {finalListState && finalListState.map((item: any, index: number) => {
                 return (
-                  <div key={index} className='w-[90vw] h-[6vh] bg-slate-700  mt-4 flex justify-between items-center card-glass'>
+                  <div key={index} className='w-[90vw] h-[6vh]   mt-4 flex justify-between items-center card-glass'>
                     <div>
-                      <p className='text-white text-[25px]  w-[25vh] text-center'>{item.playerName}</p>
+                      <p className='text-white text-[25px] ml-4 text-center'>{item.playerName}</p>
                     </div>
                     <button onClick={() => removePlayer(item.playerName, item.ruleName, item.description)} className='btn-show h-19'>
                       <span >show</span>
                     </button>
-                  </div>)
+                  </div>
+                )
               })}
             </div>
           </div>
@@ -110,21 +111,14 @@ function Page() {
           )
       }
 
-      <footer className='bg-black w-full fixed bottom-0 flex flex-col items-center'>
-        <div className='flex flex-row flex-nowrap'>
-          <BtnRedKey className='w-[50vw]' action={removeLocalData} value={'reset'} />
-          <BtnRedKey className=' w-[50vw] mr-2' action={nextStep} value={'play'} />
+      <Footer className='' div=
+        {<div className='flex flex-row flex-nowrap'>
+          <BtnRedKey className='w-[20vw] mr-2' action={removeLocalData} value={'reset'} />
+          <BtnRedKey className=' w-[50vw] ' action={nextStep} value={'play'} />
         </div>
+        } >
 
-        <Image
-          src="/logoWhite.png"
-          alt="Vercel Logo"
-          className="sticky bottom-0 logo z-20 my-4"
-          width={100}
-          height={100}
-          priority
-        />
-      </footer>
+      </Footer>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child

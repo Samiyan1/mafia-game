@@ -9,6 +9,8 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation';
 import './stepOne.css'
+import BtnRedKey from '../components/btnRedKey/btnRedKey';
+import Footer from '../components/footer/footer';
 
 export default function Page() {
 
@@ -55,21 +57,8 @@ export default function Page() {
           )
         })}
       </div>
-      <footer className='bg-black w-full fixed bottom-0 flex flex-col items-center'>
-        <button onClick={() => { playerState.length >= 4 ? router.push('stepTwo', { scroll: false }) : toast.error('تعداد کمتر از حد مجاز') }} type="button" className="btn-submit my-7">
-          <div className="button-top">Submit</div>
-          <div className="button-bottom"></div>
-          <div className="button-base"></div>
-        </button>
-        <Image
-          src="/logoWhite.png"
-          alt="Vercel Logo"
-          className="mb-4 sticky bottom-0 logo z-20 "
-          width={70}
-          height={70}
-          priority
-        />
-      </footer>
+      <Footer
+        div={<BtnRedKey className='w-[50vw]' action={() => { playerState.length >= 4 ? router.push('stepTwo', { scroll: false }) : toast.error('تعداد کمتر از حد مجاز') }} value={'submit'} />} />
     </main >
   )
 

@@ -17,10 +17,18 @@
 
 
 }
+@font-face {
+  font-family: Titr;
+  src: url(/public/font/B-Titr/B\ Titr\ Bold_0.ttf) format('truetype') ;
+}
 
-
+@font-face {
+  font-family: Mj_Heritage;
+  src: url(/public/font/Mj_Heritage-Two/Mj_Heritage\ Two\ Bold_0.ttf) format('truetype') ;
+}
 
 body {
+  font-family: Mj_Heritage, Titr ,monospace, Courier,;
   color: rgb(var(--foreground-rgb));
   background-color: #111927;
   background-image: 
