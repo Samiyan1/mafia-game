@@ -51,9 +51,9 @@ function Page() {
       <div className='flex  flex-col h-[100vh] overflow-x-hidden items-center justify-start flex-wrap  mx-4 my-3 overflow-y-scroll'>
         <div className='w-full flex justify-evenly  items-center '>
 
-          <p className=' w-[40vw] text-center text-[1.5rem]'>بازیکن</p>
-          <p className=' w-[40vw] text-center text-[1.5rem]'>نقش</p>
-          <p className=' w-[40vw] text-center text-[1.5rem]'>رای</p>
+          <p className=' w-[40vw] text-center text-[1rem]'>بازیکن</p>
+          <p className=' w-[40vw] text-center text-[1rem]'>نقش</p>
+          <p className=' w-[30vw] text-center text-[1rem]'>رای</p>
 
         </div>
         {finalListState && finalListState.map((item: any, index: number) => {
@@ -63,11 +63,11 @@ function Page() {
               <p className='text-white  text-center text-[13px]  w-[20vw]'>{item.playerName}</p>
               <Timer />
               <p className='text-white  text-center text-[13px] w-[20vw]'>{item.ruleName}</p>
-              <input type='number'className='w-[9%] h-[90%] text-black text-center' max={finalListState.length - 1}/>
+              {/* <input type='number'className='w-[9%] h-[90%] text-black text-center' max={finalListState.length - 1}/> */}
             </div>)
         })}
       </div>
-      <Footer />
+      <Footer action={()=> router.push('/stepTwo/پدرخوانده/day')} />
     </main>
 
   )
