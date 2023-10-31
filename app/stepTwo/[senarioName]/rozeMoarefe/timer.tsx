@@ -51,7 +51,7 @@ function Timer() {
     };
 
     return (
-        <div className="App flex flex-col justify-center items-center w-[40vw]">
+        <div className="App flex flex-col justify-center items-center w-[35vw]">
             <h2 className='mr-1'>{`${time.min < 10 ? 0 : ""}${time.min} : ${time.sec < 10 ? 0 : ""}${time.sec}`}</h2>
             <div className="audio-player w-30">
                 <div className="player-controls">

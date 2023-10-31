@@ -32,7 +32,7 @@ export default function Page() {
 
     <main className="h-screen justify-start relative  flex flex-col items-center">
       <Header value1='ن' value2='کنا' value3='ی' value4='ز' value5='با'></Header>
-      <div className="input-container w-[90vw] mt-4">
+      <div className="input-container w-[88vw] mt-4">
         <input required value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="" className='px-2 ' />
         <button onClick={addPlayers} className="button py-2">Add</button>
       </div>
