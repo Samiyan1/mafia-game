@@ -21,7 +21,7 @@ export default function Home() {
     <>
       {loading ? (
         <main className="flex overflow-hidden flex-col justify-start items-center h-screen ">
-          <button className='glich-btn w-[100vw] z-20'>For Mafia Family</button>
+          <button className='glich-btn w-[100vw] z-20 font-[Mj_Heritage] font-[700] '>Mafia Game</button>
           <Image
             src="/icone.png"
             alt="Vercel "
@@ -32,7 +32,7 @@ export default function Home() {
           />
           <button onClick={() => { router.push('stepOne', { scroll: false }) }} className="btn-class-name mt-[15vh] z-80">
             <span className="back"></span>
-            <span className="front">Start</span>
+            <span className="front">start</span>
           </button>
           <Image
             src="/logoWhite.png"

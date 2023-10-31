@@ -6,12 +6,12 @@
 }
 
 .btn {
-
-    border-radius: 5px;
-    border-top: 1px solid rgb(255, 255, 255);
+    backdrop-filter: blur(0px) saturate(68%);
+    -webkit-backdrop-filter: blur(0px) saturate(68%);
+    background-color: rgba(5, 8, 12, 0.92);
+    border-radius: 10px 10px 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.125);
     cursor: pointer;
-    filter: drop-shadow(0px 0px 10px rgb(255, 255, 255));
-    animation: flickering 2s linear infinite both;
     text-transform: uppercase;
     font-weight: 100;
     transition: 0.6s;

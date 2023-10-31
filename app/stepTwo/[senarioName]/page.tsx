@@ -194,6 +194,20 @@ const Page = () => {
 
                 )
                 )}
+                <div className=" border-fuchsia-800 border-b-2 border-r-2">
+                    <label className='container '>
+                        <div className="checkmark flex"></div>
+                        <div className="card flex justify-center items-center flex-col">
+                            <div className="card-border-top">
+                            </div>
+                            <button className="cssbuttons-io-button h-9 w-11 flex justify-center items-center" onClick={openDialog} >
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg>
+                            </button>
+                            <span> اضافه کردن بازیکن</span>
+                        </div>
+                    </label>
+                </div>
+
             </div>
             <div className='flex mt-4'>
                 <div className=''>
@@ -258,7 +272,7 @@ const Page = () => {
                                     <div className="mt-2 flex flex-col justify-center items-center">
                                         <div className="coolinput mb-2">
                                             <label htmlFor="input" className="text">Rule Name:</label>
-                                            <input type="text" value={extraPlayerName} onChange={(e) => setExtraPlayerName(e.target.value)} placeholder="Write here..." name="input" className="input" />
+                                            <input type="text" value={extraPlayerName} onChange={(e) => setExtraPlayerName(e.target.value)} placeholder="Write here..." name="input" className=" w-[90%] text-black py-3 px-3" />
                                         </div>
                                         <div>
                                             <div className="radio-input">
@@ -274,18 +288,19 @@ const Page = () => {
                                                 <span className="result error">Mafia</span>
                                             </div>
                                         </div>
+                                        <div className="mt-4 flex justify-center">
+                                            <button
+                                                type="button"
+                                                className="inline-flex justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                                                onClick={eventAddPlayer}
+                                            >
+                                                Got it, thanks!
+                                            </button>
+                                        </div>
 
                                     </div>
 
-                                    <div className="mt-4 flex justify-center">
-                                        <button
-                                            type="button"
-                                            className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                                            onClick={eventAddPlayer}
-                                        >
-                                            Got it, thanks!
-                                        </button>
-                                    </div>
+
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>
