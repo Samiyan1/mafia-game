@@ -30,12 +30,8 @@
 body {
   font-family: Mj_Heritage, Titr ,monospace, Courier,;
   color: rgb(var(--foreground-rgb));
-  background-color: #111927;
-  background-image: 
-      radial-gradient(at 47% 33%, hsl(258.57, 87%, 19%) 0, transparent 59%), 
-      radial-gradient(at 82% 65%, hsl(289.23, 80%, 20%) 0, transparent 55%);
-
-
+  background: #112 url(//images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg)  center no-repeat;
+  background-size:cover;
 }
 
 .btn-class-name {

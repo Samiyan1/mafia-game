@@ -1,25 +1,13 @@
-.btn {
-
-  border-radius: 5px;
-  cursor: pointer;
-  animation: flickering 2s linear infinite both;
-  text-transform: uppercase;
-  font-weight: 100;
-  transition: 0.6s;
-
-}
-
-
-
 .header {
   text-align: center;
-  margin: auto;
   user-select: none;
-  padding: 12px;
-  background: #112 url(//images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg) center no-repeat;
-  background-size: cover;
-  margin: 0;
   width: 100%;
+  padding: 12px;
+  backdrop-filter: blur(3px) saturate(114%);
+  -webkit-backdrop-filter: blur(3px) saturate(114%);
+  background-color: rgba(17, 25, 40, 0.29);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.125);
+  margin: 0;
 }
 
 .header b {
