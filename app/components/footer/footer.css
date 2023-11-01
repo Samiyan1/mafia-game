@@ -3,15 +3,14 @@
     user-select: none;
     padding: 3px;
     width: 100%;
+    backdrop-filter: blur(0px) saturate(200%);
+    -webkit-backdrop-filter: blur(0px) saturate(200%);
+    background-color: rgba(17, 25, 40, 0.66);
+    border-top: 1px solid rgba(255, 255, 255, 0.125);
+      
 }
 
 .btn {
-    backdrop-filter: blur(0px) saturate(68%);
-    -webkit-backdrop-filter: blur(0px) saturate(68%);
-    backdrop-filter: blur(3px) saturate(114%);
-    -webkit-backdrop-filter: blur(3px) saturate(114%);
-    background-color: rgba(17, 25, 40, 0.29);
-    border-top: 1px solid rgba(255, 255, 255, 0.125);
     cursor: pointer;
     text-transform: uppercase;
     font-weight: 100;

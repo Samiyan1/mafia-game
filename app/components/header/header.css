@@ -3,15 +3,15 @@
   user-select: none;
   width: 100%;
   padding: 12px;
-  backdrop-filter: blur(3px) saturate(114%);
-  -webkit-backdrop-filter: blur(3px) saturate(114%);
-  background-color: rgba(17, 25, 40, 0.29);
+  backdrop-filter: blur(0px) saturate(200%);
+  -webkit-backdrop-filter: blur(0px) saturate(200%);
+  background-color: rgba(17, 25, 40, 0.66);
   border-bottom: 1px solid rgba(255, 255, 255, 0.125);
   margin: 0;
 }
 
 .header b {
-  font: 400 30px "Vibur";
+  font: 400 40px "Titr";
   color: rgb(255, 255, 255);
   text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #e044ff, 0 0 0.5em #ff44e6, 0 0 0.1em #ff44e6, 0 10px 3px #000;
 }

@@ -49,13 +49,7 @@ function Page() {
       <Header value1='فه' value2='ر' value3=' معا' value4='ز' value5='رو' />
 
       <div className='flex  flex-col h-[100vh] overflow-x-hidden items-center justify-start flex-wrap  mx-4 my-3 overflow-y-scroll'>
-        <div className='w-full flex justify-evenly  items-center '>
-
-          <p className=' w-[40vw] text-center text-[1rem]'>بازیکن</p>
-          <p className=' w-[40vw] text-center text-[1rem]'>نقش</p>
-          <p className=' w-[30vw] text-center text-[1rem]'>رای</p>
-
-        </div>
+      
         {finalListState && finalListState.map((item: any, index: number) => {
           return (
             <div key={index} className='w-[90vw] h-[6vh] bg-slate-700  mt-4 flex justify-evenly

@@ -51,16 +51,6 @@ const Page = () => {
         },
     );
 
-
-    useEffect(() => {
-        console.log(addExtraPlayer);
-        console.log(finalListState)
-
-    }, [addExtraPlayer])
-
-
-
-
     const shuffle = (array: any) => {
         let currentIndex = array.length, randomIndex;
 
@@ -161,9 +151,13 @@ const Page = () => {
                                 let newSelectRoule = [...selectRule];
                                 if (e.target.checked) {
                                     newSelectRoule.push(item.ruleName);
+                                    console.log(newSelectRoule)
+
                                     return setSelectRule(newSelectRoule)
                                 } else {
                                     newSelectRoule.splice(item.ruleName, 1);
+                                    console.log(newSelectRoule)
+
                                     return setSelectRule(newSelectRoule)
                                 }
                             }} />

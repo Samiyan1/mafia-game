@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function Footer(props: { action?: any, src?: any, className?: string, div?: any }) {
     return (
-        <footer onClick={props.action ? props.action : null} className={`${props.className ? props.className : null} bg-black btn w-screen fixed bottom-0 cursor-pointer flex flex-col items-center footer`}>
+        <footer onClick={props.action ? props.action : null} className={`${props.className ? props.className : null} btn w-screen fixed bottom-0 cursor-pointer flex flex-col items-center footer`}>
             {props.div ? props.div : null}
             <Image
                 src={props.src ? props.src : '/logoWhite.png'}

@@ -45,7 +45,7 @@ function Page() {
   }
 
   return (
-    <main className='h-screen w-screen'>
+    <main className={`h-screen w-screen ${day ? 'main-light' : null}`}>
       {
         day ? <Header value1='' value2='' value3=' ' value4='ز' value5='رو' /> : <Header value1='' value2='' value3=' ' value4='ب' value5='ش' />
       }
@@ -81,19 +81,20 @@ function Page() {
         </div>
         {finalListState && finalListState.map((item: any, index: number) => {
           return (
-            <div key={index} className='w-[90vw] h-[8vh] bg-slate-700  mt-4 flex flex-col justify-evenly
-             items-center card-glass'>
+            <div key={index} className={`w-[90vw] h-[8vh]   mt-4 flex flex-col justify-evenly items-center  ${day ? 'card-glass-light' : `card-glass`}`}>
               <div className='flex flex-row w-full justify-evenly items-center h-[50%]'>
                 <p className='text-white  text-center text-[13px]  w-[20vw]'>{item.playerName}</p>
                 <p className='text-white  text-center text-[13px] w-[20vw]'>{item.ruleName}</p>
-                {day && <input type='number' className='w-[15%] h-[90%] text-black text-center number-input ' min={0} max={finalListState.length - 1} />
+                {
+                  day && <input type='number' className='w-[15%] h-[90%] text-black text-center number-input ' min={0} max={finalListState.length - 1} />
                 }
               </div>
-              {day && (
-                <div className='flex justify-evenly items-center w-full card-glass h-[50%] '>
-                  <Timer />
-                </div>
-              )
+              {
+                day && (
+                  <div className='flex justify-evenly items-center w-full card-glass h-[50%] '>
+                    <Timer />
+                  </div>
+                )
               }
             </div>)
         })}

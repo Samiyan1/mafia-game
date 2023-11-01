@@ -84,11 +84,6 @@ function Page() {
       {
         (finalListState.length > 0) ? (
           <div className='flex  flex-col items-center justify-center flex-wrap  mx-4 mt-4 '>
-            <div className='w-full flex justify-between  items-center '>
-              <p className=' w-[30vw] text-center text-[2rem]'>بازیکن</p>
-              <p className=' w-[30vw] text-center text-[2rem]'>مشاهده</p>
-            </div>
-
             <div className='overflow-y-scroll h-auto'>
               {finalListState && finalListState.map((item: any, index: number) => {
                 return (
@@ -97,7 +92,7 @@ function Page() {
                       <p className='text-white text-[25px] ml-4 text-center'>{item.playerName}</p>
                     </div>
                     <button onClick={() => removePlayer(item.playerName, item.ruleName, item.description)} className='btn-show h-19'>
-                      <span >show</span>
+                      <span >ببینش</span>
                     </button>
                   </div>
                 )
