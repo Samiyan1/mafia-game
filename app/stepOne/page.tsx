@@ -54,7 +54,7 @@ export default function Page() {
         })}
       </div>
       <Footer
-        div={<BtnRedKey className='w-[50vw]' action={() => { playerState.length >= 4 ? router.push('stepTwo', { scroll: false }) : toast.error('تعداد کمتر از حد مجاز') }} value={'submit'} />} />
+        div={<BtnRedKey color={'blue'} className='w-[50vw]' action={() => { playerState.length >= 4 ? router.push('stepTwo', { scroll: false }) : toast.error('تعداد کمتر از حد مجاز') }} value={'Next'} />} />
     </main >
   )
 

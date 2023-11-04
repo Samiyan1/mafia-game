@@ -89,7 +89,7 @@ function Page() {
                 return (
                   <div key={index} className='w-[90vw] h-[6vh]   mt-4 flex justify-between items-center card-glass'>
                     <div>
-                      <p className='text-white text-[25px] ml-4 text-center'>{item.playerName}</p>
+                      <p className='text-white text-[25px] ml-8 text-center'>{item.playerName}</p>
                     </div>
                     <button onClick={() => removePlayer(item.playerName, item.ruleName, item.description)} className='btn-show h-19'>
                       <span >ببینش</span>
@@ -108,8 +108,8 @@ function Page() {
 
       <Footer div={
         <div className='flex flex-row flex-nowrap'>
-          <BtnRedKey className='w-[20vw] mr-2' action={removeLocalData} value={'reset'} />
-          <BtnRedKey className=' w-[50vw] ' action={nextStep} value={'play'} />
+          <BtnRedKey color={'red'} className='w-[20vw] mr-2' action={removeLocalData} value={'reset'} />
+          <BtnRedKey color={'green'} className=' w-[50vw] ' action={nextStep} value={'play'} />
         </div>
       } />
 

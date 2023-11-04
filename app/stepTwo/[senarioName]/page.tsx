@@ -227,7 +227,7 @@ const Page = () => {
             </div>
 
             <Footer
-                div={<BtnRedKey className='w-[50vw]' action={startGame} value={'submit'} />} />
+                div={<BtnRedKey color={'green'} className='w-[50vw]' action={startGame} value={'Start'} />} />
 
             <Transition appear show={isOpen} as={Fragment}>
                 <Dialog as="div" className="relative z-10" onClose={openDialog}>

@@ -12,6 +12,10 @@
 
 
 .btn-show {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
   width: 35%;
   --fs: 1.25em;
   --col1: honeydew;
@@ -19,12 +23,10 @@
   --col3: rgb(0, 20, 39);
   --col4: rgb(41, 69, 105);
   --pd: .5em .65em;
-  display: grid;
   align-content: baseline;
   appearance: none;
   border: 0;
   grid-template-columns: min-content 1fr;
-  padding:1vh 0;
   font-size: var(--fs);
   color: var(--col1);
   background-color: var(--col3);
@@ -32,7 +34,6 @@
   text-shadow: 1px 1px var(--col4);
   box-shadow: inset -2px 1px 1px var(--col2),
     inset 2px 1px 1px var(--col2);
-  position: relative;
   transition: all .75s ease-out;
   transform-origin: center;
 }
