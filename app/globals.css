@@ -4,34 +4,36 @@
 
 :root {
   --foreground-rgb: 255, 255, 255;
-  --background-start-rgb:0,0,0;
-  --background-end-rgb: 0,0,0;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0,0,0;
-    --background-end-rgb: 0,0,0;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
   }
 
 
 }
+
 @font-face {
   font-family: Titr;
-  src: url(/public/font/B-Titr/B\ Titr\ Bold_0.ttf) format('truetype') ;
+  src: url(/public/font/B-Titr/B\ Titr\ Bold_0.ttf) format('truetype');
 }
 
 @font-face {
   font-family: Mj_Heritage;
-  src: url(/public/font/Mj_Heritage-Two/Mj_Heritage\ Two\ Bold_0.ttf) format('truetype') ;
+  src: url(/public/font/Mj_Heritage-Two/Mj_Heritage\ Two\ Bold_0.ttf) format('truetype');
 }
 
 body {
-  font-family: Mj_Heritage, Titr ,monospace, Courier,;
+  all: none;
+  font-family: Mj_Heritage, Titr, monospace, Courier, ;
   color: rgb(var(--foreground-rgb));
-  background: #112 url(//images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg)  center no-repeat;
-  background-size:cover;
+  background: #112 url(//images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg) center no-repeat;
+  background-size: cover;
 }
 
 .btn-class-name {
@@ -87,8 +89,8 @@ body {
 }
 
 
-.glich-btn,.glich-btn
-button::after {
+.glich-btn,
+.glich-btn button::after {
   padding: 25px 20px;
   font-size: 18px;
   background: linear-gradient(45deg, transparent 5%, #ff013c 5%);
@@ -181,4 +183,3 @@ button::after {
     transform: translate(0);
   }
 }
-

@@ -12,6 +12,7 @@
 }
 
 .input-container input {
+    font: Titr;
     border-radius: 0.8rem 0 0 0.8rem;
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
