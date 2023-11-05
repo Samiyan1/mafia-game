@@ -47,7 +47,7 @@ function Page() {
       }
     }
 
-  }, [])
+  }, []);
 
   function removeLocalData() {
     localStorage.setItem('localPlayerList', JSON.stringify(''))

@@ -24,9 +24,6 @@ export default function Page() {
   const playerState = selector.payload.playersSlice.players;
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log(playerState)
-  }, [playerState.length])
 
   return (
 
@@ -59,13 +56,16 @@ export default function Page() {
   )
 
   function addPlayers() {
-    const duplicate: boolean = playerState.some((x: string): boolean => x === name);
+    const isThere: boolean = playerState.some((x: string): boolean => x === name);
 
-    if (name && !duplicate) {
-      dispatch(addPlayer(name))
-      setName('')
-    } else { toast.error("رکورد تکراری") }
+    if (!name) {
+      return toast.error("رکورد خالی")
+    } else if (isThere) {
+      return toast.error("رکورد تکراری",)
+    }
 
+    dispatch(addPlayer(name))
+    setName('')
   }
   function removePlayers(item: any) {
     dispatch(removePlayer(item))
