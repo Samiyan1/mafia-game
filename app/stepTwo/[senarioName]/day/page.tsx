@@ -17,6 +17,7 @@ import EyeHide from "../../../../public/icon/eye-hide.svg";
 import EyeVisible from "../../../../public/icon/eye-visible.svg";
 import Note from "../../../../public/icon/note.svg";
 import Vote from "../../../../public/icon/vote.svg";
+import { Dialog, Transition } from '@headlessui/react'
 
 function Page() {
   const router = useRouter()
@@ -30,6 +31,7 @@ function Page() {
   const [day, setDay] = useState(true);
   const [hidePlayer, setHidePlayer] = useState(true);
   const [timerShow, setTimerShow] = useState(true);
+  const [openNote, setOpenNote] = useState(false)
 
 
 
@@ -51,6 +53,14 @@ function Page() {
   function removeLocalData() {
     localStorage.setItem('localPlayerList', JSON.stringify(''))
     router.push('/stepOne')
+  }
+
+  function closeModal() {
+    setOpenNote(false)
+  }
+
+  function openModal() {
+    setOpenNote(true)
   }
 
   return (
@@ -104,7 +114,7 @@ function Page() {
       <div>
         {
           timerShow && (
-            <div className='fixed bottom-[8vh] flex w-full bg-black h-[10vh]'>
+            <div className='fixed bottom-[8vh] flex w-full bg-black h-[10vh] rounded-full'>
               <Timer />
             </div>
           )
@@ -141,12 +151,12 @@ function Page() {
               height={0}
               width={0}
               style={{
-                width: '80%',
+                width: '90%',
                 height: 'auto',
               }}
               alt="Picture of the author" />
           </button>
-          <button className='w-[20vw] flex justify-center items-center'>
+          <button className='w-[20vw] flex justify-center items-center' onClick={openModal}>
             <Image
               draggable='false'
               src={Note}
@@ -161,6 +171,59 @@ function Page() {
         </div>
 
       </div>
+      <Transition appear show={openNote} as={Fragment}>
+        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black bg-opacity-25" />
+          </Transition.Child>
+
+          <div className="fixed inset-0 overflow-y-auto">
+            <div className="flex min-h-full items-center justify-center p-4 text-center">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <Dialog.Panel className="w-full max-w-md h-[70vh] transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg font-medium leading-6 text-gray-900 text-center"
+                  >
+                    <div className='flex justify-evenly items-center mb-5'>
+                      <div className='text-gray-900 text-[30px]'>یادداشت</div>
+                    </div>
+                  </Dialog.Title>
+                  <div className="mt-2">
+                    <textarea  className='text-black w-full h-[30vh] p-4 border-8'></textarea>
+                  </div>
+
+                  <div className="mt-6 text-center">
+                    <button
+                      type="button"
+                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-700 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      onClick={closeModal}
+                    >
+                      Got it, thanks!
+                    </button>
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
       {/* <Footer /> */}
     </main>
 
