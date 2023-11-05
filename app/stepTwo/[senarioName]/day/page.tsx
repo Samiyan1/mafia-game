@@ -12,6 +12,12 @@ import { useState, Fragment } from 'react';
 import BtnAmongUs from '@/app/components/btnAmungUs/btnAmongUs';
 import Header from '@/app/components/header/header';
 import Footer from '@/app/components/footer/footer';
+import Clock from "../../../../public/icon/clock-time.svg";
+import EyeHide from "../../../../public/icon/eye-hide.svg";
+import EyeVisible from "../../../../public/icon/eye-visible.svg";
+import Note from "../../../../public/icon/note.svg";
+import Vote from "../../../../public/icon/vote.svg";
+
 function Page() {
   const router = useRouter()
 
@@ -22,6 +28,9 @@ function Page() {
   const selectorFinalList = useSelector(setFinalList);
   const [finalListState, setFinalListState] = useState([...selectorFinalList.payload.ruleAndPlayersSlice.finalList]);
   const [day, setDay] = useState(true);
+  const [hidePlayer, setHidePlayer] = useState(true);
+  const [timerShow, setTimerShow] = useState(true);
+
 
 
   useEffect(() => {
@@ -45,7 +54,7 @@ function Page() {
   }
 
   return (
-    <main className={`h-screen w-screen ${day ? 'main-light' : null}`}>
+    <main className={`${day ? 'main-light' : null}`}>
       {
         day ? <Header value1='' value2='' value3=' ' value4='ز' value5='رو' /> : <Header value1='' value2='' value3=' ' value4='ب' value5='ش' />
       }
@@ -81,27 +90,78 @@ function Page() {
         </div>
         {finalListState && finalListState.map((item: any, index: number) => {
           return (
-            <div key={index} className={`w-[90vw] h-[8vh]   mt-4 flex flex-col justify-evenly items-center  ${day ? 'card-glass-light' : `card-glass`}`}>
-              <div className='flex flex-row w-full justify-evenly items-center h-[50%]'>
-                <p className='text-white  text-center text-[13px]  w-[20vw]'>{item.playerName}</p>
-                <p className='text-white  text-center text-[13px] w-[20vw]'>{item.ruleName}</p>
-                {
-                  day && <input type='number' className='w-[15%] h-[90%] text-black text-center number-input ' min={0} max={finalListState.length - 1} />
-                }
-              </div>
+            <div key={index} className={`w-[90vw] h-[10vh]   mt-4 flex justify-evenly items-center  ${day ? 'card-glass-light' : `card-glass`}`}>
+              <p className='text-white  text-center text-[13px]  w-[20vw]'>{item.playerName}</p>
+              <p className='text-white  text-center text-[13px] w-[20vw]'>{item.ruleName}</p>
               {
-                day && (
-                  <div className='flex justify-evenly items-center w-full card-glass h-[50%] '>
-                    <Timer />
-                  </div>
-                )
+                day && <input type='number' className='w-[15%] h-[90%] text-black text-center number-input ' min={0} max={finalListState.length - 1} />
               }
             </div>)
         })}
 
-      </div>
 
-      <Footer />
+      </div>
+      <div>
+        {
+          timerShow && (
+            <div className='fixed bottom-[8vh] flex w-full bg-black h-[10vh]'>
+              <Timer />
+            </div>
+          )
+        }
+        <div className='h-[7vh] w-full fixed bottom-0 flex justify-evenly items-center  bg-black'>
+          <button className='w-[20vw] flex justify-center items-center' onClick={() => setTimerShow(!timerShow)}>
+            <Image
+              draggable='false'
+              src={Clock}
+              height={0}
+              width={0}
+              style={{
+                width: '80%',
+                height: 'auto',
+              }}
+              alt="Picture of the author" />
+          </button>
+          <button className='w-[20vw] flex justify-center items-center'>
+            <Image
+              draggable='false'
+              src={Vote}
+              height={0}
+              width={0}
+              style={{
+                width: '80%',
+                height: 'auto',
+              }}
+              alt="Picture of the author" />
+          </button>
+          <button className='w-[20vw] flex justify-center items-center' onClick={() => setHidePlayer(!hidePlayer)}>
+            <Image
+              draggable='false'
+              src={hidePlayer ? EyeVisible : EyeHide}
+              height={0}
+              width={0}
+              style={{
+                width: '80%',
+                height: 'auto',
+              }}
+              alt="Picture of the author" />
+          </button>
+          <button className='w-[20vw] flex justify-center items-center'>
+            <Image
+              draggable='false'
+              src={Note}
+              height={0}
+              width={0}
+              style={{
+                width: '80%',
+                height: 'auto',
+              }}
+              alt="Picture of the author" />
+          </button>
+        </div>
+
+      </div>
+      {/* <Footer /> */}
     </main>
 
   )
