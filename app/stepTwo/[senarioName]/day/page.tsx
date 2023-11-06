@@ -115,7 +115,15 @@ function Page() {
 
         {finalListState && finalListState.map((item: any, index: number) => {
           return (
-            <div key={index} className={`w-[90vw] h-[5vh] mt-2 flex justify-evenly items-center  ${day ? 'card-glass-light' : `card-glass`}`}>
+            <div key={index} className={`w-[90vw] h-[15vh] p-2 mt-2 flex justify-evenly items-center  ${day ? 'card-glass-light' : `card-glass`}`}>
+               <div className='flex justify-around items-center flex-col h-full'>
+               {hidePlayer && (
+                <>
+                  <p className='text-white text-center text-[16px] w-[20vw] '>{item.ruleName}</p>
+                  <Avatar isBordered radius="lg" src={item.image} />
+                </>
+              )}
+              </div>
               <div className="switch">
                 <input className="switch-check" id={item.playerName} type="checkbox" />
                 <label className="switch-label" htmlFor={item.playerName}>
@@ -124,12 +132,7 @@ function Page() {
                 </label>
               </div>
               <p className='text-white text-center text-[16px]  w-[20vw]'>{item.playerName}</p>
-              {hidePlayer && (
-                <>
-                  <p className='text-white text-center text-[16px] w-[20vw]'>{item.ruleName}</p>
-                  <Avatar isBordered radius="lg" src={item.image} />
-                </>
-              )}
+              
               {
                 day && (
                   <input type='number' className='w-[15%] h-[100%] border-b-slate-600 border-x-2 card-glass-light text-white text-center number-input ' min={0} max={finalListState.length - 1} />
