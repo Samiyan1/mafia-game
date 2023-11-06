@@ -18,22 +18,24 @@ import EyeVisible from "../../../../public/icon/eye-visible.svg";
 import Note from "../../../../public/icon/note.svg";
 import Vote from "../../../../public/icon/vote.svg";
 import { Dialog, Transition } from '@headlessui/react'
+import { Avatar } from "@nextui-org/react";
 
 function Page() {
   const router = useRouter()
-
   const useparams = useParams();
   const senarioName: string = useparams.senarioName as string;
   const urlSenarioName = decodeURIComponent(senarioName);
+
+  // let mafiaCount = 0;
+  // let cityCount = 0;
 
   const selectorFinalList = useSelector(setFinalList);
   const [finalListState, setFinalListState] = useState([...selectorFinalList.payload.ruleAndPlayersSlice.finalList]);
   const [day, setDay] = useState(true);
   const [hidePlayer, setHidePlayer] = useState(true);
-  const [timerShow, setTimerShow] = useState(true);
-  const [openNote, setOpenNote] = useState(false)
-
-
+  const [timerShow, setTimerShow] = useState(false);
+  const [openNote, setOpenNote] = useState(false);
+  const [noteValue, setNoteValue] = useState('');
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -50,19 +52,38 @@ function Page() {
 
   }, [])
 
+  // useEffect(() => {
+  //   countMafia()
+  //   countCity()
+  // }, [finalListState])
+
   function removeLocalData() {
     localStorage.setItem('localPlayerList', JSON.stringify(''))
     router.push('/stepOne')
   }
 
-  function closeModal() {
+  function closeModalNote() {
     setOpenNote(false)
   }
 
-  function openModal() {
+  function openModalNote() {
     setOpenNote(true)
   }
 
+  // function countMafia() {
+  //   finalListState.map((item: any, index: number) => {
+  //     if (item.team === 'مافیا') {
+  //       mafiaCount += 1;
+  //     }
+  //   })
+  // }
+  // function countCity() {
+  //   finalListState.map((item: any, index: number) => {
+  //     if (item.team === 'شهروند') {
+  //       cityCount += 1;
+  //     }
+  //   })
+  // }
   return (
     <main className={`${day ? 'main-light' : null}`}>
       {
@@ -90,21 +111,29 @@ function Page() {
           </div>
         </label>
       </div>
-      <div className='flex  flex-col h-[100vh] overflow-x-hidden items-center justify-start flex-wrap  mx-4 my-3 overflow-y-scroll'>
-        <div className='w-full flex justify-evenly  items-center '>
+      <div className='flex  flex-col h-[100vh] overflow-x-hidden items-center justify-start flex-wrap  mx-1 my-3 overflow-y-scroll'>
 
-          <p className=' w-[40vw] text-center text-[1rem]'>بازیکن</p>
-          <p className=' w-[40vw] text-center text-[1rem]'>نقش</p>
-          <p className=' w-[30vw] text-center text-[1rem]'>رای</p>
-
-        </div>
         {finalListState && finalListState.map((item: any, index: number) => {
           return (
-            <div key={index} className={`w-[90vw] h-[10vh]   mt-4 flex justify-evenly items-center  ${day ? 'card-glass-light' : `card-glass`}`}>
-              <p className='text-white  text-center text-[13px]  w-[20vw]'>{item.playerName}</p>
-              <p className='text-white  text-center text-[13px] w-[20vw]'>{item.ruleName}</p>
+            <div key={index} className={`w-[90vw] h-[5vh] mt-2 flex justify-evenly items-center  ${day ? 'card-glass-light' : `card-glass`}`}>
+              <div className="switch">
+                <input className="switch-check" id={item.playerName} type="checkbox" />
+                <label className="switch-label" htmlFor={item.playerName}>
+                  Check
+                  <span></span>
+                </label>
+              </div>
+              <p className='text-white text-center text-[16px]  w-[20vw]'>{item.playerName}</p>
+              {hidePlayer && (
+                <>
+                  <p className='text-white text-center text-[16px] w-[20vw]'>{item.ruleName}</p>
+                  <Avatar isBordered radius="lg" src={item.image} />
+                </>
+              )}
               {
-                day && <input type='number' className='w-[15%] h-[90%] text-black text-center number-input ' min={0} max={finalListState.length - 1} />
+                day && (
+                  <input type='number' className='w-[15%] h-[100%] border-b-slate-600 border-x-2 card-glass-light text-white text-center number-input ' min={0} max={finalListState.length - 1} />
+                )
               }
             </div>)
         })}
@@ -114,8 +143,23 @@ function Page() {
       <div>
         {
           timerShow && (
-            <div className='fixed bottom-[8vh] flex w-full bg-black h-[10vh] rounded-full'>
+            <div className='fixed bottom-[8vh] flex w-full p-1 bg-black h-[10vh] rounded-full'>
               <Timer />
+            </div>
+          )
+        }
+        {
+          hidePlayer && (
+            <div className='fixed bottom-[8vh] flex w-full card-glass-light h-[10vh] rounded-full'>
+              {/* <div className='text-white flex justify-center items-center w-[40%]'>
+                {cityCount}
+              </div>
+              <div>
+                {mafiaCount}
+              </div> */}
+              <button>
+
+              </button>
             </div>
           )
         }
@@ -144,10 +188,10 @@ function Page() {
               }}
               alt="Picture of the author" />
           </button>
-          <button className='w-[20vw] flex justify-center items-center' onClick={() => setHidePlayer(!hidePlayer)}>
+          <button className='w-[20vw] flex justify-center items-center' onClick={() => { setHidePlayer(!hidePlayer), setTimerShow(false) }}>
             <Image
               draggable='false'
-              src={hidePlayer ? EyeVisible : EyeHide}
+              src={hidePlayer ? EyeHide : EyeVisible}
               height={0}
               width={0}
               style={{
@@ -156,7 +200,7 @@ function Page() {
               }}
               alt="Picture of the author" />
           </button>
-          <button className='w-[20vw] flex justify-center items-center' onClick={openModal}>
+          <button className='w-[20vw] flex justify-center items-center' onClick={openModalNote}>
             <Image
               draggable='false'
               src={Note}
@@ -172,7 +216,7 @@ function Page() {
 
       </div>
       <Transition appear show={openNote} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+        <Dialog as="div" className="relative z-10" onClose={closeModalNote}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -206,14 +250,14 @@ function Page() {
                     </div>
                   </Dialog.Title>
                   <div className="mt-2">
-                    <textarea  className='text-black w-full h-[30vh] p-4 border-8'></textarea>
+                    <textarea value={noteValue} onChange={(e) => { setNoteValue(e.target.value) }} className='text-black w-full h-[30vh] p-4 border-8 direction'></textarea>
                   </div>
 
                   <div className="mt-6 text-center">
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-700 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
+                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      onClick={closeModalNote}
                     >
                       Got it, thanks!
                     </button>
