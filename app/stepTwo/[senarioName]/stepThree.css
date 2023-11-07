@@ -264,50 +264,6 @@
 
 
 
-.card-lib {
-  width: 50vw;
-  max-width: 50vw;
-  height: 25vh;
-  display: flex;
-  gap: 5px;
-  padding: .4em;
-}
-
-.card-lib p {
-  height: 100%;
-  flex: 1;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all .5s;
-  backdrop-filter: blur(13px) saturate(72%);
-  -webkit-backdrop-filter: blur(13px) saturate(72%);
-  background-color: rgba(17, 25, 40, 0.93);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.125);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.card-lib p:hover {
-  flex: 4;
-}
-
-.card-lib p span {
-  min-width: 14em;
-  padding: .5em;
-  text-align: center;
-  transform: rotate(-90deg);
-  transition: all .5s;
-  text-transform: uppercase;
-  color: #b6b6b6;
-  letter-spacing: .1em;
-  font-size: 15px;
-}
-
-.card-lib p:hover span {
-  transform: rotate(0);
-}
 
 
 .text{

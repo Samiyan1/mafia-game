@@ -17,6 +17,8 @@ import BtnRedKey from '@/app/components/btnRedKey/btnRedKey';
 import BtnMoreDetail from '@/app/components/btnMoreDetail/btnMoreDetail';
 import Header from '@/app/components/header/header';
 import Footer from '@/app/components/footer/footer';
+import { Avatar, AvatarGroup } from "@nextui-org/react";
+import {Chip} from "@nextui-org/react";
 
 const Page = () => {
 
@@ -85,8 +87,7 @@ const Page = () => {
                 }
                 return item;
             })
-
-            dispatch(setFinalList(completeObj));
+            dispatch(setFinalList(shuffle(completeObj)));
             window.localStorage.setItem('localPlayerList', JSON.stringify(completeObj));
 
             router.push(`${s}/moarefe`)
@@ -203,25 +204,43 @@ const Page = () => {
                 </div>
 
             </div>
-            <div className='flex mt-4'>
-                <div className=''>
-                    <p className='text-center border-fuchsia-800 border-r-2 '>بازیکنان : {playerState.length} نفر</p>
-                    <div className="card-lib mt-4 ">
-                        {playerState.map((item: any, index: number) => {
-                            return (
-                                <p key={index}><span> {item}</span></p>
-                            )
-                        })}
+            <div className='mt-4 w-screen h-[50vh]'>
+                <div className='flex flex-col justify-center items-center '>
+                    <Chip color="warning" variant="bordered">بازیکنان : {playerState.length} نفر</Chip>
+
+                    <div className="w-full h-full  mt-4 ">
+                        <AvatarGroup isBordered>
+
+                            {playerState.map((item: any, index: number) => {
+                                return (
+                                    // <p ><span> {item}</span></p>
+                                    <Avatar key={index} name={item} />
+
+                                )
+                            })}
+                        </AvatarGroup>
                     </div>
                 </div>
-                <div>
-                    <p className='text-center border-fuchsia-800 border-l-2 '>نقش ها : {selectRule.length} عدد</p>
-                    <div className="card-lib mt-4">
-                        {selectRule.map((item, index) => {
-                            return (
-                                <p key={index}><span> {item}</span></p>
-                            )
-                        })}
+                <div className='mt-4 flex justify-center items-center flex-col'>
+                    <Chip color="warning" variant="bordered">نقش ها : {selectRule.length} عدد</Chip>
+
+                    <div className="w-full h-full mt-4 flex justify-evenly px-2">
+
+                        <AvatarGroup isBordered isGrid max={10} className='px-5'>
+                            {selectRule.map((item, index) => {
+                                return (
+                                    <Avatar  color="danger" key={index} name={item} />
+                                )
+                            })}
+                        </AvatarGroup>
+                        <AvatarGroup isBordered isGrid max={10} className='px-5'>
+                            {selectRule.map((item, index) => {
+                                console.log(item)
+                                return (
+                                    <Avatar color="success" key={index} name={item} />
+                                )
+                            })}
+                        </AvatarGroup>
                     </div>
                 </div>
             </div>
@@ -293,8 +312,6 @@ const Page = () => {
                                         </div>
 
                                     </div>
-
-
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>

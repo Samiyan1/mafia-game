@@ -79,15 +79,14 @@ function Page() {
   }
 
   return (
-    <main className='h-screen w-screen'>
+    <main className='h-screen w-screen overflow-hidden'>
       <Header value1='فه' value2='ر' value3=' معا' value4='ب' value5='ش' />
       {
         (finalListState.length > 0) ? (
-          <div className='flex  flex-col items-center justify-center flex-wrap  mx-4 mt-4 '>
-            <div className='overflow-y-scroll h-auto'>
+          <div className='flex  flex-col flex-nowrap items-center  overflow-scroll h-[75vh] mb-3 mt-2'>
               {finalListState && finalListState.map((item: any, index: number) => {
                 return (
-                  <div key={index} className='w-[90vw] h-[6vh]   mt-4 flex justify-between items-center card-glass'>
+                  <div key={index} className='w-[90vw] h-[6vh]   mt-3 flex justify-between items-center card-glass'>
                     <div>
                       <p className='text-white text-[25px] ml-8 text-center'>{item.playerName}</p>
                     </div>
@@ -97,7 +96,6 @@ function Page() {
                   </div>
                 )
               })}
-            </div>
           </div>
         )
           : (

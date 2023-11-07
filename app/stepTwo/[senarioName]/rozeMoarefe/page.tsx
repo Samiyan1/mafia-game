@@ -12,6 +12,8 @@ import { useState, Fragment } from 'react';
 import BtnAmongUs from '@/app/components/btnAmungUs/btnAmongUs';
 import Header from '@/app/components/header/header';
 import Footer from '@/app/components/footer/footer';
+import BtnRedKey from '@/app/components/btnRedKey/btnRedKey';
+
 function Page() {
   const router = useRouter()
 
@@ -48,20 +50,21 @@ function Page() {
     <main className='h-screen w-screen'>
       <Header value1='فه' value2='ر' value3=' معا' value4='ز' value5='رو' />
 
-      <div className='flex  flex-col h-[100vh] overflow-x-hidden items-center justify-start flex-wrap  mx-4 my-3 overflow-y-scroll'>
-      
+      <div className='flex  flex-col flex-nowrap h-[75vh] overflow-x-hidden items-center  mx-4 my-3 overflow-y-scroll'>
+
         {finalListState && finalListState.map((item: any, index: number) => {
           return (
-            <div key={index} className='w-[90vw] h-[6vh] bg-slate-700  mt-4 flex justify-evenly
+            <div key={index} className='w-[90vw] h-[6vh] bg-slate-700  mt-3 flex justify-evenly
              items-center card-glass'>
               <p className='text-white  text-center text-[13px]  w-[20vw]'>{item.playerName}</p>
-              <Timer />
               <p className='text-white  text-center text-[13px] w-[20vw]'>{item.ruleName}</p>
               {/* <input type='number'className='w-[9%] h-[90%] text-black text-center' max={finalListState.length - 1}/> */}
             </div>)
         })}
       </div>
-      <Footer action={()=> router.push('/stepTwo/پدرخوانده/day')} />
+      <Footer
+        div={<BtnRedKey color={'green'} className=' w-[50vw] ' action={()=>{router.push('/stepTwo/پدرخوانده/day')}} value={'play'} />}
+         />
     </main>
 
   )
