@@ -18,7 +18,7 @@ import BtnMoreDetail from '@/app/components/btnMoreDetail/btnMoreDetail';
 import Header from '@/app/components/header/header';
 import Footer from '@/app/components/footer/footer';
 import { Avatar, AvatarGroup } from "@nextui-org/react";
-import {Chip} from "@nextui-org/react";
+import { Chip } from "@nextui-org/react";
 
 const Page = () => {
 
@@ -28,7 +28,7 @@ const Page = () => {
     const dispatch = useDispatch();
 
     //get state palyer slice
-    const selector = useSelector(addPlayer);
+    const selector: any = useSelector(addPlayer);
     const playerState = selector.payload.playersSlice.players;
 
     //get url
@@ -40,18 +40,10 @@ const Page = () => {
     //states
     let extraPlayerTeam: string = '';
     const [isOpen, setIsOpen] = useState(false);
-    const [selectRule, setSelectRule] = useState<string[]>([])
+    const [selectRule, setSelectRule] = useState<any[]>([])
     const [extraPlayerName, setExtraPlayerName] = useState<string>('')
     const [scenarioObject, setScenarioObject] = useState(MafiaScenarios.find((item) => item.title === s))
-    const [addExtraPlayer, setAddExtraPlayer] = useState(
-        {
-            ruleName: '',
-            playerName: '',
-            description: '',
-            image: '/image/unknowPlayer.jpg',
-            team: '',
-        },
-    );
+
 
     const shuffle = (array: any) => {
         let currentIndex = array.length, randomIndex;
@@ -78,7 +70,7 @@ const Page = () => {
         if (selectRule.length === playerState.length) {
 
             const out: any = scenarioObject?.rules.filter((itemObject, index) => {
-                return selectRule.find(itemSelect => itemSelect === itemObject.ruleName)
+                return selectRule.find(itemSelect => itemSelect.ruleName === itemObject.ruleName)
             })
             const completeObj: any = out && out.map((item: any, index: number) => {
                 if (!item.playerName) {
@@ -151,15 +143,18 @@ const Page = () => {
                             <input type="checkbox" onChange={(e) => {
                                 let newSelectRoule = [...selectRule];
                                 if (e.target.checked) {
-                                    newSelectRoule.push(item.ruleName);
-                                    console.log(newSelectRoule)
-
+                                    let obj = {
+                                        image: item.image,
+                                        ruleName: item.ruleName,
+                                        team: item.team,
+                                    }
+                                    newSelectRoule.push(obj);
                                     return setSelectRule(newSelectRoule)
                                 } else {
-                                    newSelectRoule.splice(item.ruleName, 1);
-                                    console.log(newSelectRoule)
-
-                                    return setSelectRule(newSelectRoule)
+                                    let filterdeArr = newSelectRoule.filter((filterItem) => {
+                                        return filterItem.ruleName !== item.ruleName
+                                    });
+                                    return setSelectRule(filterdeArr)
                                 }
                             }} />
                             <div className="checkmark flex"></div>
@@ -228,16 +223,22 @@ const Page = () => {
 
                         <AvatarGroup isBordered isGrid max={10} className='px-5'>
                             {selectRule.map((item, index) => {
-                                return (
-                                    <Avatar  color="danger" key={index} name={item} />
+                                if (item.team === 'مافیا') return (
+                                    <Avatar color="danger" key={index} src={item.image} />
                                 )
                             })}
                         </AvatarGroup>
                         <AvatarGroup isBordered isGrid max={10} className='px-5'>
                             {selectRule.map((item, index) => {
-                                console.log(item)
-                                return (
-                                    <Avatar color="success" key={index} name={item} />
+                                if (item.team === 'شهروند') return (
+                                    <Avatar color="success" key={index} src={item.image} />
+                                )
+                            })}
+                        </AvatarGroup>
+                        <AvatarGroup isBordered isGrid max={10} className='px-5'>
+                            {selectRule.map((item, index) => {
+                                if (item.team === 'مستقل') return (
+                                    <Avatar color="warning" key={index} src={item.image} />
                                 )
                             })}
                         </AvatarGroup>
@@ -292,13 +293,13 @@ const Page = () => {
                                                 <div className="info">
                                                     <span className="question">Which team do you play?</span>
                                                 </div>
-                                                <input type="radio" onChange={(e) => extraPlayerTeam = (e.target.value)} id="value-1" name="value-radio" value="Mafia" />
-                                                <label htmlFor="value-1">Mafia</label>
-                                                <input type="radio" onChange={(e) => extraPlayerTeam = (e.target.value)} id="value-2" name="value-radio" value="City" />
-                                                <label htmlFor="value-2">City</label>
+                                                <input type="radio" onChange={(e) => extraPlayerTeam = (e.target.value)} id="value-1" name="value-radio" value="مافیا" />
+                                                <label htmlFor="value-1">مافیا</label>
+                                                <input type="radio" onChange={(e) => extraPlayerTeam = (e.target.value)} id="value-2" name="value-radio" value="شهروند" />
+                                                <label htmlFor="value-2">شهروند</label>
+                                                <input type="radio" onChange={(e) => extraPlayerTeam = (e.target.value)} id="value-3" name="value-radio" value="مستقل" />
+                                                <label htmlFor="value-3">مستقل</label>
 
-                                                <span className="result success">City</span>
-                                                <span className="result error">Mafia</span>
                                             </div>
                                         </div>
                                         <div className="mt-4 flex justify-center">

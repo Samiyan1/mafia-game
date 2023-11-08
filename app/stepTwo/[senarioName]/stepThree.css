@@ -243,24 +243,35 @@
 .result.error {
   color: red;
 }
+.result.warning {
+  color: yellow;
+}
 
 .radio-input input:checked+label {
   border-color: red;
   color: red;
 }
 
-.radio-input input[value="City"]:checked+label {
+.radio-input input[value="شهروند"]:checked+label {
   border-color: rgb(22, 245, 22);
   color: rgb(16, 184, 16);
 }
+.radio-input input[value="مستقل"]:checked+label {
+  border-color: rgb(241, 245, 22);
+  color: rgb(184, 173, 16);
+}
 
-.radio-input:has(input[value="City"]:checked) .result.success {
+.radio-input:has(input[value="شهروند"]:checked) .result.success {
   display: flex;
 }
 
-.radio-input:has(input:not([value="City"]):checked) .result.error {
+.radio-input:has(input:not([value="شهروند"]):checked) .result.error {
   display: flex;
 }
+.radio-input:has(input:not([value="مستقل"]):checked) .result.warning {
+  display: flex;
+}
+
 
 
 
