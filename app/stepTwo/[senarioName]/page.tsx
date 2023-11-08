@@ -201,7 +201,7 @@ const Page = () => {
             </div>
             <div className='mt-4 w-screen h-[50vh]'>
                 <div className='flex flex-col justify-center items-center '>
-                    <Chip color="warning" variant="bordered">بازیکنان : {playerState.length} نفر</Chip>
+                    <Chip color="warning" variant="shadow" size="lg">بازیکنان : {playerState.length} نفر</Chip>
 
                     <div className="w-full h-full  mt-4 ">
                         <AvatarGroup isBordered>
@@ -217,7 +217,7 @@ const Page = () => {
                     </div>
                 </div>
                 <div className='mt-4 flex justify-center items-center flex-col'>
-                    <Chip color="warning" variant="bordered">نقش ها : {selectRule.length} عدد</Chip>
+                    <Chip color="warning" variant="shadow" size="lg">نقش ها : {selectRule.length} عدد</Chip>
 
                     <div className="w-full h-full mt-4 flex justify-evenly px-2">
 

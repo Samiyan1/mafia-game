@@ -91,20 +91,20 @@ function Page() {
       {
         day ? <Header div={<SwitchKey action={()=>{setDay(!day)}}/>}  /> : <Header value1=''div={<SwitchKey action={()=>{setDay(!day)}}/>} />
       }
-      <div className='flex  flex-col h-[73vh] overflow-hidden items-center justify-start overflow-y-scroll mx-1 my-3 '>
+      <div className='flex  flex-col h-[75vh] overflow-hidden items-center justify-start overflow-y-scroll mx-1 my-3 '>
 
         {finalListState && finalListState.map((item: any, index: number) => {
           return (
-            <div key={index} className={`w-[90vw] h-[12vh] p-2 mt-2 flex justify-evenly items-center  ${day ? 'card-glass-light' : `card-glass`}`}>
+            <div key={index} className={`w-[90vw] h-[12vh] p-2 mt-2 flex justify-between items-center  ${day ? 'card-glass-light' : `card-glass`}`}>
               <div className='flex justify-around items-center flex-col h-full'>
-                <p className='text-white text-center text-[16px]  w-[20vw]'>{item.playerName}</p>
                 {hidePlayer && (
                   <>
-                    <p className='text-white text-center text-[16px] w-[20vw] '>{item.ruleName}</p>
-                    <Avatar isBordered radius="lg" src={item.image} />
+                    <p className='text-black text-center text-[16px] w-[20vw] '>{item.ruleName}</p>
+                    <Avatar isBordered radius="lg" color={item.team === 'مافیا' ? 'danger' : item.team === 'شهروند' ? 'success' : 'warning'} src={item.image} />
                   </>
                 )}
               </div>
+              <p className='text-white text-center text-[16px]  w-[20vw]'>{item.playerName}</p>
 
 
               {
@@ -128,14 +128,14 @@ function Page() {
       <div>
         {
           timerShow && (
-            <div className='fixed bottom-[8vh] flex w-full p-1 bg-black h-[10vh] rounded-full'>
+            <div className='fixed bottom-[7vh] flex w-full p-1 bg-black h-[10vh] rounded-full'>
               <Timer />
             </div>
           )
         }
         {
           hidePlayer && (
-            <div className='fixed bottom-[8vh] flex w-full card-glass-light h-[10vh] rounded-full'>
+            <div className='fixed bottom-[7vh] flex w-full card-glass-light h-[10vh] rounded-full'>
               {/* <div className='text-white flex justify-center items-center w-[40%]'>
                 {cityCount}
               </div>
