@@ -1,6 +1,5 @@
 'use client';
 import Image from 'next/image';
-import { Person } from '../data';
 import React, { useEffect, useState } from 'react';
 import { addPlayer } from '../redux/reducers/counterSlice';
 import { removePlayer } from '../redux/reducers/counterSlice';
