@@ -41,10 +41,6 @@ function Page() {
 
   }, [])
 
-  function removeLocalData() {
-    localStorage.setItem('localPlayerList', JSON.stringify(''))
-    router.push('/stepOne')
-  }
 
   return (
     <main className='h-screen w-screen'>
@@ -54,17 +50,19 @@ function Page() {
 
         {finalListState && finalListState.map((item: any, index: number) => {
           return (
-            <div key={index} className='w-[90vw] h-[6vh] bg-slate-700  mt-3 flex justify-evenly
+            <div key={index} className='w-[90vw] py-8 h-[6vh] bg-slate-700  mt-3 flex flex-col justify-evenly
              items-center card-glass'>
-              <p className='text-white  text-center text-[13px]  w-[20vw]'>{item.playerName}</p>
-              <p className='text-white  text-center text-[13px] w-[20vw]'>{item.ruleName}</p>
-              {/* <input type='number'className='w-[9%] h-[90%] text-black text-center' max={finalListState.length - 1}/> */}
+              <div className='flex justify-evenly'>
+                <p className='text-white  text-center text-[13px]  w-[20vw]'>{item.playerName}</p>
+                <p className='text-white  text-center text-[13px] w-[20vw]'>{item.ruleName}</p>
+              </div>
+              <div><Timer/></div>
             </div>)
         })}
       </div>
       <Footer
-        div={<BtnRedKey color={'green'} className=' w-[50vw] ' action={()=>{router.push('/stepTwo/پدرخوانده/day')}} value={'play'} />}
-         />
+        div={<BtnRedKey color={'green'} className=' w-[50vw] ' action={() => { router.push('/stepTwo/پدرخوانده/day') }} value={'play'} />}
+      />
     </main>
 
   )

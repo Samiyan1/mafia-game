@@ -16,6 +16,7 @@ import Note from "../../../../public/icon/note.svg";
 import Vote from "../../../../public/icon/vote.svg";
 import Timer from '../rozeMoarefe/timer';
 import './day.css';
+import BtnShut from '@/app/components/btn-shut/btn-shut';
 
 function Page() {
   const router = useRouter()
@@ -71,15 +72,17 @@ function Page() {
             <div key={index} className={`w-[90vw] h-[12vh] p-2 mt-2 flex justify-between items-center  ${day ? 'card-glass-light' : `card-glass`}`}>
               <div className='flex justify-around items-center flex-col h-full'>
                 {hidePlayer && (
-                  <>
-                    <p className='text-black text-center text-[16px] w-[20vw] '>{item.ruleName}</p>
+                  
                     <Avatar isBordered radius="lg" color={item.team === 'مافیا' ? 'danger' : item.team === 'شهروند' ? 'success' : 'warning'} src={item.image} />
-                  </>
                 )}
+                <BtnShut />
               </div>
-              <p className='text-white text-center text-[16px]  w-[20vw]'>{item.playerName}</p>
-
-
+              <div className='flex justify-around items-center flex-col h-full'>
+                {hidePlayer && (
+                    <p className={`text-white text-center text-[16px] w-[20vw] mb-2`}>{item.ruleName}</p>
+                )}
+                <p className='text-white text-center text-[16px]  w-[20vw]'>{item.playerName}</p>
+              </div>
               {
                 day ? (
                   <div className='flex justify-evenly items-center flex-col h-full'>
