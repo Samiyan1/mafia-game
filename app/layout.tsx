@@ -21,31 +21,30 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-
       <Head>
         <link rel='manifest' href='/manifest.json' />
         <link rel='apple-touch-icon' href='/icon.png' />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <NextUIProvider>
-
-        <Provider store={store}>
-          <body className={inter.className}>{children}</body>
-          <ToastContainer
-            position="top-center"
-            autoClose={1000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={true}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light" />
-        </Provider>
-      </NextUIProvider>
-
-    </html>
+      <body className={inter.className}>{
+        <NextUIProvider>
+          <Provider store={store}>
+            {children}
+            <ToastContainer
+              position="top-center"
+              autoClose={1000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={true}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light" />
+          </Provider>
+        </NextUIProvider>
+      }</body >
+    </html >
 
   )
 }

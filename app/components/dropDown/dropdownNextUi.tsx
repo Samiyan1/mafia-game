@@ -2,7 +2,7 @@ import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@
 import { useState, useMemo } from 'react';
 
 export default function DropdownNextUi() {
-    const [selectedKeys, setSelectedKeys] = useState<any>(new Set(["text"]));
+    const [selectedKeys, setSelectedKeys] = useState<any>(new Set([""]));
     const selectedValue = useMemo(
         () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
         [selectedKeys]

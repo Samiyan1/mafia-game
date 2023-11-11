@@ -199,11 +199,12 @@ const Page = () => {
                 </div>
 
             </div>
-            <div className='mt-4 w-screen h-[50vh]'>
-                <div className='flex flex-col justify-center items-center '>
-                    <Chip color="warning" variant="shadow" size="lg">بازیکنان : {playerState.length} نفر</Chip>
+            <div className='w-screen h-[50vh]'>
+                <div className='flex justify-evenly items-center flex-wrap'>
+                    <p className='w-[50%] text-center h-[6vh] flex justify-center items-center box-shadow'>تعداد بازیکنان {playerState.length}</p>
+                    <p className='w-[50%] text-center h-[6vh] flex justify-center items-center box-shadow' >تعداد نقش ها {selectRule.length}</p>
 
-                    <div className="w-full h-full  mt-4 ">
+                    <div className="w-full h-full flex-col mt-4 ">
                         <AvatarGroup isBordered>
 
                             {playerState.map((item: any, index: number) => {
@@ -217,32 +218,44 @@ const Page = () => {
                     </div>
                 </div>
                 <div className='mt-4 flex justify-center items-center flex-col'>
-                    <Chip color="warning" variant="shadow" size="lg">نقش ها : {selectRule.length} عدد</Chip>
 
-                    <div className="w-full h-full mt-4 flex justify-evenly px-2">
+                    <div className="w-full h-full mt-4 flex justify-between px-7">
 
-                        <AvatarGroup isBordered isGrid max={10} className='px-5'>
+                        <AvatarGroup isBordered isGrid max={3} className=''>
                             {selectRule.map((item, index) => {
                                 if (item.team === 'مافیا') return (
                                     <Avatar color="danger" key={index} src={item.image} />
                                 )
                             })}
                         </AvatarGroup>
-                        <AvatarGroup isBordered isGrid max={10} className='px-5'>
+                        <Chip color="danger" variant="shadow" size="lg">مافیا</Chip>
+
+                    </div>
+                    <div className="w-full h-full mt-4 flex justify-between px-7 ">
+
+                        <AvatarGroup isBordered isGrid max={3} className=''>
                             {selectRule.map((item, index) => {
                                 if (item.team === 'شهروند') return (
                                     <Avatar color="success" key={index} src={item.image} />
                                 )
                             })}
                         </AvatarGroup>
-                        <AvatarGroup isBordered isGrid max={10} className='px-5'>
+                        <Chip color="success" variant="shadow" size="lg">شهروند</Chip>
+
+                    </div>
+                    <div className="w-full h-full mt-4 flex justify-between px-7 ">
+
+                        <AvatarGroup isBordered isGrid max={3} className=''>
                             {selectRule.map((item, index) => {
                                 if (item.team === 'مستقل') return (
                                     <Avatar color="warning" key={index} src={item.image} />
                                 )
                             })}
                         </AvatarGroup>
+                        <Chip color="warning" variant="shadow" size="lg">مستقل</Chip>
+
                     </div>
+
                 </div>
             </div>
 

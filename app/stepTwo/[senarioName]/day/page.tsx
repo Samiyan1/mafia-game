@@ -1,26 +1,21 @@
 'use client';
-import Image from 'next/image';
-import './day.css';
-import Link from 'next/link';
-import { useDispatch, useSelector } from 'react-redux';
-import { setFinalList } from '@/app/redux/reducers/ruleAndplayers';
-import { useParams } from 'next/navigation';
-import React, { useEffect } from 'react';
-import Timer from '../rozeMoarefe/timer';
-import { useRouter } from 'next/navigation'
-import { useState, Fragment } from 'react';
-import BtnAmongUs from '@/app/components/btnAmungUs/btnAmongUs';
+import DropdownNextUi from '@/app/components/dropDown/dropdownNextUi';
 import Header from '@/app/components/header/header';
-import Footer from '@/app/components/footer/footer';
+import SwitchKey from '@/app/components/swichKey/SwitchKey';
+import { setFinalList } from '@/app/redux/reducers/ruleAndplayers';
+import { Dialog, Transition } from '@headlessui/react';
+import { Avatar } from "@nextui-org/react";
+import Image from 'next/image';
+import { useParams, useRouter } from 'next/navigation';
+import { Fragment, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Clock from "../../../../public/icon/clock-time.svg";
 import EyeHide from "../../../../public/icon/eye-hide.svg";
 import EyeVisible from "../../../../public/icon/eye-visible.svg";
 import Note from "../../../../public/icon/note.svg";
 import Vote from "../../../../public/icon/vote.svg";
-import { Dialog, Transition } from '@headlessui/react'
-import { Avatar, Switch } from "@nextui-org/react";
-import DropdownNextUi from '@/app/components/dropDown/dropdownNextUi';
-import SwitchKey from '@/app/components/swichKey/SwitchKey';
+import Timer from '../rozeMoarefe/timer';
+import './day.css';
 
 function Page() {
   const router = useRouter()
@@ -34,7 +29,7 @@ function Page() {
   const selectorFinalList = useSelector(setFinalList);
   const [finalListState, setFinalListState] = useState([...selectorFinalList.payload.ruleAndPlayersSlice.finalList]);
   const [day, setDay] = useState(true);
-  const [hidePlayer, setHidePlayer] = useState(false);
+  const [hidePlayer, setHidePlayer] = useState(true);
   const [timerShow, setTimerShow] = useState(false);
   const [openNote, setOpenNote] = useState(false);
   const [noteValue, setNoteValue] = useState('');
@@ -54,15 +49,6 @@ function Page() {
 
   }, [])
 
-  // useEffect(() => {
-  //   countMafia()
-  //   countCity()
-  // }, [finalListState])
-
-  function removeLocalData() {
-    localStorage.setItem('localPlayerList', JSON.stringify(''))
-    router.push('/stepOne')
-  }
 
   function closeModalNote() {
     setOpenNote(false)
@@ -72,24 +58,11 @@ function Page() {
     setOpenNote(true)
   }
 
-  // function countMafia() {
-  //   finalListState.map((item: any, index: number) => {
-  //     if (item.team === 'مافیا') {
-  //       mafiaCount += 1;
-  //     }
-  //   })
-  // }
-  // function countCity() {
-  //   finalListState.map((item: any, index: number) => {
-  //     if (item.team === 'شهروند') {
-  //       cityCount += 1;
-  //     }
-  //   })
-  // }
+
   return (
     <main className={`${day ? 'main-light' : null} h-screen w-screen`}>
       {
-        day ? <Header div={<SwitchKey action={()=>{setDay(!day)}}/>}  /> : <Header value1=''div={<SwitchKey action={()=>{setDay(!day)}}/>} />
+        day ? <Header div={<SwitchKey action={() => { setDay(!day) }} />} /> : <Header value1='' div={<SwitchKey action={() => { setDay(!day) }} />} />
       }
       <div className='flex  flex-col h-[75vh] overflow-hidden items-center justify-start overflow-y-scroll mx-1 my-3 '>
 
@@ -133,21 +106,7 @@ function Page() {
             </div>
           )
         }
-        {
-          hidePlayer && (
-            <div className='fixed bottom-[7vh] flex w-full card-glass-light h-[10vh] rounded-full'>
-              {/* <div className='text-white flex justify-center items-center w-[40%]'>
-                {cityCount}
-              </div>
-              <div>
-                {mafiaCount}
-              </div> */}
-              <button>
 
-              </button>
-            </div>
-          )
-        }
         <div className='h-[7vh] w-full fixed bottom-0 flex justify-evenly items-center  bg-black'>
           <button className='w-[20vw] flex justify-center items-center' onClick={() => setTimerShow(!timerShow)}>
             <Image

@@ -36,6 +36,7 @@
   background: #043033;
 
 }
+
 .container input {
   position: absolute;
   opacity: 0;
@@ -78,7 +79,7 @@
   border: 1px solid rgba(255, 255, 255, 0.125);
   box-shadow: 1px 5px 60px 0px #100a886b;
   border-bottom: #ce00ce 4px;
-  
+
 
 }
 
@@ -93,7 +94,7 @@
 }
 
 .card .job {
-  
+
   font-weight: 400;
   color: white;
   display: block;
@@ -243,6 +244,7 @@
 .result.error {
   color: red;
 }
+
 .result.warning {
   color: yellow;
 }
@@ -256,6 +258,7 @@
   border-color: rgb(22, 245, 22);
   color: rgb(16, 184, 16);
 }
+
 .radio-input input[value="مستقل"]:checked+label {
   border-color: rgb(241, 245, 22);
   color: rgb(184, 173, 16);
@@ -268,6 +271,7 @@
 .radio-input:has(input:not([value="شهروند"]):checked) .result.error {
   display: flex;
 }
+
 .radio-input:has(input:not([value="مستقل"]):checked) .result.warning {
   display: flex;
 }
@@ -277,23 +281,24 @@
 
 
 
-.text{
+.text {
   width: 90%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.card-glass{
+
+.card-glass {
   /* From https://css.glass */
-background: rgba(255, 255, 255, 0.2);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
-border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.description{
+.description {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -302,4 +307,10 @@ border: 1px solid rgba(255, 255, 255, 0.3);
   width: 80%;
   margin: 0 auto;
   font-size: 10px;
+}
+
+.box-shadow {
+  box-shadow: 0px 17px 59px 0px #61158D;
+  background-color: #210358;
+
 }
